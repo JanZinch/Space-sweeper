@@ -11,7 +11,7 @@ public class WorldGenerator : MonoBehaviour
     //[SerializeField] private Vector3 _spawnAddend = new Vector3(0.0f, 0.0f, 30.0f);
     [SerializeField] private int _pooledPartsCount = 6;
 
-    [SerializeField] private List<int> _tubePartsPrefsId = null;
+    private int[] _tubePartsPrefsId = null;
     [SerializeField] private MeshRenderer _tubePartMesh = null;
 
 
@@ -45,7 +45,7 @@ public class WorldGenerator : MonoBehaviour
 
     private PooledObject SpawnTubePart(Vector3 position, Quaternion rotation) {
 
-        int randomId = _tubePartsPrefsId[UnityEngine.Random.Range(0, _tubePartsPrefsId.Count)];
+        int randomId = _tubePartsPrefsId[UnityEngine.Random.Range(0, _tubePartsPrefsId.Length)];
 
         return PoolsManager.GetObject(randomId, position, rotation).GetComponent<PooledObject>();             
     }
@@ -55,6 +55,13 @@ public class WorldGenerator : MonoBehaviour
         Spawner = new Spawn(_startSpawnPosition.position, new Vector3(0.0f, 0.0f, GetMeshLength()));
 
         //Debug.Log("Start Spawn addend: " + Spawner.Addend);
+        
+        _tubePartsPrefsId = new int[PoolsManager.GetPoolsCount()];
+        
+        for (int i = 0; i < _tubePartsPrefsId.Length; i++)
+        {
+            _tubePartsPrefsId[i] = i;
+        }
 
         _tubePartsPool = new Queue<PooledObject>(_pooledPartsCount);
 

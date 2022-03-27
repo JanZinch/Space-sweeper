@@ -710,20 +710,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pools:
-  - prefabId: 0
-    prefab: {fileID: 6989680302205850835, guid: 251eb40f9108a5141affc7b5b5782f9e,
+  - prefab: {fileID: 6989680302205850835, guid: 251eb40f9108a5141affc7b5b5782f9e,
       type: 3}
     count: 5
-  - prefabId: 1
-    prefab: {fileID: 3620792665185888656, guid: 5470cda1a5d28834b952034b565e7fb5,
+  - prefab: {fileID: 3620792665185888656, guid: 5470cda1a5d28834b952034b565e7fb5,
       type: 3}
     count: 5
-  - prefabId: 2
-    prefab: {fileID: 2656539754834921534, guid: 646959dbf6dde9d4f98cc17d18d0607f,
+  - prefab: {fileID: 2656539754834921534, guid: 646959dbf6dde9d4f98cc17d18d0607f,
       type: 3}
     count: 5
-  - prefabId: 3
-    prefab: {fileID: 803747037796568064, guid: bb17c4a606bb6924786c9a51b8410194, type: 3}
+  - prefab: {fileID: 803747037796568064, guid: bb17c4a606bb6924786c9a51b8410194, type: 3}
     count: 5
 --- !u!4 &1403456368
 Transform:
@@ -770,7 +766,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startSpawnPosition: {fileID: 1780543483}
   _pooledPartsCount: 10
-  _tubePartsPrefsId: 00000000010000000200000003000000
   _tubePartMesh: {fileID: 1043827465}
 --- !u!4 &1535130124
 Transform:

@@ -55,5 +55,9 @@ static class PoolsManager
 		return result;
 	}
 
+	public static int GetPoolsCount()
+	{
+		return _pools.Length;
+	}
 
 }
