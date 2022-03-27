@@ -3,19 +3,24 @@ using UnityEngine;
 
 static class PoolsManager
 {
-	private static PoolPart[] _pools = null;
+	private static ObjectPoolData[] _pools = null;
 	private static GameObject _root = null;
 
 	[Serializable]
-	public struct PoolPart
+	public struct ObjectPoolData
 	{
-		public int prefabId;
+		public int PrefabId { get; private set; }
 		public PooledObject prefab;
 		public int count;
 		public ObjectPool pool;
+
+		public void SetPrefabId(int id)
+		{
+			PrefabId = id;
+		}
 	}
 
-	public static void Initialize(PoolPart[] newPools)
+	public static void Initialize(ObjectPoolData[] newPools)
 	{
 		_pools = newPools;
 		_root = new GameObject();
@@ -37,7 +42,7 @@ static class PoolsManager
 		{
 			for (int i = 0; i < _pools.Length; i++)
 			{
-				if (_pools[i].prefabId == id)
+				if (_pools[i].PrefabId == id)
 				{
 					result = _pools[i].pool.GetObject();
 					result.transform.position = position;

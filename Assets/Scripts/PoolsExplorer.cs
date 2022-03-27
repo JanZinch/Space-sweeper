@@ -4,19 +4,24 @@ using UnityEngine;
 [AddComponentMenu("Pool/PoolsExplorer")]
 public class PoolsExplorer : MonoBehaviour
 {
-	[SerializeField] private PoolsManager.PoolPart[] _pools = null;
+	[SerializeField] private PoolsManager.ObjectPoolData[] _pools = null;
 	private static PoolsExplorer _instance = null;
 
-	void OnValidate()
+	/*void OnValidate()
 	{
 		for (int i = 0; i < _pools.Length; i++)
 		{
-			_pools[i].prefabId = i;
+			_pools[i].SetPrefabId(i);
 		}
-	}
+	}*/
 
 	void Awake()
 	{
+		for (int i = 0; i < _pools.Length; i++)
+		{
+			_pools[i].SetPrefabId(i);
+		}
+		
 		Initialize();
 	}
 
