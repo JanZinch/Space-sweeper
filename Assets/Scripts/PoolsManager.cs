@@ -1,50 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
+using CodeBase.ApplicationLibrary.Collections;
 using UnityEngine;
 
 static class PoolsManager
 {
-	private static ObjectPoolData[] _pools = null;
+	private static List<ObjectPoolData> _pools = null;
 	private static GameObject _root = null;
-
+	private const string RootName = "Pool";
+	
 	[Serializable]
-	public struct ObjectPoolData
+	public class ObjectPoolData
 	{
-		public int PrefabId { get; private set; }
-		public PooledObject prefab;
-		public int count;
-		public ObjectPool pool;
-
-		public void SetPrefabId(int id)
+		[SerializeField] private PooledObjectType _type;
+		public PooledObjectType Type => _type;
+		public PooledObject Prefab;
+		public int Count;
+		private ObjectPool _pool;
+		
+		public void SetPool(ObjectPool pool)
 		{
-			PrefabId = id;
+			_pool = pool;
+		}
+		
+		public ObjectPool GetPool()
+		{
+			return _pool;
 		}
 	}
 
-	public static void Initialize(ObjectPoolData[] newPools)
+	public static void Initialize(List<ObjectPoolData> newPools)
 	{
 		_pools = newPools;
 		_root = new GameObject();
-		_root.name = "Pool";
-		for (int i = 0; i < _pools.Length; i++)
+		_root.name = RootName;
+		for (int i = 0; i < _pools.Count; i++)
 		{
-			if (_pools[i].prefab != null)
+			if (_pools[i].Prefab != null)
 			{
-				_pools[i].pool = new ObjectPool(_pools[i].count, _pools[i].prefab, _root.transform);
+				_pools[i].SetPool(new ObjectPool(_pools[i].Count, _pools[i].Prefab, _root.transform));
 			}
 		}
 	}
 
 
-	public static PooledObject GetObject(int id, Vector3 position, Quaternion rotation)
+	public static PooledObject GetObject(PooledObjectType type, Vector3 position, Quaternion rotation)
 	{
 		PooledObject result = null;
 		if (_pools != null)
 		{
-			for (int i = 0; i < _pools.Length; i++)
+			for (int i = 0; i < _pools.Count; i++)
 			{
-				if (_pools[i].PrefabId == id)
+				if (_pools[i].Type == type)
 				{
-					result = _pools[i].pool.GetObject();
+					result = _pools[i].GetPool().GetObject();
 					result.transform.position = position;
 					result.transform.rotation = rotation;
 					result.gameObject.SetActive(true);
@@ -54,10 +63,7 @@ static class PoolsManager
 		}
 		return result;
 	}
-
-	public static int GetPoolsCount()
-	{
-		return _pools.Length;
-	}
+	
 
 }
+

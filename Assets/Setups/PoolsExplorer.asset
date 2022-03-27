@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7e5ec082962334192135ddb1b45093, type: 3}
+  m_Name: PoolsExplorer
+  m_EditorClassIdentifier: 
+  _tunnelPartPools:
+  - _type: 10
+    Prefab: {fileID: 2656539754834921534, guid: 646959dbf6dde9d4f98cc17d18d0607f,
+      type: 3}
+    Count: 5
+  - _type: 11
+    Prefab: {fileID: 803747037796568064, guid: bb17c4a606bb6924786c9a51b8410194, type: 3}
+    Count: 5
+  - _type: 12
+    Prefab: {fileID: 6989680302205850835, guid: 251eb40f9108a5141affc7b5b5782f9e,
+      type: 3}
+    Count: 5
+  - _type: 13
+    Prefab: {fileID: 3620792665185888656, guid: 5470cda1a5d28834b952034b565e7fb5,
+      type: 3}
+    Count: 5
+  _projectilePools:
+  - _type: 100
+    Prefab: {fileID: -1163910212922852232, guid: 0d0477b64bf6161458ca59fa4777d6e8,
+      type: 3}
+    Count: 15

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private MileageStage _mileageStage = null;
     [SerializeField] private WorldGenerator _worldGenerator = null;
-
+    
 
     private void Awake()
     {
