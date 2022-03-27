@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 
-public class Player : MonoBehaviour
+public class PlayerBody : MonoBehaviour
 {
     public Action OnObstacleHit;
 

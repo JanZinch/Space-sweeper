@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa482800deb0803458a9b452e796b8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCollision: {fileID: 728709071}
+  playerBodyCollision: {fileID: 728709071}
   minSpeed: 1
   maxSpeed: 50
   accel: 20
