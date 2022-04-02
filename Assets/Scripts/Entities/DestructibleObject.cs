@@ -6,24 +6,26 @@ namespace Entities
 {
     public class DestructibleObject : MonoBehaviour
     {
-        public double Health { get; private set; } = 100.0f;
+        [SerializeField] private int _health = 100;
+
+        public double Health => _health;
 
         public Func<Tween> OnDeath = null;
 
-        public void MakeDamage(double damage)
+        public void MakeDamage(int damage)
         {
-            Health -= damage;
+            _health -= damage;
 
-            if (Health <= 0)
+            if (_health <= 0)
             {
                 if (OnDeath != null)
                 {
                     OnDeath().OnComplete(() =>
                     {
-                        Destroy(this);
+                        gameObject.SetActive(false);
                     });
                 }
-                else Destroy(this);
+                else gameObject.SetActive(false);
             }
 
         }

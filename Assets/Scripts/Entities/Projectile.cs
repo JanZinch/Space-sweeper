@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Entities;
 using UnityEngine;
 
@@ -8,17 +5,17 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody = null;
+    [SerializeField] private float _speed = 100.0f;
+    [SerializeField] private int _damage = 10;
     [SerializeField] private ParticleSystem _trailParticles = null;
     [SerializeField] private PooledObject _pooledObject = null;
-    
-    private double _damage = 0.0;
 
     private void Start()
     {
-        Setup(new Vector3(0.0f, 0.0f, 10.0f), 10.0f);
+        Setup(new Vector3(0.0f, 0.0f, _speed), _damage);
     }
 
-    private void Setup(Vector3 velocity, double damage)
+    private void Setup(Vector3 velocity, int damage)
     {
         _rigidbody.velocity = velocity;
         _damage = damage;
