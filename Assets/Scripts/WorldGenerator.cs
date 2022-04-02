@@ -38,7 +38,7 @@ public class WorldGenerator : MonoBehaviour
     private PooledObject SpawnTubePart(Vector3 position, Quaternion rotation) {
 
         PooledObjectType randomType = _tubePartsTypes[Random.Range(0, _tubePartsTypes.Count)];
-        return PoolsManager.GetObject(randomType, position, rotation).GetComponent<PooledObject>();             
+        return PoolsManager.GetObject(randomType, position, rotation);             
     }
 
     private void Awake()

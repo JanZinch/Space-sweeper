@@ -9,8 +9,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private ParticleSystem _trailParticles = null;
-    [SerializeField] private ParticleSystem _explosionOriginal = null;
-    
+    [SerializeField] private PooledObject _pooledObject = null;
     
     private double _damage = 0.0;
 
@@ -32,8 +31,15 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
         {
             destructibleObject.MakeDamage(_damage);
-            
+
             // effects setup
+            Debug.Log("Collision");
+            
+            EffectsManager.SetupExplosion(transform.position, Quaternion.identity);
+            
+            if (_pooledObject != null) _pooledObject.ReturnToPool();
+
+            
         }
     }
 }

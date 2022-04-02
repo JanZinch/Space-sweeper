@@ -33,3 +33,8 @@ MonoBehaviour:
     Prefab: {fileID: -1163910212922852232, guid: 0d0477b64bf6161458ca59fa4777d6e8,
       type: 3}
     Count: 15
+  _effectPools:
+  - _type: 200
+    Prefab: {fileID: 5188042049352163258, guid: 78e45f801c390244a84649705e258ca4,
+      type: 3}
+    Count: 20
