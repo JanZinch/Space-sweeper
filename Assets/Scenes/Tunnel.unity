@@ -5634,17 +5634,17 @@ PrefabInstance:
     - target: {fileID: 1103750199433247209, guid: 5470cda1a5d28834b952034b565e7fb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 274.39755
+      value: 465.4
       objectReference: {fileID: 0}
     - target: {fileID: 1103750199433247209, guid: 5470cda1a5d28834b952034b565e7fb5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 87.49843
+      value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 1103750199433247209, guid: 5470cda1a5d28834b952034b565e7fb5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.144512
+      value: -181.4
       objectReference: {fileID: 0}
     - target: {fileID: 1103750199433247209, guid: 5470cda1a5d28834b952034b565e7fb5,
         type: 3}
@@ -5742,6 +5742,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 847902377}
     m_Modifications:
+    - target: {fileID: 5814096171237146947, guid: 251eb40f9108a5141affc7b5b5782f9e,
+        type: 3}
+      propertyPath: m_Name
+      value: TunnelPart
+      objectReference: {fileID: 0}
     - target: {fileID: 6660463725180667045, guid: 251eb40f9108a5141affc7b5b5782f9e,
         type: 3}
       propertyPath: m_Name
@@ -5755,7 +5760,7 @@ PrefabInstance:
     - target: {fileID: 6660463725180667050, guid: 251eb40f9108a5141affc7b5b5782f9e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 435
+      value: 526.4
       objectReference: {fileID: 0}
     - target: {fileID: 6660463725180667050, guid: 251eb40f9108a5141affc7b5b5782f9e,
         type: 3}
