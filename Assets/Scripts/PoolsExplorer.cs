@@ -58,9 +58,9 @@ public enum PooledObjectType
 		
 	// tunnel
 		
-	TUNNEL_PART_1 = 10,
+	TUNNEL_CYBER_BRIDGE = 10,
 	TUNNEL_PART_2 = 11,
-	TUNNEL_PART_3 = 12,
+	TUNNEL_CYBER_HATCHES = 12,
 	TUNNEL_PART_4 = 13,
 		
 	// projectiles

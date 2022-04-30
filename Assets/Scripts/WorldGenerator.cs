@@ -46,7 +46,6 @@ public class WorldGenerator : MonoBehaviour
         Spawner = new Spawn(_startSpawnPosition.position, new Vector3(0.0f, 0.0f, GetMeshLength()));
 
         _tubePartsTypes = PoolsExplorer.GetTunnelPartsPoolsIds();
-
         _tubePartsPool = new Queue<PooledObject>(_pooledPartsCount);
 
         for (int i = 0; i < _pooledPartsCount; i++)
