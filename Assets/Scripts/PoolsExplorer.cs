@@ -62,7 +62,10 @@ public enum PooledObjectType
 	TUNNEL_PART_2 = 11,
 	TUNNEL_CYBER_HATCHES = 12,
 	TUNNEL_PART_4 = 13,
-		
+	TUNNEL_CYBER_PINS_1 = 14,
+	TUNNEL_CYBER_PINS_2 = 15
+	
+	,	
 	// projectiles
 		
 	FIREBALL = 100,
