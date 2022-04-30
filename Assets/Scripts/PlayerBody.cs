@@ -15,8 +15,10 @@ public class PlayerBody : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("COL");
-        OnObstacleHit?.Invoke();
+        if (!collision.gameObject.CompareTag(Tags.Projectile))
+        {
+            OnObstacleHit?.Invoke();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

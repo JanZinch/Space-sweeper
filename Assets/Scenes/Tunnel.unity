@@ -457,6 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sourcePosition: {fileID: 376788150}
+  _cooldown: 0.25
 --- !u!1 &376788149
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,15 +28,12 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
         {
             destructibleObject.MakeDamage(_damage);
-
-            // effects setup
-            Debug.Log("Collision");
-            
-            EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
-            
-            if (_pooledObject != null) _pooledObject.ReturnToPool();
-
-            
         }
+        
+        //Debug.Log("Collision");
+        
+        EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
+        
+        if (_pooledObject != null) _pooledObject.ReturnToPool();
     }
 }

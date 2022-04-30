@@ -15,6 +15,19 @@ public static class TubePartsContainer
                 new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_2, Quaternion.Euler(0.0f, 0.0f, 22.5f)),
                 new TubeData(PooledObjectType.TUNNEL_CYBER_BRIDGE, Quaternion.identity),
                 new TubeData(PooledObjectType.TUNNEL_CYBER_HATCHES, Quaternion.Euler(0.0f, 0.0f, -22.5f)),
+                
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                
+                
             }}
         });
 

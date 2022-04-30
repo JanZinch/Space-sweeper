@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1163910212922852232}
   m_Layer: 0
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 992552d3a07d47042b08b6c5b0107f42, type: 2}
+  - {fileID: 2100000, guid: 8b032c10a2863a745b1cbd7f4b2d80a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -366,7 +366,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.14528298, b: 0.14528298, a: 1}
+      maxColor: {r: 1, g: 0.6019488, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

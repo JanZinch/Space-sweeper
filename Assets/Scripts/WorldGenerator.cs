@@ -87,9 +87,12 @@ public class WorldGenerator : MonoBehaviour
     
     public void Next() {
 
-        PooledObject deletedTube = _tubePartsPool.Dequeue();
-        deletedTube.ReturnToPool();
-
+        if (_tubePartsPool.Count != 0)
+        {
+            PooledObject deletedTube = _tubePartsPool.Dequeue();
+            deletedTube.ReturnToPool();
+        }
+        
         PooledObject createdTube = SpawnTubePart(Spawner.CurrentPosition, Quaternion.identity);
 
         if (createdTube != null)
