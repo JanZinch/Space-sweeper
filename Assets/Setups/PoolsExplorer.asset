@@ -31,6 +31,10 @@ MonoBehaviour:
   - _type: 15
     Prefab: {fileID: 811206085340980195, guid: fca6b0690d3a3444fa50b42954c4b486, type: 3}
     Count: 5
+  - _type: 16
+    Prefab: {fileID: 2656539754834921534, guid: 3d06c1e6b8f15714c95a9325e7b3ffd0,
+      type: 3}
+    Count: 5
   _projectilePools:
   - _type: 100
     Prefab: {fileID: -1163910212922852232, guid: 0d0477b64bf6161458ca59fa4777d6e8,

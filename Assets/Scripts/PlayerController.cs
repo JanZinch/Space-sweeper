@@ -6,9 +6,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerBody _playerBody;
-    
-    [Header("Navigation")]
-    [SerializeField] private float _minSpeed = 1.0f, _maxSpeed = 50.0f;
+
+    [Header("Navigation")] 
+    [SerializeField] private float _minSpeed = 1.0f;
+    [SerializeField] private float _maxSpeed = 50.0f;
     [SerializeField] private float _acceleration = 20.0f;
     [SerializeField] private float  _maxRotationSpeed = 70.0f, _maxRotationAngle = 25.0f;
 
