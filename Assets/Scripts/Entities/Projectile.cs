@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
             // effects setup
             Debug.Log("Collision");
             
-            EffectsManager.SetupExplosion(transform.position, Quaternion.identity);
+            EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
             
             if (_pooledObject != null) _pooledObject.ReturnToPool();
 

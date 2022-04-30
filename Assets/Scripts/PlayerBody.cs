@@ -3,9 +3,31 @@ using System;
 
 public class PlayerBody : MonoBehaviour
 {
-    public Action OnObstacleHit;
+    [SerializeField] private Rigidbody _rigidbody = null;
+    public event Action OnObstacleHit = null;
+    public event Action OnChannelHit = null;
+    
+    public void Fall()
+    {
+        _rigidbody.constraints = RigidbodyConstraints.None;
+        _rigidbody.useGravity = true;
+    }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("COL");
+        OnObstacleHit?.Invoke();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(Tags.Channel))
+        {
+            OnChannelHit?.Invoke();
+        }
+    }
+
+    /*private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.name == "Cylinder")
         {
@@ -13,5 +35,5 @@ public class PlayerBody : MonoBehaviour
             OnObstacleHit?.Invoke();
             Destroy(collider.gameObject); // Put in object pooler
         }
-    }
+    }*/
 }
