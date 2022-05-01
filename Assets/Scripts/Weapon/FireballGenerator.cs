@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballGenerator : MonoBehaviour
+public class FireballGenerator : Weapon
 {
     [SerializeField] private Transform _sourcePosition = default;
-    [SerializeField] private float _cooldown = 1.0f;
+    [SerializeField] private float _cooldown = 0.25f;
     
-    private const string Fire1 = "Fire1";
-
     private float _deltaTime = default;
 
     private void Start()
@@ -19,15 +17,19 @@ public class FireballGenerator : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetButtonDown(Fire1) && _deltaTime >= _cooldown)
+        _deltaTime += Time.deltaTime;
+    }
+
+    public override void FireIfPossible()
+    {
+        if (_deltaTime >= _cooldown)
         {
             PoolsManager.GetObject(PooledObjectType.FIREBALL, _sourcePosition.position, Quaternion.identity)
                 .GetLinkedComponent<Projectile>().Setup();
             
             _deltaTime = 0.0f;
         }
-
-        _deltaTime += Time.deltaTime;
     }
-
 }
+
+

@@ -70,8 +70,11 @@ public enum PooledObjectType
 	// projectiles
 		
 	FIREBALL = 100,
+	BULLET = 101,
 		
 	// effects
 	
 	FIREBALL_EXPLOSION = 200,
+	BULLET_EXPLOSION = 201,
+	
 }

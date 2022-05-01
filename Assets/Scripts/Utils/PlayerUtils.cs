@@ -8,6 +8,7 @@ namespace Utils
         private static Dictionary<EquipmentType, Equipment> _weapons = null;
         public static Equipment CurrentWeapon = null;
 
+        public static bool SecondWeaponIsAvailable = true;
 
         public static void Initialize()
         {

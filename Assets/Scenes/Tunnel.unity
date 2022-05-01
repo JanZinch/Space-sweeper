@@ -398,6 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368604919}
   - component: {fileID: 368604920}
+  - component: {fileID: 368604922}
   - component: {fileID: 368604921}
   m_Layer: 0
   m_Name: PlayerPivot
@@ -458,6 +459,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sourcePosition: {fileID: 376788150}
   _cooldown: 0.25
+--- !u!114 &368604922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761080b75ade40549e1d20bdc2192e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isForPlayer: 1
+  _attachedWeapons:
+  - {fileID: 368604921}
 --- !u!1 &376788149
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,6 +6687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedComponent: {fileID: 0}
 --- !u!4 &5127914008830009289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3904364593616581530, guid: fca6b0690d3a3444fa50b42954c4b486,
