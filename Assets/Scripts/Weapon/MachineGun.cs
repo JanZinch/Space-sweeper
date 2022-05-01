@@ -1,14 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MachineGun : Weapon
 {
-    [SerializeField] private Transform _leftSourcePosition = default;
-    [SerializeField] private Transform _rightSourcePosition = default;
+    [SerializeField] private List<Transform> _leftSourcePoints = default;
+    [SerializeField] private List<Transform> _rightSourcePoints = default;
     [SerializeField] private float _cooldown = 0.1f;
 
     private Vector3 _leftGunDirection = new Vector3(0.002f, 0.0f, 1.0f);
     private Vector3 _rightGunDirection = new Vector3(-0.002f, 0.0f, 1.0f);
     
+    private float _deltaX = 10.1f, _deltaY = 10.1f;
     private float _deltaTime = default;
 
     private void Awake()
@@ -30,11 +33,17 @@ public class MachineGun : Weapon
     {
         if (_deltaTime >= _cooldown)
         {
-            PoolsManager.GetObject(PooledObjectType.BULLET, _leftSourcePosition.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(_leftGunDirection);
+            foreach (Transform point in _leftSourcePoints)
+            {
+                PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
+                    .GetLinkedComponent<Projectile>().Setup(_leftGunDirection);
+            }
             
-            PoolsManager.GetObject(PooledObjectType.BULLET, _rightSourcePosition.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(_rightGunDirection);
+            foreach (Transform point in _rightSourcePoints)
+            {
+                PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
+                    .GetLinkedComponent<Projectile>().Setup(_rightGunDirection);
+            }
             
             _deltaTime = 0.0f;
         }

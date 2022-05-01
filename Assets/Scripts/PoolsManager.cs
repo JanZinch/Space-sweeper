@@ -44,7 +44,7 @@ static class PoolsManager
 	}
 
 
-	public static PooledObject GetObject(PooledObjectType type, Vector3 position, Quaternion rotation)
+	public static PooledObject GetPooledObject(PooledObjectType type, Vector3 position, Quaternion rotation)
 	{
 		PooledObject result = null;
 		if (_pools != null)

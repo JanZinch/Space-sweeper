@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FireballGenerator : Weapon
 {
-    [SerializeField] private Transform _sourcePosition = default;
+    [SerializeField] private Transform _sourcePoint = default;
     [SerializeField] private float _cooldown = 0.25f;
     
     private float _deltaTime = default;
@@ -29,7 +29,7 @@ public class FireballGenerator : Weapon
     {
         if (_deltaTime >= _cooldown)
         {
-            PoolsManager.GetObject(PooledObjectType.FIREBALL, _sourcePosition.position, Quaternion.identity)
+            PoolsManager.GetPooledObject(PooledObjectType.FIREBALL, _sourcePoint.position, Quaternion.identity)
                 .GetLinkedComponent<Projectile>().Setup(Vector3.forward);
             
             _deltaTime = 0.0f;
