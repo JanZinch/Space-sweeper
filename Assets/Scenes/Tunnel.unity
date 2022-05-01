@@ -5444,6 +5444,7 @@ GameObject:
   - component: {fileID: 847902377}
   - component: {fileID: 847902379}
   - component: {fileID: 847902378}
+  - component: {fileID: 847902380}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -5502,6 +5503,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mileageStage: {fileID: 162614969}
   _worldGenerator: {fileID: 847902378}
+  _effectsManager: {fileID: 847902380}
+--- !u!114 &847902380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847902376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a7246f10b543809864e89ac133f39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &852276302
 GameObject:
   m_ObjectHideFlags: 0

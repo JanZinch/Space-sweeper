@@ -1,3 +1,4 @@
+using System;
 using Entities;
 using UnityEngine;
 
@@ -10,9 +11,20 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ParticleSystem _trailParticles = null;
     [SerializeField] private PooledObject _pooledObject = null;
 
+    private void Awake()
+    {
+        _pooledObject.Setup = Setup;
+    }
+
     private void Start()
     {
+        //Setup(new Vector3(0.0f, 0.0f, _speed), _damage);
+    }
+
+    public PooledObject Setup()
+    {
         Setup(new Vector3(0.0f, 0.0f, _speed), _damage);
+        return _pooledObject;
     }
 
     private void Setup(Vector3 velocity, int damage)
@@ -25,12 +37,15 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        
+        Debug.Log("Collision with: " + other.gameObject.name);
+        
         if (other.gameObject.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
         {
             destructibleObject.MakeDamage(_damage);
         }
         
-        //Debug.Log("Collision");
+        
         
         EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
         

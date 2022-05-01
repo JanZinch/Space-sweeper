@@ -21,7 +21,7 @@ public class FireballGenerator : MonoBehaviour
     {
         if (Input.GetButtonDown(Fire1) && _deltaTime >= _cooldown)
         {
-            PoolsManager.GetObject(PooledObjectType.FIREBALL, _sourcePosition.position, Quaternion.identity);
+            PoolsManager.GetObject(PooledObjectType.FIREBALL, _sourcePosition.position, Quaternion.identity).Setup?.Invoke();
             _deltaTime = 0.0f;
         }
 

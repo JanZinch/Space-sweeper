@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 [AddComponentMenu("Pool/PooledObject")]
 public class PooledObject : MonoBehaviour
-{       
+{
+    public Func<PooledObject> Setup = null;
+    
     public IEnumerator ReturnToPool(float time)
     {
         yield return new WaitForSeconds(time);
