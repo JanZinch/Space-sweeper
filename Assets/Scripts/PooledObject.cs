@@ -5,8 +5,8 @@ using UnityEngine;
 [AddComponentMenu("Pool/PooledObject")]
 public class PooledObject : MonoBehaviour
 {
-    public Func<PooledObject> Setup = null;
-    
+    [SerializeField] private Component _linkedComponent = null;
+
     public IEnumerator ReturnToPool(float time)
     {
         yield return new WaitForSeconds(time);
@@ -16,6 +16,11 @@ public class PooledObject : MonoBehaviour
     public void ReturnToPool()
     {
         gameObject.SetActive(false);
+    }
+
+    public TComponent GetLinkedComponent<TComponent>() where TComponent : Component
+    {
+        return _linkedComponent as TComponent;
     }
 
 }

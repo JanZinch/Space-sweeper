@@ -10,17 +10,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int _damage = 10;
     [SerializeField] private ParticleSystem _trailParticles = null;
     [SerializeField] private PooledObject _pooledObject = null;
-
-    private void Awake()
-    {
-        _pooledObject.Setup = Setup;
-    }
-
-    private void Start()
-    {
-        //Setup(new Vector3(0.0f, 0.0f, _speed), _damage);
-    }
-
+    
     public PooledObject Setup()
     {
         Setup(new Vector3(0.0f, 0.0f, _speed), _damage);
