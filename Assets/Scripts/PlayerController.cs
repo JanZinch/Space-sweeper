@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _startAcceleration = 10.0f, _fallAcceleration = 10.0f, _destroyedAcceleration = 5.0f;
     [SerializeField] private float  _maxRotationSpeed = 70.0f, _maxRotationAngle = 10.0f;
 
-    [Space] 
-    [SerializeField] private FireballGenerator _fireballGenerator = null;
-    
     private float _forwardSpeed = 0.0f, _currentRotationSpeed = 0.0f;
 
     private bool _isFalls = false;
@@ -103,5 +100,11 @@ public class PlayerController : MonoBehaviour
     private void SetMinSpeed()
     {
         _forwardSpeed = _minSpeed;
+    }
+
+    public void Overtake(Rigidbody actor)
+    {
+        Vector3 cachedVelocity = actor.velocity;
+        actor.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
     }
 }

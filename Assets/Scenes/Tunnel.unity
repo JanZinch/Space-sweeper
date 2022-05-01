@@ -446,7 +446,6 @@ MonoBehaviour:
   _destroyedAcceleration: 5
   _maxRotationSpeed: 70
   _maxRotationAngle: 10
-  _fireballGenerator: {fileID: 368604921}
 --- !u!114 &368604921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,6 +5561,7 @@ MonoBehaviour:
   _mileageStage: {fileID: 162614969}
   _worldGenerator: {fileID: 847902378}
   _effectsManager: {fileID: 847902380}
+  _playerController: {fileID: 368604920}
 --- !u!114 &847902380
 MonoBehaviour:
   m_ObjectHideFlags: 0

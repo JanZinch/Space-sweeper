@@ -77,4 +77,8 @@ public enum PooledObjectType
 	FIREBALL_EXPLOSION = 200,
 	BULLET_EXPLOSION = 201,
 	
+	// enemies
+	
+	GAMMAZOID = 300,
+	
 }
