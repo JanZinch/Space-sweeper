@@ -43,9 +43,16 @@ MonoBehaviour:
   - _type: 100
     Prefab: {fileID: -1163910212922852232, guid: 0d0477b64bf6161458ca59fa4777d6e8,
       type: 3}
-    Count: 15
+    Count: 20
+  - _type: 101
+    Prefab: {fileID: 692772477, guid: e9bd3d94a052b7245ba644645b91f443, type: 3}
+    Count: 50
   _effectPools:
   - _type: 200
     Prefab: {fileID: 5188042049352163258, guid: 78e45f801c390244a84649705e258ca4,
       type: 3}
     Count: 20
+  - _type: 201
+    Prefab: {fileID: 8066594785223089417, guid: 4f27009001933fc47959fbaac8492c6e,
+      type: 3}
+    Count: 50

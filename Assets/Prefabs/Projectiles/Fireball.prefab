@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278d8a967cfa29e4693dbd7d7af465ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _explosionType: 200
   _rigidbody: {fileID: 4557678909323801120}
   _speed: 100
   _damage: 20
@@ -367,7 +368,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.6019488, b: 0, a: 1}
+      maxColor: {r: 0, g: 0.9925692, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using Utils;
 
@@ -18,12 +19,12 @@ public class WeaponController : MonoBehaviour
     {
         if (_isForPlayer)
         {
-            if (Input.GetButtonDown(Fire1))
+            if (_attachedWeapons[FirstWeapon].GetPlayerInput(Fire1))
             {
                 _attachedWeapons[FirstWeapon].FireIfPossible();
             }
         
-            if (PlayerUtils.SecondWeaponIsAvailable && Input.GetButtonDown(Fire2))
+            if (PlayerUtils.SecondWeaponIsAvailable && _attachedWeapons[SecondWeapon].GetPlayerInput(Fire2))
             {
                 _attachedWeapons[SecondWeapon].FireIfPossible();
             }
