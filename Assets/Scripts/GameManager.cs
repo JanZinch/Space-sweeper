@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
     {
         _mileageStage.OnNextStage += () => _worldGenerator.Next();
     }
+
+    /*private void Start()
+    {
+        PoolsManager.GetPooledObject(PooledObjectType.GAMMAZOID, Vector3.zero, Quaternion.identity);
+    }*/
 
     private void OnDisable()
     {

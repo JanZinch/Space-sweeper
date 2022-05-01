@@ -16,6 +16,11 @@ public class PoolsExplorer : ScriptableObject
 	[Header("Effects")]
 	[SerializeField] private List<PoolsManager.ObjectPoolData> _effectPools = null;
 	
+	[Space]
+	[Header("Enemies")]
+	[SerializeField] private List<PoolsManager.ObjectPoolData> _enemyPools = null;
+	
+	
 	private static PoolsExplorer _instance = null;
 
 	public static List<PooledObjectType> GetTunnelPartsPoolsIds()
@@ -40,11 +45,12 @@ public class PoolsExplorer : ScriptableObject
 			_instance = this;
 
 			List<PoolsManager.ObjectPoolData> allPools =
-				new List<PoolsManager.ObjectPoolData>(_tunnelPartPools.Count + _projectilePools.Count + _effectPools.Count);
+				new List<PoolsManager.ObjectPoolData>(_tunnelPartPools.Count + _projectilePools.Count + _effectPools.Count + _enemyPools.Count);
 			
 			allPools.AddRange(_tunnelPartPools);
 			allPools.AddRange(_projectilePools);
 			allPools.AddRange(_effectPools);
+			allPools.AddRange(_enemyPools);
 			
 			PoolsManager.Initialize(allPools);
 		}		
