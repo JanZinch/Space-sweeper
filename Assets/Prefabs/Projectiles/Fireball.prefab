@@ -130,7 +130,7 @@ MonoBehaviour:
   _explosionType: 200
   _rigidbody: {fileID: 4557678909323801120}
   _speed: 100
-  _damage: 20
+  _damage: 25
   _trailParticles: {fileID: 4557678911330859059}
   _pooledObject: {fileID: -1163910212922852232}
 --- !u!114 &-1163910212922852232

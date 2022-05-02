@@ -10,7 +10,7 @@ namespace Entities
 
         public double Health => _health;
 
-        public Func<Tween> OnDeath = null;
+        public event Func<Tween> OnDeath = null;
 
         public void MakeDamage(int damage)
         {
