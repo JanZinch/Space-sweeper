@@ -8,7 +8,7 @@ public class MileageStage : MonoBehaviour
     private float _start = default;
     private float _end = default;
 
-    public Action OnNextStage = null;
+    public event Action OnNextStage = null;
 
     void Start()
     {

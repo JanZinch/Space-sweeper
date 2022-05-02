@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController _playerController = null;
     
     public PlayerController Player => _playerController;
+    public MileageStage MileageStage => _mileageStage;
 
     private void Awake()
     {
@@ -27,11 +28,6 @@ public class GameManager : MonoBehaviour
     {
         _mileageStage.OnNextStage += () => _worldGenerator.Next();
     }
-
-    /*private void Start()
-    {
-        PoolsManager.GetPooledObject(PooledObjectType.GAMMAZOID, Vector3.zero, Quaternion.identity);
-    }*/
 
     private void OnDisable()
     {

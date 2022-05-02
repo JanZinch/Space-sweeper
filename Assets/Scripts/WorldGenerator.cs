@@ -80,6 +80,11 @@ public class WorldGenerator : MonoBehaviour
         
         _tubePartsPool = new Queue<PooledObject>(_pooledPartsCount);
 
+        
+    }
+
+    private void Start()
+    {
         for (int i = 0; i < _pooledPartsCount; i++)
         {
             PooledObject pooledObject = SpawnTubePart(Spawner.CurrentPosition, Quaternion.identity);
@@ -90,7 +95,7 @@ public class WorldGenerator : MonoBehaviour
             Spawner.Next();
         }
     }
-    
+
     public void Next() {
 
         if (_tubePartsPool.Count != 0)

@@ -12,7 +12,7 @@ public class ActorsSpawn : MonoBehaviour
         foreach (var spawnPoint in _spawnPoints)
         {
             PoolsManager.GetPooledObject(spawnPoint.Key, spawnPoint.Value.position, Quaternion.identity)
-                .GetLinkedComponent<LinearActor>().SetSpeed();
+                .GetLinkedComponent<LinearActor>().Initialize();
         }
     }
 }

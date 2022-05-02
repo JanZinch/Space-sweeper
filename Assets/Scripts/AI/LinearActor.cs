@@ -10,8 +10,15 @@ namespace AI {
         [SerializeField] protected Rigidbody _rigidBody = null;
         [SerializeField] protected float _forwardSpeed = default;
         [SerializeField] private bool _setSpeedOnStart = false;
-        
-        public virtual void SetSpeed() {
+        [SerializeField] private OpposingActor _opposingBehaviour = null;
+
+        public virtual void Initialize()
+        {
+            SetSpeed();
+            if(_opposingBehaviour!=null) _opposingBehaviour.DistanceCheck = true;
+        }
+
+        protected virtual void SetSpeed() {
 
             _rigidBody.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
         }
@@ -21,6 +28,10 @@ namespace AI {
             if (_setSpeedOnStart) SetSpeed();            
         }
         
+        public virtual void Clear()
+        {
+            if(_opposingBehaviour!=null) _opposingBehaviour.DistanceCheck = false;
+        }
     }
 
 
