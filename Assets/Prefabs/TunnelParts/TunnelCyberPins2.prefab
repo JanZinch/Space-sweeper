@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3904364593616581530}
   - component: {fileID: 811206085340980195}
+  - component: {fileID: 228418490142146446}
   m_Layer: 0
   m_Name: TunnelCyberPins2
   m_TagString: Untagged
@@ -254,6 +255,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedComponent: {fileID: 228418490142146446}
+--- !u!114 &228418490142146446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904364593616581525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0b2db413344b3eacfa335637463845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorsSpawn: {fileID: 0}
 --- !u!1 &4246471379809515123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051e97a4e597b154db1cc63faef9a8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 0}
 --- !u!1 &6066098486102763826
 GameObject:
   m_ObjectHideFlags: 0

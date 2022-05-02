@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851825652494309447}
   - component: {fileID: 2656539754834921534}
+  - component: {fileID: 5381822803681323447}
   m_Layer: 0
   m_Name: TunnelCyberEmpty
   m_TagString: Untagged
@@ -44,6 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedComponent: {fileID: 5381822803681323447}
+--- !u!114 &5381822803681323447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851825652494309448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0b2db413344b3eacfa335637463845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorsSpawn: {fileID: 0}
 --- !u!1 &2458902326046149033
 GameObject:
   m_ObjectHideFlags: 0

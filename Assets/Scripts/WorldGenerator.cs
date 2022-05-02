@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -46,7 +47,9 @@ public class WorldGenerator : MonoBehaviour
     private PooledObject SpawnRandomTubePart(Vector3 position, Quaternion rotation) {
 
         PooledObjectType randomType = _tubePartsTypes[Random.Range(0, _tubePartsTypes.Count)];
-        return PoolsManager.GetPooledObject(randomType, position, rotation);             
+        PooledObject tube =  PoolsManager.GetPooledObject(randomType, position, rotation); 
+        tube.GetLinkedComponent<ChannelTube>().Initialize();
+        return tube;
     }
     
     private PooledObject SpawnNextTubePart(Vector3 position, Quaternion rotation) {
@@ -54,7 +57,10 @@ public class WorldGenerator : MonoBehaviour
         if (_currentLevelMap.Count == 0) return null;  // end of level
         
         TubeData tubeData = _currentLevelMap.Dequeue();
-        return PoolsManager.GetPooledObject(tubeData.TubeType, position, rotation * tubeData.Rotation);             
+        
+        PooledObject tube = PoolsManager.GetPooledObject(tubeData.TubeType, position, rotation * tubeData.Rotation);
+        tube.GetLinkedComponent<ChannelTube>().Initialize();
+        return tube;
     }
 
     private void Awake()

@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &364650059965585720
 Transform:
   m_ObjectHideFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   _distanceFromPlayer:
     Slowdown: 50
     Min: 30
+  _setSpeedOnStart: 0
 --- !u!1 &3911823673406889078
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3911823673406889081}
   - component: {fileID: 803747037796568064}
+  - component: {fileID: 147833418450261741}
   - component: {fileID: 5711521254975484317}
   m_Layer: 0
   m_Name: TunnelPartGray
@@ -176,7 +178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkedComponent: {fileID: 0}
+  _linkedComponent: {fileID: 147833418450261741}
+--- !u!114 &147833418450261741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911823673406889078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0b2db413344b3eacfa335637463845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorsSpawn: {fileID: 5711521254975484317}
 --- !u!114 &5711521254975484317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4241637343010175803
 Transform:
   m_ObjectHideFlags: 0
@@ -446,6 +461,7 @@ MonoBehaviour:
   _distanceFromPlayer:
     Slowdown: 50
     Min: 30
+  _setSpeedOnStart: 0
 --- !u!1 &8684709375094105208
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,9 @@ namespace AI {
         [SerializeField] protected float _forwardSpeed = default;
         [SerializeField] protected float _slowdown = 1.0f;
         [SerializeField] protected DistanceFromPlayer _distanceFromPlayer = new DistanceFromPlayer(50.0f, 10.0f);
-        
-        protected Vector3? _startPosition = null;
+
+        [SerializeField] private bool _setSpeedOnStart = false;
+        //protected Vector3? _startPosition = null;
 
         private State _state = State.APPROXIMATION;
         
@@ -34,7 +35,7 @@ namespace AI {
             APPROXIMATION = 0, SLOWDOWN = 1, PERSECUTION = 2
         }
 
-        protected virtual void OnEnable()
+        /*protected virtual void OnEnable()
         {
             if (_startPosition != null)
             {
@@ -49,9 +50,9 @@ namespace AI {
                     transform.position = (Vector3)_startPosition;
                 }
             }
-        }
+        }*/
 
-        protected virtual void SetSpeed() {
+        public virtual void SetSpeed() {
 
             _rigidBody.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
         }
@@ -64,7 +65,7 @@ namespace AI {
 
         private void FixedUpdate()
         {
-            if (_state != State.PERSECUTION && CheckDistanceFromPlayer(_distanceFromPlayer.Min))
+            /*if (_state != State.PERSECUTION && CheckDistanceFromPlayer(_distanceFromPlayer.Min))
             {
                 _state = State.PERSECUTION;
                 GameManager.Instance.Player.Overtake(_rigidBody);
@@ -72,7 +73,7 @@ namespace AI {
             else if (CheckDistanceFromPlayer(_distanceFromPlayer.Slowdown))
             {
                 _state = State.SLOWDOWN;
-            }
+            }*/
 
         }
 
@@ -86,17 +87,16 @@ namespace AI {
 
         protected void Start()
         {
-            if (transform.parent != null)
+            /*if (transform.parent != null)
             {
                 _startPosition = transform.localPosition;
             }
             else
             {
-
                 _startPosition = transform.position;
-            }
+            }*/
 
-            SetSpeed();            
+            if (_setSpeedOnStart) SetSpeed();            
         }
 
 

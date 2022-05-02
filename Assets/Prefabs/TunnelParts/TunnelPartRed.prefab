@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103750199433247209}
   - component: {fileID: 3620792665185888656}
+  - component: {fileID: 4899721892821439513}
   m_Layer: 0
   m_Name: TunnelPartRed
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedComponent: {fileID: 4899721892821439513}
+--- !u!114 &4899721892821439513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103750199433247206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb0b2db413344b3eacfa335637463845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorsSpawn: {fileID: 0}
 --- !u!1 &5518414056779917690
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,8 +326,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af2f36e94256048be9604286475ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forwardSpeed: -20
   _rigidBody: {fileID: 7664827148174383228}
+  _forwardSpeed: -20
+  _slowdown: 1
+  _distanceFromPlayer:
+    Slowdown: 50
+    Min: 10
+  _setSpeedOnStart: 0
   _angularSpeed: 50
   _centerOfMass: {fileID: 7871324945494965038}
 --- !u!54 &7664827148174383228
@@ -440,8 +460,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af2f36e94256048be9604286475ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _forwardSpeed: -20
   _rigidBody: {fileID: 5004041786516523069}
+  _forwardSpeed: -20
+  _slowdown: 1
+  _distanceFromPlayer:
+    Slowdown: 50
+    Min: 10
+  _setSpeedOnStart: 0
   _angularSpeed: -80
   _centerOfMass: {fileID: 7871324945494965038}
 --- !u!54 &5004041786516523069
