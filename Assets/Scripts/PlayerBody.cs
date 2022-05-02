@@ -6,11 +6,13 @@ public class PlayerBody : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody = null;
     public event Action OnObstacleHit = null;
     public event Action OnChannelHit = null;
+
+    private Vector3 _fallForce = new Vector3(0.0f, -0.5f, 0.0f);
     
     public void Fall()
     {
         _rigidbody.constraints = RigidbodyConstraints.None;
-        _rigidbody.useGravity = true;
+        _rigidbody.AddRelativeForce(_fallForce, ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,14 +30,4 @@ public class PlayerBody : MonoBehaviour
             OnChannelHit?.Invoke();
         }
     }
-
-    /*private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.name == "Cylinder")
-        {
-            Debug.Log("Player hit " + collider.gameObject.name);
-            OnObstacleHit?.Invoke();
-            Destroy(collider.gameObject); // Put in object pooler
-        }
-    }*/
 }

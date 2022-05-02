@@ -82,9 +82,8 @@ public class PlayerController : MonoBehaviour
         if (!_isDestroyed)
         {
             Vector3 currentAngle = _playerBody.transform.localEulerAngles;
-
             transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
-            //Debug.Log("Speed: " + _forwardSpeed);
+
             transform.Rotate(0f, 0f, _currentRotationSpeed * Time.deltaTime);
             _playerBody.transform.localEulerAngles = Vector3.right * currentAngle.x + Vector3.up * currentAngle.y + 
                                                      -Vector3.forward * _maxRotationAngle * _currentRotationSpeed / _maxRotationSpeed;
@@ -105,6 +104,6 @@ public class PlayerController : MonoBehaviour
     public void Overtake(Rigidbody actor)
     {
         Vector3 cachedVelocity = actor.velocity;
-        actor.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
+        actor.velocity = new Vector3(cachedVelocity.x, cachedVelocity.y, _forwardSpeed);
     }
 }
