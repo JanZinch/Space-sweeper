@@ -13,6 +13,9 @@ namespace AI
         [SerializeField] protected DistanceFromPlayer _distanceFromPlayer = new DistanceFromPlayer(50.0f, 10.0f);
 
         private bool _distanceCheck = false;
+
+        public event Action<Vector3> OnSlow = null;
+        public event Action OnOvertake = null;
         
         public bool DistanceCheck
         {
@@ -72,11 +75,14 @@ namespace AI
                 if (CheckDistanceFromPlayer(_distanceFromPlayer.Min))
                 {
                     _state = State.CONFRONTATION;
-                    GameManager.Instance.Player.Overtake(_rigidBody);
+                    //GameManager.Instance.Player.Overtake(_rigidBody);
+                    
+                    OnOvertake?.Invoke();
                 }
                 else if (CheckDistanceFromPlayer(_distanceFromPlayer.Slowdown))
                 {
                     _state = State.SLOWDOWN;
+                    OnSlow?.Invoke(new Vector3(0.0f, 0.0f,_slowdown));
                 }
 
                 yield return _checkDistanceDeltaTime;
@@ -89,14 +95,15 @@ namespace AI
         }
         
         
-        private void Update()
+        /*private void Update()
         {
             if (_state == State.SLOWDOWN)
             {
+
                 Vector3 cachedVelocity = _rigidBody.velocity;
                 _rigidBody.velocity = new Vector3(cachedVelocity.x, cachedVelocity.y, cachedVelocity.z +=_slowdown);
             }
-        }
+        }*/
         
     }
 }

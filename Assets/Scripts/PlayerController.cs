@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -101,9 +102,15 @@ public class PlayerController : MonoBehaviour
         _forwardSpeed = _minSpeed;
     }
 
-    public void Overtake(Rigidbody actor)
+    public float GetForwardSpeed()
+    {
+        return _forwardSpeed;
+    }
+
+    /*public void Overtake(LinearActor actor)
     {
         Vector3 cachedVelocity = actor.velocity;
         actor.velocity = new Vector3(cachedVelocity.x, cachedVelocity.y, _forwardSpeed);
-    }
+        
+    }*/
 }

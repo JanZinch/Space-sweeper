@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 1174504002346100320}
-  _forwardSpeed: -5
+  _forwardSpeed: -1
   _setSpeedOnStart: 0
   _opposingBehaviour: {fileID: -5740057065559618626}
   _angularSpeed: 30
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 1174504002346100320}
-  _slowdown: 4
+  _slowdown: 0.1
   _distanceFromPlayer:
     Slowdown: 70
     Min: 50
