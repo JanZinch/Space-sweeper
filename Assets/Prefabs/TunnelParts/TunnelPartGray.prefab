@@ -127,11 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 4434287508960230816}
   _forwardSpeed: -10
-  _slowdown: 10
-  _distanceFromPlayer:
-    Slowdown: 50
-    Min: 30
   _setSpeedOnStart: 0
+  _opposingBehaviour: {fileID: 0}
 --- !u!1 &3911823673406889078
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +228,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5367981419475779527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.299988, y: 9.61, z: 79.86}
+  m_LocalPosition: {x: 0, y: 0, z: 88.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8200059114273799094}
@@ -457,11 +454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 7626101053139938383}
   _forwardSpeed: -20
-  _slowdown: 20
-  _distanceFromPlayer:
-    Slowdown: 50
-    Min: 30
   _setSpeedOnStart: 0
+  _opposingBehaviour: {fileID: 0}
 --- !u!1 &8684709375094105208
 GameObject:
   m_ObjectHideFlags: 0

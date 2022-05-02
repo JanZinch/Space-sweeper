@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174504002346100323}
-  - component: {fileID: 7661356015006593620}
+  - component: {fileID: 1174504002346100321}
   - component: {fileID: -5740057065559618626}
   - component: {fileID: 1174504002346100320}
   - component: {fileID: 6104449256814285246}
   m_Layer: 0
-  m_Name: gammazoid
+  m_Name: gammazoid_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,15 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174504002346100322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 212.3, y: -11.38, z: 11.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1171822694927159206}
-  - {fileID: 4903328179213774570}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7661356015006593620
+--- !u!114 &1174504002346100321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,15 +44,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1174504002346100322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98af2f36e94256048be9604286475ef9, type: 3}
+  m_Script: {fileID: 11500000, guid: e5652417d4a4c7f4e86a5608e8fb0e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 1174504002346100320}
   _forwardSpeed: -5
   _setSpeedOnStart: 0
   _opposingBehaviour: {fileID: -5740057065559618626}
-  _angularSpeed: 30
-  _rotationPivot: {fileID: 4903328179213774570}
 --- !u!114 &-5740057065559618626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,10 +64,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 1174504002346100320}
-  _slowdown: 4
+  _slowdown: 0.25
   _distanceFromPlayer:
     Slowdown: 70
     Min: 50
+  _distanceCheck: 0
 --- !u!54 &1174504002346100320
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99,37 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkedComponent: {fileID: 7661356015006593620}
---- !u!1 &1567180313140360224
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4903328179213774570}
-  m_Layer: 0
-  m_Name: pivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4903328179213774570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567180313140360224}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1174504002346100323}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  _linkedComponent: {fileID: 1174504002346100321}
 --- !u!1001 &1174504001007458070
 PrefabInstance:
   m_ObjectHideFlags: 0
