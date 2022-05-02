@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool _isFalls = false;
     private bool _isDestroyed = false;
     
+    public float ForwardSpeed =>_forwardSpeed;
+    
     private void OnEnable()
     {
         _playerBody.OnObstacleHit += OnObstacleHit;
@@ -102,10 +104,8 @@ public class PlayerController : MonoBehaviour
         _forwardSpeed = _minSpeed;
     }
 
-    public float GetForwardSpeed()
-    {
-        return _forwardSpeed;
-    }
+    
+    
 
     /*public void Overtake(LinearActor actor)
     {

@@ -6,58 +6,54 @@ using UnityEngine;
 
 namespace AI {
 
-    public class LinearActor : MonoBehaviour
+    [RequireComponent(typeof(AIController))]
+    public class LinearActor : AIBaseActor
     {
-        [SerializeField] protected Rigidbody _rigidBody = null;
         [SerializeField] protected float _forwardSpeed = default;
         [SerializeField] private bool _setSpeedOnStart = false;
-        [SerializeField] private OpposingActor _opposingBehaviour = null;
 
-        private Vector3 _speed = default;
-        
-        public virtual void Initialize()
+        private Vector3 _linearSpeed = default;
+
+        public override void Initialize()
         {
             SetSpeed();
-            if(_opposingBehaviour!=null) _opposingBehaviour.DistanceCheck = true;
+        }
+
+        public override void Clear()
+        {
+            Stop();
         }
 
         protected virtual void Update()
         {
-            transform.Translate(_speed * Time.deltaTime);
+            transform.Translate(_linearSpeed * Time.deltaTime);
         }
         
         protected virtual void SetSpeed()
         {
-            _speed = new Vector3(0.0f, 0.0f, _forwardSpeed);
-            //_rigidBody.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
-        }
-        
-        protected virtual void SetSpeed(Vector3 speed)
-        {
-            _speed = speed;
-            //_rigidBody.velocity = new Vector3(0.0f, 0.0f, _forwardSpeed);
+            _linearSpeed = new Vector3(0.0f, 0.0f, _forwardSpeed);
         }
 
-        public void UpdateSpeed(Vector3 append)
+        protected void Stop()
         {
-            _speed += append;
+            _linearSpeed = Vector3.zero;
+        }
+
+        public void AppendSpeed(Vector3 append)
+        {
+            _linearSpeed += append;
+        }
+
+        public void SetForwardSpeed(float forwardSpeed)
+        {
+            _linearSpeed = new Vector3(_linearSpeed.x, _linearSpeed.y, forwardSpeed);
         }
 
         protected virtual void Start()
         {
             if (_setSpeedOnStart) SetSpeed();
-
-            _opposingBehaviour.OnSlow += UpdateSpeed;
-            _opposingBehaviour.OnOvertake += () =>
-            {
-                _speed = new Vector3(_speed.x, _speed.y, GameManager.Instance.Player.GetForwardSpeed());
-            };
         }
         
-        public virtual void Clear()
-        {
-            if(_opposingBehaviour!=null) _opposingBehaviour.DistanceCheck = false;
-        }
     }
 
 

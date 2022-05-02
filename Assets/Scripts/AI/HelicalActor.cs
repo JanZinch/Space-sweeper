@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AI
 {
-
+    [RequireComponent(typeof(AIController))]
     public class HelicalActor : LinearActor
     {
         [Space]
@@ -38,6 +38,7 @@ namespace AI
         
         public override void Clear()
         {
+            base.Clear();
             DOTween.Kill(transform);
         }
     }
