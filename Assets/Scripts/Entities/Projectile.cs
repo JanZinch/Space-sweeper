@@ -12,46 +12,37 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed = 100.0f;
     [SerializeField] private int _damage = 10;
     [SerializeField] private ParticleSystem _trailParticles = null;
-    [SerializeField] private Navigation _navigation = null;
     [SerializeField] private PooledObject _pooledObject = null;
+
+    private Navigation _navigation = null;
     
-    
-    
-    
-    [Serializable]
     public class Navigation
     {
-        [SerializeField] private float _lerpDuration = 1.0f; 
         private Transform _target = null;
-
+        private readonly float _lerpDuration; 
         private Vector3 _startPosition = default;
         private float _currentLerpTime = 0.0f;
-
-        public Transform Target => _target;
         
-        public void Setup(Vector3 startPosition, Transform target)
+        public Transform Target => _target;
+
+        public Navigation(Vector3 startPosition, Transform target, float lerpDuration)
         {
             _startPosition = startPosition;
+            _lerpDuration = lerpDuration;
             _target = target;
             _currentLerpTime = 0.0f;
         }
-
+        
         public Vector3 Update()
         {
-            //_currentLerpTime = Mathf.Clamp(_currentLerpTime += Time.deltaTime, 0.0f, _lerpDuration);
             if (_target == null)
             {
                 throw new Exception("Navigation target is null");
             }
             
-            _currentLerpTime += Time.deltaTime;
-            if (_currentLerpTime > _lerpDuration )
-            {
-                _currentLerpTime = _lerpDuration ;
-            }
+            _currentLerpTime = Mathf.Clamp(_currentLerpTime += Time.deltaTime, 0.0f, _lerpDuration);
             
             float percentComplete = _currentLerpTime / _lerpDuration;
-
             return Vector3.Lerp(_startPosition, _target.position, percentComplete);
         }
 
@@ -64,11 +55,9 @@ public class Projectile : MonoBehaviour
         return this;
     }
 
-    public Projectile SetNavigationTarget(Transform target)
+    public Projectile SetNavigation(Transform target, float lerpDuration)
     {
-        if (target != null) Debug.Log("Target: " + target.gameObject.name);
-        
-        _navigation?.Setup(transform.position, target);
+        _navigation = new Navigation(transform.position, target, lerpDuration);
         return this;
     }
 
@@ -80,10 +69,11 @@ public class Projectile : MonoBehaviour
         if(_trailParticles) _trailParticles.Play();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_navigation != null && _navigation.Target != null)
         {
+            _rigidbody.velocity = Vector3.zero;
             _rigidbody.MovePosition(_navigation.Update());
         }
     }

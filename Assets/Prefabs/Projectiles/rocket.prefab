@@ -132,6 +132,8 @@ MonoBehaviour:
   _speed: 100
   _damage: 25
   _trailParticles: {fileID: 4557678911330859059}
+  _navigation:
+    _lerpDuration: 1
   _pooledObject: {fileID: -1163910212922852232}
 --- !u!114 &-1163910212922852232
 MonoBehaviour:
