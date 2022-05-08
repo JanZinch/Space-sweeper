@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Entities
 {
@@ -8,8 +9,11 @@ namespace Entities
         [SerializeField] private PooledObjectType _explosionType = PooledObjectType.FIREBALL_EXPLOSION;
         [SerializeField] private LineRenderer _lineRenderer = null;
         [SerializeField] private float _maxWidth = 1.0f;
-        [SerializeField] private int _damage = 10;
+        [SerializeField] private int _damage = 1;
         [SerializeField] private PooledObject _pooledObject = null;
+
+        private Transform _sourcePoint = null;
+        private Vector3 _direction = Vector3.forward;
 
         public void TurnOn()
         {
@@ -17,24 +21,80 @@ namespace Entities
             _lineRenderer.endWidth = 0.5f * _maxWidth;
         }
 
-        private void OnTriggerEnter(Collider other)
+        public Laser SetSourcePoint(Transform sourcePoint)
         {
-            Debug.Log("Collision with: " + other.gameObject.name);
-        
-            if (other.gameObject.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
-            {
-                destructibleObject.MakeDamage(_damage);
-            }
-        
-            EffectsManager.SetupExplosion(_explosionType, transform.position, Quaternion.identity);
+            _sourcePoint = sourcePoint;
+            return this;
         }
+
+        public Laser SetDirection(Vector3 direction)
+        {
+            _direction = direction;
+            return this;
+        }
+        
+        private void Update()
+        {
+            RaycastHit raycastHit;
+            
+            if (Physics.SphereCast(_sourcePoint.position, 1.0f, _direction, out raycastHit, 200.0f))
+            {
+                Debug.Log("Catched: " + raycastHit.transform.gameObject.name);
+                
+                if (raycastHit.collider.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
+                {
+                    destructibleObject.MakeDamage(_damage);
+                }
+
+                if (!raycastHit.collider.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen navigationScreen))
+                {
+                    
+                    EffectsManager.SetupExplosion(_explosionType, raycastHit.point, Quaternion.identity);
+                }
+
+                
+            }
+        }
+        
+
+        /*public void OnCollision(DestructibleObject other)
+        {
+            Debug.Log("SPAM");
+            other.MakeDamage(_damage);
+        }
+
+
+       
+
+
+        /*private void OnCollisionStay(Collision collision)
+        {
+            Debug.Log("Catched: " + collision.gameObject.name);
+            EffectsManager.SetupExplosion(_explosionType, transform.position, Quaternion.identity);
+        }*/
+        
+        /*private void OnTriggerStay(Collider other)
+        {
+            if (!other.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen weaponNavigationScreen))
+            {
+                Debug.Log("Catched: " + other.gameObject.name);
+                EffectsManager.SetupExplosion(_explosionType, transform.position, Quaternion.identity);
+                
+            }
+
+
+            
+        }*/
+
 
         public void TurnOff()
         {
             _lineRenderer.startWidth = _lineRenderer.endWidth = 0.0f;
-            
+
             if (_pooledObject != null) _pooledObject.ReturnToPool();
         }
+
+        
 
     }
 }

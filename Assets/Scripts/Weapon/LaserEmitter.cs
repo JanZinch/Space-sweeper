@@ -29,7 +29,7 @@ public class LaserEmitter : Weapon
         if (_activeLaser == null)
         {
             _activeLaser = PoolsManager.GetPooledObject(PooledObjectType.LASER, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Laser>();
+                .GetLinkedComponent<Laser>().SetSourcePoint(_sourcePoint);
             
             _activeLaser.transform.parent = transform;
             _activeLaser.TurnOn();

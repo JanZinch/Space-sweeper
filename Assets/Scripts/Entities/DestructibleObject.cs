@@ -33,5 +33,22 @@ namespace Entities
             }
 
         }
+
+        /*private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<Laser>(out Laser laser))
+            {
+                laser.OnCollision(this);
+            }
+        }
+        
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.TryGetComponent<Laser>(out Laser laser))
+            {
+                laser.OnCollision(this);
+            }
+        }*/
+        
     }
 }

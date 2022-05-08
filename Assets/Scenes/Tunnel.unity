@@ -292,6 +292,7 @@ Transform:
   - {fileID: 1971460957}
   - {fileID: 1339222897}
   - {fileID: 376788150}
+  - {fileID: 1615992822}
   - {fileID: 1594618911}
   m_Father: {fileID: 368604919}
   m_RootOrder: 0
@@ -528,8 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a4a50bb583461db49e5cb3d1b2c802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sourcePoint: {fileID: 376788150}
-  _laser: {fileID: 0}
+  _sourcePoint: {fileID: 1615992822}
 --- !u!1 &376788149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5994,6 +5994,36 @@ Transform:
   - {fileID: 523303571}
   - {fileID: 1233142410}
   - {fileID: 460599607}
+  m_Father: {fileID: 162614970}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1615992821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615992822}
+  m_Layer: 0
+  m_Name: laser_source_point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615992822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615992821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.92, z: 8.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 162614970}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
