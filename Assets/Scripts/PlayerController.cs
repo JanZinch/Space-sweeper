@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     private void GetInput()
     {
-        _currentRotationSpeed = (_isFalls) ? 0.0f : Input.GetAxisRaw("Horizontal") * _maxRotationSpeed * _forwardSpeed / _maxSpeed;
+        _currentRotationSpeed = (_isFalls) ? 0.0f : Input.GetAxis("Horizontal") * _maxRotationSpeed * _forwardSpeed / _maxSpeed;
     }
 
     private void MovePlayer()
@@ -88,8 +88,10 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
 
             transform.Rotate(0f, 0f, _currentRotationSpeed * Time.deltaTime);
-            _playerBody.transform.localEulerAngles = Vector3.right * currentAngle.x + Vector3.up * currentAngle.y + 
-                                                     -Vector3.forward * _maxRotationAngle * _currentRotationSpeed / _maxRotationSpeed;
+            _playerBody.transform.localEulerAngles = new Vector3(currentAngle.x, currentAngle.y,
+                -_maxRotationAngle * Input.GetAxis("Horizontal"));
+            //_playerBody.transform.localEulerAngles = Vector3.right * currentAngle.x + Vector3.up * currentAngle.y + 
+               //                                           -Vector3.forward * _maxRotationAngle * _currentRotationSpeed / _maxRotationSpeed;
         }
         else
         {
