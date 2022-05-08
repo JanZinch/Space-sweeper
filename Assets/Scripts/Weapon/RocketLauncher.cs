@@ -9,12 +9,7 @@ public class RocketLauncher : Weapon, INavigational
     
     private Transform _target = null;
     private float _deltaTime = default;
-
-    private void Awake()
-    {
-        GetPlayerInput = Input.GetButtonDown;
-    }
-
+    
     private void Start()
     {
         _deltaTime = _cooldown;
@@ -24,6 +19,11 @@ public class RocketLauncher : Weapon, INavigational
     public void Update()
     {
         _deltaTime += Time.deltaTime;
+    }
+
+    public override bool GetPlayerInput(string buttonName)
+    {
+        return Input.GetButtonDown(buttonName);
     }
 
     public override void FireIfPossible()

@@ -13,11 +13,6 @@ public class MachineGun : Weapon
     
     private float _deltaX = 10.1f, _deltaY = 10.1f;
     private float _deltaTime = default;
-
-    private void Awake()
-    {
-        GetPlayerInput = Input.GetButton;
-    }
     
     private void Start()
     {
@@ -27,6 +22,11 @@ public class MachineGun : Weapon
     public void Update()
     {
         _deltaTime += Time.deltaTime;
+    }
+
+    public override bool GetPlayerInput(string buttonName)
+    {
+        return Input.GetButton(buttonName);
     }
 
     public override void FireIfPossible()

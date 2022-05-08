@@ -10,12 +10,12 @@ public class PooledObject : MonoBehaviour
     public IEnumerator ReturnToPool(float time)
     {
         yield return new WaitForSeconds(time);
-        gameObject.SetActive(false);
+        ReturnToPool();
     }
 
     public void ReturnToPool()
     {
-        gameObject.SetActive(false);
+        PoolsManager.ReturnToPool(this);
     }
 
     public TComponent GetLinkedComponent<TComponent>() where TComponent : Component

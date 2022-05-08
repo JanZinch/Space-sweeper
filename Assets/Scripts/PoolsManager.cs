@@ -43,6 +43,13 @@ static class PoolsManager
 		}
 	}
 
+	public static void ReturnToPool(PooledObject pooledObject)
+	{
+		Transform cachedTransform = pooledObject.transform;
+		cachedTransform.parent = _root.transform;
+		cachedTransform.position = Vector3.zero;
+		pooledObject.gameObject.SetActive(false);
+	}
 
 	public static PooledObject GetPooledObject(PooledObjectType type, Vector3 position, Quaternion rotation)
 	{

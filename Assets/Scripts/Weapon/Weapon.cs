@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    public Func<string, bool> GetPlayerInput = null;
+    public abstract bool GetPlayerInput(string buttonName);
     
     public abstract void FireIfPossible();
 }
