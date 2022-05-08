@@ -7,6 +7,7 @@ using Utils;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] public bool _isForPlayer = false;
+    [SerializeField] private WeaponNavigationScreen _navigationScreen = null;
     [SerializeField] private List<Weapon> _attachedWeapons = null;
     
     private const string Fire1 = "Fire1";
@@ -14,7 +15,27 @@ public class WeaponController : MonoBehaviour
     
     private const int FirstWeapon = 0;
     private const int SecondWeapon = 1;
-    
+
+    private void OnNewTarget(Transform target)
+    {
+        INavigational cachedWeapon = null;
+        
+        foreach (Weapon weapon in _attachedWeapons)
+        {
+            cachedWeapon = weapon as INavigational;
+
+            if (cachedWeapon != null)
+            {
+                cachedWeapon.SetTarget(target);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        _navigationScreen.OnNewTarget += OnNewTarget;
+    }
+
     private void Update()
     {
         if (_isForPlayer)
@@ -31,6 +52,11 @@ public class WeaponController : MonoBehaviour
         }
 
         
+    }
+    
+    private void OnDisable()
+    {
+        _navigationScreen.OnNewTarget -= OnNewTarget;
     }
 }
 

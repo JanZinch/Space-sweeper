@@ -77,6 +77,7 @@ public enum PooledObjectType
 		
 	FIREBALL = 100,
 	BULLET = 101,
+	ROCKET = 102,
 		
 	// effects
 	
