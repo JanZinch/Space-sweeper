@@ -30,7 +30,7 @@ public class RocketLauncher : Weapon, INavigational
         if (_deltaTime >= _cooldown)
         {
             PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).AddNavigation(_target);
+                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigationTarget(_target);
             
             _deltaTime = 0.0f;
         }

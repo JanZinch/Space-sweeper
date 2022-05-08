@@ -4,7 +4,7 @@ using Entities;
 using UnityEngine;
 
 
-public class GammaZoid : MonoBehaviour
+public class GammaZoid : Enemy
 {
     [SerializeField] private Rigidbody _rigidbody = null;
     [SerializeField] private DestructibleObject _destructibleObject = null;
@@ -28,4 +28,5 @@ public class GammaZoid : MonoBehaviour
         return s;
     }
 
+    
 }

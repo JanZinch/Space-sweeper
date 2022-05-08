@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 368604922}
   - component: {fileID: 368604923}
   - component: {fileID: 368604921}
+  - component: {fileID: 368604924}
   m_Layer: 0
   m_Name: PlayerPivot
   m_TagString: Untagged
@@ -474,10 +475,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isForPlayer: 1
-  _navigationScreen: {fileID: 0}
+  _navigationScreen: {fileID: 1479954545}
   _attachedWeapons:
   - {fileID: 368604923}
-  - {fileID: 368604921}
+  - {fileID: 368604924}
 --- !u!114 &368604923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +500,20 @@ MonoBehaviour:
   - {fileID: 2109212086}
   - {fileID: 2109212085}
   _cooldown: 0.15
+--- !u!114 &368604924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddf4b081dfd44f987aafefe58283c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sourcePoint: {fileID: 376788150}
+  _cooldown: 0.2
 --- !u!1 &376788149
 GameObject:
   m_ObjectHideFlags: 0
@@ -5910,7 +5925,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479954542}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 30, y: 30, z: 3}

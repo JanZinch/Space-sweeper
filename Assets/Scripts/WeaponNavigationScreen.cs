@@ -3,18 +3,41 @@ using UnityEngine;
 
 public class WeaponNavigationScreen : MonoBehaviour
 {
+    public static WeaponNavigationScreen Instance { get; private set; } = null;
     private Transform _currentTarget = null;
-    public event Action<Transform> OnNewTarget = null;
     
-    private void OnTriggerEnter(Collider other)
+    public event Action<Transform> OnNewTarget = null;
+
+    
+    
+    private void Awake()
     {
-        if (other.TryGetComponent<GammaZoid>(out GammaZoid enemy))
+        Instance = this;
+    }
+
+    public void OnTrigger(Transform caughtObject)
+    {
+        if (_currentTarget == null)
         {
-            if (_currentTarget == null)
-            {
-                _currentTarget = enemy.transform;
-                OnNewTarget?.Invoke(_currentTarget);
-            }
+            _currentTarget = caughtObject.transform;
+            OnNewTarget?.Invoke(_currentTarget);
+            
+            Debug.Log("New target: " + _currentTarget);
+        }
+    }
+
+    public void Free()
+    {
+        _currentTarget = null;
+    }
+    
+    public void FreeIfNeed(Transform target)
+    {
+        if (_currentTarget == target)
+        {
+            Debug.Log("FREE");
+            _currentTarget = null;
+            OnNewTarget?.Invoke(_currentTarget);
         }
     }
 

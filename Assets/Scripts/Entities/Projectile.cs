@@ -33,11 +33,16 @@ public class Projectile : MonoBehaviour
         {
             _startPosition = startPosition;
             _target = target;
+            _currentLerpTime = 0.0f;
         }
 
         public Vector3 Update()
         {
             //_currentLerpTime = Mathf.Clamp(_currentLerpTime += Time.deltaTime, 0.0f, _lerpDuration);
+            if (_target == null)
+            {
+                throw new Exception("Navigation target is null");
+            }
             
             _currentLerpTime += Time.deltaTime;
             if (_currentLerpTime > _lerpDuration )
@@ -59,8 +64,10 @@ public class Projectile : MonoBehaviour
         return this;
     }
 
-    public Projectile AddNavigation(Transform target)
+    public Projectile SetNavigationTarget(Transform target)
     {
+        if (target != null) Debug.Log("Target: " + target.gameObject.name);
+        
         _navigation?.Setup(transform.position, target);
         return this;
     }
