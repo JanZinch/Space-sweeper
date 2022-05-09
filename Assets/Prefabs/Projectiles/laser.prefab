@@ -147,6 +147,8 @@ MonoBehaviour:
   _lineRenderer: {fileID: 8661944509975849521}
   _maxWidth: 0.5
   _damage: 1
+  _sphereCastRadius: 1
+  _sphereCastPercents: 0.75
   _pooledObject: {fileID: 8177017663957189055}
 --- !u!114 &8177017663957189055
 MonoBehaviour:

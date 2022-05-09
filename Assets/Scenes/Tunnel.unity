@@ -479,8 +479,8 @@ MonoBehaviour:
   _isForPlayer: 1
   _navigationScreen: {fileID: 1479954545}
   _attachedWeapons:
-  - {fileID: 368604923}
   - {fileID: 368604925}
+  - {fileID: 368604924}
 --- !u!114 &368604923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5912,7 +5912,7 @@ GameObject:
   - component: {fileID: 1479954543}
   - component: {fileID: 1479954544}
   - component: {fileID: 1479954545}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: projectiles_navigation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6598,7 +6598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb4db755f74f3c8b09a6dbbb878472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
+  _maxHealth: 100
   _pooledObject: {fileID: 0}
 --- !u!65 &2038489233
 BoxCollider:

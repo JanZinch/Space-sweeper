@@ -10,8 +10,10 @@ namespace Entities
         [SerializeField] private LineRenderer _lineRenderer = null;
         [SerializeField] private float _maxWidth = 1.0f;
         [SerializeField] private int _damage = 1;
+        [SerializeField] private float _sphereCastRadius = 1.0f;
+        [SerializeField] [Range(0.0f, 1.0f)] private float _sphereCastPercents = 1.0f; 
         [SerializeField] private PooledObject _pooledObject = null;
-
+        
         private Transform _sourcePoint = null;
         private Vector3 _direction = Vector3.forward;
 
@@ -49,8 +51,9 @@ namespace Entities
         private void Update()
         {
             RaycastHit raycastHit;
+            float maxDistance = _sphereCastPercents * Vector3.Distance(_lineRenderer.GetPosition(0), _lineRenderer.GetPosition(1));
             
-            if (Physics.SphereCast(_sourcePoint.position, 1.0f, _direction, out raycastHit, 100.0f))
+            if (Physics.SphereCast(_sourcePoint.position, _sphereCastRadius, _direction, out raycastHit, maxDistance))
             {
                 Debug.Log("Catched: " + raycastHit.transform.gameObject.name);
 
@@ -61,13 +64,8 @@ namespace Entities
                     Debug.Log("Damage");
                     cachedObject.MakeDamage(_damage);
                 }
-
-                if (!raycastHit.collider.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen navigationScreen))
-                {
-                    EffectsManager.SetupExplosion(_explosionType, raycastHit.point, Quaternion.identity);
-                }
-
                 
+                EffectsManager.SetupExplosion(_explosionType, raycastHit.point, Quaternion.identity);
             }
         }
         
