@@ -11,8 +11,8 @@ public class ActorsSpawn : MonoBehaviour
     {
         foreach (var spawnPoint in _spawnPoints)
         {
-            PoolsManager.GetPooledObject(spawnPoint.Key, spawnPoint.Value.position, Quaternion.identity)
-                .GetLinkedComponent<AIController>().Initialize();
+            PooledObject spawnedObject = PoolsManager.GetPooledObject(spawnPoint.Key, spawnPoint.Value.position, Quaternion.identity);
+            spawnedObject.GetLinkedComponent<AIController>().Initialize();
         }
     }
 }

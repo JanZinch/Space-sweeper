@@ -32,23 +32,38 @@ namespace Entities
             _direction = direction;
             return this;
         }
-        
+
+        private DestructibleObject FindDestructibleObject(RaycastHit raycastHit)
+        {
+            if (raycastHit.collider.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
+            {
+                return destructibleObject;
+            }
+            else
+            {
+                return raycastHit.transform.GetComponentInParent<DestructibleObject>();
+            }
+        }
+
+
         private void Update()
         {
             RaycastHit raycastHit;
             
-            if (Physics.SphereCast(_sourcePoint.position, 1.0f, _direction, out raycastHit, 200.0f))
+            if (Physics.SphereCast(_sourcePoint.position, 1.0f, _direction, out raycastHit, 100.0f))
             {
                 Debug.Log("Catched: " + raycastHit.transform.gameObject.name);
-                
-                if (raycastHit.collider.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
+
+                DestructibleObject cachedObject = FindDestructibleObject(raycastHit);
+
+                if (cachedObject != null)
                 {
-                    destructibleObject.MakeDamage(_damage);
+                    Debug.Log("Damage");
+                    cachedObject.MakeDamage(_damage);
                 }
 
                 if (!raycastHit.collider.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen navigationScreen))
                 {
-                    
                     EffectsManager.SetupExplosion(_explosionType, raycastHit.point, Quaternion.identity);
                 }
 

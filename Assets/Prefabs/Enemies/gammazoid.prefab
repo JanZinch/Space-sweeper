@@ -54,6 +54,7 @@ MonoBehaviour:
   _actors:
   - {fileID: 7661356015006593620}
   - {fileID: -5740057065559618626}
+  _destructibleObject: {fileID: -379279679918237507}
 --- !u!114 &7661356015006593620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb4db755f74f3c8b09a6dbbb878472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _maxHealth: 100
   _pooledObject: {fileID: 6104449256814285246}
 --- !u!114 &6905050723680675540
 MonoBehaviour:

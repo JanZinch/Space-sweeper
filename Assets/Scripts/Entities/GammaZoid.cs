@@ -14,6 +14,7 @@ public class GammaZoid : Enemy
     private void OnEnable()
     {
         _destructibleObject.OnDeath += OnDeath;
+        _destructibleObject.OnRefresh += OnRefresh;
     }
 
     private Tween OnDeath()
@@ -28,5 +29,17 @@ public class GammaZoid : Enemy
         return s;
     }
 
+    /*private void OnDisable()
+    {
+        _destructibleObject.OnDeath -= OnDeath;
+        _destructibleObject.OnRefresh -= OnRefresh;
+    }*/
     
+    private void OnRefresh()
+    {
+        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        _rigidbody.velocity = Vector3.zero;
+    }
+
+
 }

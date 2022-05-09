@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7871324945494965038
 Transform:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9167056196133880987
 Transform:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 1126188586915702239}
   - component: {fileID: 7774724263840031444}
   - component: {fileID: 7664827148174383228}
+  - component: {fileID: 846047091896733001}
   m_Layer: 0
   m_Name: InnerActor
   m_TagString: Untagged
@@ -326,15 +327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af2f36e94256048be9604286475ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidBody: {fileID: 7664827148174383228}
   _forwardSpeed: -20
-  _slowdown: 1
-  _distanceFromPlayer:
-    Slowdown: 50
-    Min: 10
   _setSpeedOnStart: 0
   _angularSpeed: 50
-  _centerOfMass: {fileID: 7871324945494965038}
+  _rotationPivot: {fileID: 0}
 --- !u!54 &7664827148174383228
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -351,6 +347,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &846047091896733001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012240958791543331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b17c54c6ec4dcd8ae7426dbeefa198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actors: []
+  _destructibleObject: {fileID: 0}
 --- !u!1 &8502014678075405130
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +375,7 @@ GameObject:
   - component: {fileID: 5658717580235808869}
   - component: {fileID: 709961679083642086}
   - component: {fileID: 5004041786516523069}
+  - component: {fileID: 2946857877240757829}
   m_Layer: 0
   m_Name: OuterActor
   m_TagString: Untagged
@@ -460,15 +471,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98af2f36e94256048be9604286475ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidBody: {fileID: 5004041786516523069}
   _forwardSpeed: -20
-  _slowdown: 1
-  _distanceFromPlayer:
-    Slowdown: 50
-    Min: 10
   _setSpeedOnStart: 0
   _angularSpeed: -80
-  _centerOfMass: {fileID: 7871324945494965038}
+  _rotationPivot: {fileID: 0}
 --- !u!54 &5004041786516523069
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -485,6 +491,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2946857877240757829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502014678075405130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b17c54c6ec4dcd8ae7426dbeefa198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actors: []
+  _destructibleObject: {fileID: 0}
 --- !u!1001 &1103750198992650577
 PrefabInstance:
   m_ObjectHideFlags: 0

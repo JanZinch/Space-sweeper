@@ -65,6 +65,7 @@ namespace AI
         {
             _slowdownAppend = new Vector3(0.0f, 0.0f, _slowdown);
             _checkDistanceDeltaTime = new WaitForSeconds(0.2f);
+            
         }
 
         private IEnumerator CheckDistanceFromPlayer()
@@ -94,11 +95,14 @@ namespace AI
         public override void Initialize()
         {
             DistanceCheck = true;
+            _state = State.APPROXIMATION;
         }
 
         public override void Clear()
         {
             DistanceCheck = false;
+            _state = State.APPROXIMATION;
+            
         }
     }
 }

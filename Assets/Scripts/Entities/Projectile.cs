@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
                 throw new Exception("Navigation target is null");
             }
             
-            _currentLerpTime = Mathf.Clamp(_currentLerpTime += Time.deltaTime, 0.0f, _lerpDuration);
+            _currentLerpTime = Mathf.Clamp(_currentLerpTime + Time.deltaTime, 0.0f, _lerpDuration);
             
             float percentComplete = _currentLerpTime / _lerpDuration;
             return Vector3.Lerp(_startPosition, _target.position, percentComplete);
