@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-public static class TubePartsContainer
+public static class TubesContainer
 {
     private static ReadOnlyDictionary<int, List<TubeData>> _levelMaps =
         new ReadOnlyDictionary<int, List<TubeData>>(new Dictionary<int, List<TubeData>>()

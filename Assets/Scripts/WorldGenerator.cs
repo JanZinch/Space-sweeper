@@ -72,7 +72,7 @@ public class WorldGenerator : MonoBehaviour
         }
         else
         {
-            _currentLevelMap = new Queue<TubeData>(TubePartsContainer.GetLevelMap(_currentLevel));
+            _currentLevelMap = new Queue<TubeData>(TubesContainer.GetLevelMap(_currentLevel));
             SpawnTubePart = SpawnNextTubePart;
         }
         
