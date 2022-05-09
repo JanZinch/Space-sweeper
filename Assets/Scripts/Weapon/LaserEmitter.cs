@@ -24,7 +24,7 @@ public class LaserEmitter : Weapon
         return input;
     }
 
-    public override void FireIfPossible()
+    public override bool FireIfPossible()
     {
         if (_activeLaser == null)
         {
@@ -35,7 +35,8 @@ public class LaserEmitter : Weapon
             _activeLaser.TurnOn();
 
             _isActive = true;
-            
         }
+
+        return true;
     }
 }

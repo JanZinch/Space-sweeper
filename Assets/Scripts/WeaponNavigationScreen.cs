@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class WeaponNavigationScreen : MonoBehaviour
 {
-    public static WeaponNavigationScreen Instance { get; private set; } = null;
+    public static WeaponNavigationScreen PlayerNavigationScreen { get; private set; } = null;
     private Transform _currentTarget = null;
     
     public event Action<Transform> OnNewTarget = null;
 
-    
-    
-    private void Awake()
+
+    public void SetForPlayer()
     {
-        Instance = this;
+        PlayerNavigationScreen = this;
     }
 
     public void OnTrigger(Transform caughtObject)

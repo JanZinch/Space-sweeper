@@ -29,7 +29,7 @@ public class MachineGun : Weapon
         return Input.GetButton(buttonName);
     }
 
-    public override void FireIfPossible()
+    public override bool FireIfPossible()
     {
         if (_deltaTime >= _cooldown)
         {
@@ -46,6 +46,9 @@ public class MachineGun : Weapon
             }
             
             _deltaTime = 0.0f;
+
+            return true;
         }
+        else return false;
     }
 }

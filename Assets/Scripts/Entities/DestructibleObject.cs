@@ -32,7 +32,7 @@ namespace Entities
 
             if (_health <= 0)
             {
-                WeaponNavigationScreen.Instance.FreeIfNeed(transform);
+                WeaponNavigationScreen.PlayerNavigationScreen.FreeIfNeed(transform);
 
                 if (OnDeath != null)
                 {

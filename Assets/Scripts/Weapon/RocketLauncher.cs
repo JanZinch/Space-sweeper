@@ -26,15 +26,19 @@ public class RocketLauncher : Weapon, INavigational
         return Input.GetButtonDown(buttonName);
     }
 
-    public override void FireIfPossible()
+    public override bool FireIfPossible()
     {
         if (_deltaTime >= _cooldown)
         {
             PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
-            
+                .GetLinkedComponent<Projectile>().Setup(Vector3.forward)
+                .SetNavigation(_target, _navigationLerpDuration);
+
             _deltaTime = 0.0f;
+            
+            return true;
         }
+        else return false;
     }
 
     public void SetTarget(Transform target)

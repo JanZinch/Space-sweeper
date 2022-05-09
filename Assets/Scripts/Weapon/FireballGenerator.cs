@@ -25,7 +25,7 @@ public class FireballGenerator : Weapon
         return Input.GetButtonDown(buttonName);
     }
 
-    public override void FireIfPossible()
+    public override bool FireIfPossible()
     {
         if (_deltaTime >= _cooldown)
         {
@@ -33,7 +33,10 @@ public class FireballGenerator : Weapon
                 .GetLinkedComponent<Projectile>().Setup(Vector3.forward);
             
             _deltaTime = 0.0f;
+
+            return true;
         }
+        else return false;
     }
 }
 

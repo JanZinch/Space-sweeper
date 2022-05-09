@@ -16,6 +16,8 @@ public class WeaponController : MonoBehaviour
     private const int FirstWeapon = 0;
     private const int SecondWeapon = 1;
 
+    public WeaponNavigationScreen NavigationScreen => _navigationScreen;
+    
     private void OnNewTarget(Transform target)
     {
         INavigational cachedWeapon = null;
@@ -28,6 +30,14 @@ public class WeaponController : MonoBehaviour
             {
                 cachedWeapon.SetTarget(target);
             }
+        }
+    }
+
+    private void Awake()
+    {
+        if (_isForPlayer)
+        {
+            _navigationScreen.SetForPlayer();
         }
     }
 
@@ -50,10 +60,13 @@ public class WeaponController : MonoBehaviour
                 _attachedWeapons[SecondWeapon].FireIfPossible();
             }
         }
-
-        
     }
-    
+
+    public bool FireIfPossible(int weaponIndex)
+    {
+        return _attachedWeapons[weaponIndex].FireIfPossible();
+    }
+
     private void OnDisable()
     {
         _navigationScreen.OnNewTarget -= OnNewTarget;
