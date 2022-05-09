@@ -1,41 +1,53 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponNavigationScreen : MonoBehaviour
 {
     public static WeaponNavigationScreen PlayerNavigationScreen { get; private set; } = null;
     private Transform _currentTarget = null;
-    
+    private Queue<Transform> _potentialTargets = null;
+
     public event Action<Transform> OnNewTarget = null;
 
-
+    private void Awake()
+    {
+        _potentialTargets = new Queue<Transform>();
+    }
+    
     public void SetForPlayer()
     {
         PlayerNavigationScreen = this;
     }
 
-    public void OnTrigger(Transform caughtObject)
+    public void OnTrigger(Transform caughtObject, bool isPlayer = false)
     {
         if (this == PlayerNavigationScreen)
         {
             if (_currentTarget == null)
             {
-                _currentTarget = caughtObject.transform;
+                _currentTarget = caughtObject;
                 OnNewTarget?.Invoke(_currentTarget);
             
-                Debug.Log("New target: " + _currentTarget);
+                //Debug.Log("New target: " + _currentTarget);
+            }
+            else
+            {
+                if (!_potentialTargets.Contains(caughtObject))
+                {
+                    _potentialTargets.Enqueue(caughtObject);
+                }
+
+                
             }
 
         }
-        else
+        else if (isPlayer)
         {
-            if (_currentTarget == null && caughtObject.CompareTag(Tags.PlayerBody))
-            {
-                _currentTarget = caughtObject.transform;
-                OnNewTarget?.Invoke(_currentTarget);
+            _currentTarget = caughtObject;
+            OnNewTarget?.Invoke(_currentTarget);
             
-                Debug.Log("New target: " + _currentTarget);
-            }
+            Debug.Log("New target: " + _currentTarget);
             
         }
         
@@ -51,7 +63,15 @@ public class WeaponNavigationScreen : MonoBehaviour
         if (_currentTarget == target)
         {
             Debug.Log("FREE");
-            _currentTarget = null;
+
+            if (_potentialTargets.Count > 0)
+            {
+                Debug.Log("DEQ");
+                
+                _currentTarget = _potentialTargets.Dequeue();
+            }
+            else _currentTarget = null;
+            
             OnNewTarget?.Invoke(_currentTarget);
         }
     }

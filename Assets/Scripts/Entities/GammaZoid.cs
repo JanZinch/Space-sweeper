@@ -7,8 +7,6 @@ using UnityEngine;
 public class GammaZoid : Enemy
 {
     [SerializeField] private Rigidbody _rigidbody = null;
-    [SerializeField] private DestructibleObject _destructibleObject = null;
-    
     private Vector3 _fallForce = new Vector3(0.0f, -0.5f, 0.0f);
 
     private void OnEnable()
@@ -29,17 +27,18 @@ public class GammaZoid : Enemy
         return s;
     }
 
-    /*private void OnDisable()
+    private void OnDisable()
     {
         _destructibleObject.OnDeath -= OnDeath;
         _destructibleObject.OnRefresh -= OnRefresh;
-    }*/
+    }
     
     private void OnRefresh()
     {
         _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         _rigidbody.velocity = Vector3.zero;
     }
-
+    
+    
 
 }

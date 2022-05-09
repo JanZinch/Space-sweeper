@@ -13,7 +13,9 @@ namespace Entities
         public double Health => _health;
         public event Func<Tween> OnDeath = null;
         public event Action OnRefresh = null;
-        
+
+        public bool IsAlive => _health > 0;
+
         private void Awake()
         {
             _health = _maxHealth;

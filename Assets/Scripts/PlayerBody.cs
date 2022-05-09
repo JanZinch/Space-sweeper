@@ -31,7 +31,7 @@ public class PlayerBody : MonoBehaviour
         }
         else if (other.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen weaponNavigationScreen))
         {
-            weaponNavigationScreen.OnTrigger(transform);
+            weaponNavigationScreen.OnTrigger(transform, true);
         }
         
     }

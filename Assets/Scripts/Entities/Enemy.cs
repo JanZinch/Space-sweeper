@@ -5,9 +5,11 @@ namespace Entities
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] protected DestructibleObject _destructibleObject = null;
+        
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen weaponNavigationScreen))
+            if (_destructibleObject.IsAlive && other.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen weaponNavigationScreen))
             {
                 weaponNavigationScreen.OnTrigger(transform);
             }
