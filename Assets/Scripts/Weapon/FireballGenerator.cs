@@ -7,7 +7,8 @@ public class FireballGenerator : Weapon
 {
     [SerializeField] private Transform _sourcePoint = default;
     [SerializeField] private float _cooldown = 0.25f;
-    
+
+    private Vector3 _direction = Vector3.forward;
     private float _deltaTime = default;
 
     private void Start()
@@ -30,13 +31,18 @@ public class FireballGenerator : Weapon
         if (_deltaTime >= _cooldown)
         {
             PoolsManager.GetPooledObject(PooledObjectType.FIREBALL, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward);
+                .GetLinkedComponent<Projectile>().Setup(_direction);
             
             _deltaTime = 0.0f;
 
             return true;
         }
         else return false;
+    }
+
+    public void SetCustomTarget(Vector3 position)
+    {
+        _direction = (position - _sourcePoint.position).normalized;
     }
 }
 

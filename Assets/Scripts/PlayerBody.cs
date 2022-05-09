@@ -29,5 +29,10 @@ public class PlayerBody : MonoBehaviour
         {
             OnChannelHit?.Invoke();
         }
+        else if (other.TryGetComponent<WeaponNavigationScreen>(out WeaponNavigationScreen weaponNavigationScreen))
+        {
+            weaponNavigationScreen.OnTrigger(transform);
+        }
+        
     }
 }

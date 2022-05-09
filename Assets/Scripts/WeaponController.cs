@@ -67,6 +67,20 @@ public class WeaponController : MonoBehaviour
         return _attachedWeapons[weaponIndex].FireIfPossible();
     }
 
+    public bool FireToPositionIfPossible(int weaponIndex, Vector3 position)
+    {
+        FireballGenerator weapon = _attachedWeapons[weaponIndex] as FireballGenerator;
+
+        if (weapon != null)
+        {
+            weapon.SetCustomTarget(position);
+            return weapon.FireIfPossible();
+        }
+
+        return false;
+    }
+
+
     private void OnDisable()
     {
         _navigationScreen.OnNewTarget -= OnNewTarget;

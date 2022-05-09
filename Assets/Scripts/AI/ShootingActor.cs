@@ -11,7 +11,6 @@ namespace AI
         [SerializeField] private float _shootingDuration = 0.0f;
         [SerializeField] private float _minCooldown = 0.5f, _maxCooldown = 1.0f;
 
-
         private WaitForSeconds _cachedCooldown = null;
 
         private Coroutine _shootingRoutine = null;
@@ -41,17 +40,17 @@ namespace AI
                 StopCoroutine(_shootingRoutine);
             }
 
-            _shootingRoutine = StartCoroutine(FireOnTarget(_cachedCooldown != null));
+            _shootingRoutine = StartCoroutine(FireOnTarget(target,_cachedCooldown != null));
         }
 
-        private IEnumerator FireOnTarget(bool cooldownIsCached)
+        private IEnumerator FireOnTarget(Transform target, bool cooldownIsCached)
         {
             while (true)
             {
                 yield return (cooldownIsCached) ? _cachedCooldown 
                     : new WaitForSeconds(Random.Range(_minCooldown, _maxCooldown));
                 
-                _weaponController.FireIfPossible(0);
+                _weaponController.FireToPositionIfPossible(0, target.position);
 
                 yield return null;
             }
