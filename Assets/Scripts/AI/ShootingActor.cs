@@ -12,7 +12,6 @@ namespace AI
         [SerializeField] private float _minCooldown = 0.5f, _maxCooldown = 1.0f;
 
         private WaitForSeconds _cachedCooldown = null;
-
         private Coroutine _shootingRoutine = null;
         
         private void Awake()
@@ -26,6 +25,7 @@ namespace AI
         private void OnEnable()
         {
             _weaponController.NavigationScreen.OnNewTarget += OnNewTarget;
+            
         }
 
         private void OnDisable()
@@ -57,14 +57,12 @@ namespace AI
             
         }
 
-        public override void Initialize()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void Initialize() { }
 
         public override void Clear()
         {
-            throw new System.NotImplementedException();
+            StopCoroutine(_shootingRoutine);
+            _weaponController.NavigationScreen.Free();
         }
     }
 }

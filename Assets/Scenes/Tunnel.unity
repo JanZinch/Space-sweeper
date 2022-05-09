@@ -6836,6 +6836,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: player_starship
       objectReference: {fileID: 0}
+    - target: {fileID: 4150942794848119486, guid: 13f149d92361ccf45af1e2d303532b28,
+        type: 3}
+      propertyPath: m_TagString
+      value: player_body
+      objectReference: {fileID: 0}
     - target: {fileID: 4150942794848119489, guid: 13f149d92361ccf45af1e2d303532b28,
         type: 3}
       propertyPath: m_RootOrder

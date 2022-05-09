@@ -7,6 +7,7 @@ TagManager:
   - SF_Door
   - channel
   - projectile
+  - player_body
   layers:
   - Default
   - TransparentFX

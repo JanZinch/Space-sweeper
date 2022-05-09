@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using AI;
+using CodeBase.ApplicationLibrary.Common;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -25,6 +26,8 @@ public class PlayerController : MonoBehaviour
     {
         _playerBody.OnObstacleHit += OnObstacleHit;
         _playerBody.OnChannelHit += OnChannelHit;
+        
+        
     }
 
     private void Start()
@@ -49,6 +52,8 @@ public class PlayerController : MonoBehaviour
     {
         _isFalls = true;
         EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, _playerBody.transform.position, Quaternion.identity);
+        
+        Messenger.Broadcast(MessengerKeys.ON_PLAYER_STARSHIP_FALL);
         _playerBody.Fall();
     }
 

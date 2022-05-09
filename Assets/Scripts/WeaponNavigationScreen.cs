@@ -16,13 +16,29 @@ public class WeaponNavigationScreen : MonoBehaviour
 
     public void OnTrigger(Transform caughtObject)
     {
-        if (_currentTarget == null)
+        if (this == PlayerNavigationScreen)
         {
-            _currentTarget = caughtObject.transform;
-            OnNewTarget?.Invoke(_currentTarget);
+            if (_currentTarget == null)
+            {
+                _currentTarget = caughtObject.transform;
+                OnNewTarget?.Invoke(_currentTarget);
             
-            Debug.Log("New target: " + _currentTarget);
+                Debug.Log("New target: " + _currentTarget);
+            }
+
         }
+        else
+        {
+            if (_currentTarget == null && caughtObject.CompareTag(Tags.PlayerBody))
+            {
+                _currentTarget = caughtObject.transform;
+                OnNewTarget?.Invoke(_currentTarget);
+            
+                Debug.Log("New target: " + _currentTarget);
+            }
+            
+        }
+        
     }
 
     public void Free()
