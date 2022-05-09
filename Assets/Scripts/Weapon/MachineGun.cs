@@ -51,4 +51,9 @@ public class MachineGun : Weapon
         }
         else return false;
     }
+
+    public override void SetCustomTargetPosition(Vector3 targetPosition)
+    {
+        throw new System.NotImplementedException();
+    }
 }

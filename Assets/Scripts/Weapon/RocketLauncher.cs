@@ -31,14 +31,18 @@ public class RocketLauncher : Weapon, INavigational
         if (_deltaTime >= _cooldown)
         {
             PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward)
-                .SetNavigation(_target, _navigationLerpDuration);
+                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
 
             _deltaTime = 0.0f;
             
             return true;
         }
         else return false;
+    }
+
+    public override void SetCustomTargetPosition(Vector3 targetPosition)
+    {
+        throw new NotImplementedException();
     }
 
     public void SetTarget(Transform target)

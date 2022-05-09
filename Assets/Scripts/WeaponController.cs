@@ -69,11 +69,11 @@ public class WeaponController : MonoBehaviour
 
     public bool FireToPositionIfPossible(int weaponIndex, Vector3 position)
     {
-        FireballGenerator weapon = _attachedWeapons[weaponIndex] as FireballGenerator;
+        Weapon weapon = _attachedWeapons[weaponIndex];
 
         if (weapon != null)
         {
-            weapon.SetCustomTarget(position);
+            weapon.SetCustomTargetPosition(position);
             return weapon.FireIfPossible();
         }
 

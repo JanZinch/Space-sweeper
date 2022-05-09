@@ -39,10 +39,10 @@ public class FireballGenerator : Weapon
         }
         else return false;
     }
-
-    public void SetCustomTarget(Vector3 position)
+    
+    public override void SetCustomTargetPosition(Vector3 targetPosition)
     {
-        _direction = (position - _sourcePoint.position).normalized;
+        _direction = (targetPosition - _sourcePoint.position).normalized;
     }
 }
 

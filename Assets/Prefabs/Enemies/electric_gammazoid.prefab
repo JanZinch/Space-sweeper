@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 857f1662d64a4469b72467c5be6c1b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 1174504002346100320}
   _destructibleObject: {fileID: -379279679918237507}
+  _rigidbody: {fileID: 1174504002346100320}
 --- !u!114 &4385962593029518715
 MonoBehaviour:
   m_ObjectHideFlags: 0

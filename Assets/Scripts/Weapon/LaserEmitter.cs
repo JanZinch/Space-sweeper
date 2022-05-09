@@ -39,4 +39,9 @@ public class LaserEmitter : Weapon
 
         return true;
     }
+
+    public override void SetCustomTargetPosition(Vector3 targetPosition)
+    {
+        throw new NotImplementedException();
+    }
 }
