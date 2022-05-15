@@ -52,7 +52,19 @@ public static class TubesContainer
                 
                 
                 
-            }}
+            }},
+            
+             {1, new List<TubeData>()
+             {
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_BLOWER, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_BLOWER, Quaternion.Euler(0.0f, 0.0f, 22.5f)),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                new TubeData(PooledObjectType.TUNNEL_CYBER_BLOWER, Quaternion.identity),
+                
+                
+            }},
+            
         });
 
     public static List<TubeData> GetLevelMap(int level)

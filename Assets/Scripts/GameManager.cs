@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public PlayerController Player => _playerController;
     public MileageStage MileageStage => _mileageStage;
 
+    private int _currentLevel = 1;
+    public int CurrentLevel => _currentLevel;
+    
+    
     private void Awake()
     {
         Instance = this;

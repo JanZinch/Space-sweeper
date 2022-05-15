@@ -17,7 +17,6 @@ public class MileageStage : MonoBehaviour
 
     void Update()
     {
-
         if (Mathf.Abs(_end - _start) >= Size)
         {
             _start = transform.position.z;
@@ -27,7 +26,6 @@ public class MileageStage : MonoBehaviour
         }
         else
         {
-
             _end = transform.position.z;
         }
 

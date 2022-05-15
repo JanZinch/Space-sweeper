@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts;
 using Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,8 +19,6 @@ public class WorldGenerator : MonoBehaviour
     
     private Func<Vector3, Quaternion, PooledObject> SpawnTubePart = null;
     private Queue<TubeData> _currentLevelMap = null;
-
-    private int _currentLevel = 0;
     
     public class Spawn {
         
@@ -37,7 +36,6 @@ public class WorldGenerator : MonoBehaviour
             CurrentPosition += Addend;        
         }
     }
-
 
     public float GetMeshLength() { 
     
@@ -72,7 +70,7 @@ public class WorldGenerator : MonoBehaviour
         }
         else
         {
-            _currentLevelMap = new Queue<TubeData>(TubesContainer.GetLevelMap(_currentLevel));
+            _currentLevelMap = new Queue<TubeData>(TubesContainer.GetLevelMap(LevelUtils.CurrentLevel));
             SpawnTubePart = SpawnNextTubePart;
         }
         
