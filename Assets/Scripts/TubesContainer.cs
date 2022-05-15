@@ -57,6 +57,7 @@ public static class TubesContainer
              {1, new List<TubeData>()
              {
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_REPAIRS, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_REPAIRS, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_BRIDGE, Quaternion.identity),
