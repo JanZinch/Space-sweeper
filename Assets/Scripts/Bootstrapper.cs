@@ -5,11 +5,10 @@ public class Bootstrapper : MonoBehaviour
 {
     [SerializeField] private PoolsExplorer _poolsExplorer = null;
     
-    private void Awake()
+    public void InitializePools()
     {
         _poolsExplorer.Initialize();
-        
     }
-    
+
 }
     
