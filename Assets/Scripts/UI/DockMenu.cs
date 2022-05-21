@@ -25,6 +25,8 @@ namespace UI
             [field: SerializeField] public Color SelectedColor { get; private set; }
         }
 
+        
+        
         private void Awake()
         {
             Instance = this;
