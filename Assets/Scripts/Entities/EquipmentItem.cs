@@ -12,8 +12,9 @@ namespace Entities
         public string Name { get; private set; } = null;
         public string Description { get; private set; } = null;
         public Sprite Icon { get; private set; } = null;
-        
-        
+
+        public EquipmentItemInfo Info => new EquipmentItemInfo(Type, Icon, Name, Description);
+
         private const string KeyPrefix = "equipment_";
         
         public EquipmentItem(EquipmentItemType type, EquipmentItemState state, EquipmentItemInfo info)
@@ -30,6 +31,7 @@ namespace Entities
         {
             return KeyPrefix + type.ToString().ToLower();
         }
+        
         
     }
     

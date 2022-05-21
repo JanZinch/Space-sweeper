@@ -894,6 +894,7 @@ MonoBehaviour:
   _dataHelper: {fileID: 1291042352}
   _delayedCallback: {fileID: 1291042351}
   _bootstrapper: {fileID: 1291042350}
+  _equipmentSetup: {fileID: 11400000, guid: 159421c8307b9504987d3c45f17f6c75, type: 2}
 --- !u!4 &1291042356
 Transform:
   m_ObjectHideFlags: 0

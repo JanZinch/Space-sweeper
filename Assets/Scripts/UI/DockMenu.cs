@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using Entities;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 
 namespace UI
 {
@@ -7,6 +11,10 @@ namespace UI
     {
         [field: SerializeField] public EquipmentColors EquipmentListColors { get; private set; } = default;
 
+        [SerializeField] private EquipmentItemView _equipmentViewOriginal = null;
+        [SerializeField] private RectTransform _equipmentListView = null;
+        private List<EquipmentItemView> _equipmentList = null;
+        
         public static DockMenu Instance { get; private set; } = null;
         
         [Serializable]
@@ -20,6 +28,9 @@ namespace UI
         private void Awake()
         {
             Instance = this;
+            
+            _equipmentList = EquipmentUtils.InitializeItemViewList(_equipmentViewOriginal, in _equipmentListView);
+            
         }
     }
 }

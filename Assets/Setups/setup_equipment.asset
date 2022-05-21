@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ec7bfee5334985bb7f6716a59130a6, type: 3}
+  m_Name: setup_equipment
+  m_EditorClassIdentifier: 
+  _equipment:
+  - Type: 1
+    Icon: {fileID: 0}
+    Name: Machine gun
+    Description: Machine gun description
+  - Type: 2
+    Icon: {fileID: 0}
+    Name: Fireball generator
+    Description: Decsription
+  - Type: 3
+    Icon: {fileID: 0}
+    Name: Rocket launcher
+    Description: Decsription
+  - Type: 4
+    Icon: {fileID: 0}
+    Name: Laser emitter
+    Description: Decsription
+  - Type: 5
+    Icon: {fileID: 0}
+    Name: Thickened sheating
+    Description: Decsription
+  - Type: 6
+    Icon: {fileID: 0}
+    Name: Ablative coverage
+    Description: Decsription
+  - Type: 7
+    Icon: {fileID: 0}
+    Name: Protector probes
+    Description: Decsription
