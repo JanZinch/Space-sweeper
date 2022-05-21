@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _minSpeed = 5.0f;
     [SerializeField] private float _maxSpeed = 35.0f;
     [SerializeField] private float _startAcceleration = 10.0f, _fallAcceleration = 10.0f, _destroyedAcceleration = 5.0f;
-    [SerializeField] private float  _maxRotationSpeed = 70.0f, _maxRotationAngle = 10.0f;
+    [SerializeField] private float _maxRotationSpeed = 70.0f, _maxRotationAngle = 10.0f;
 
     private float _forwardSpeed = 0.0f, _currentRotationSpeed = 0.0f;
 

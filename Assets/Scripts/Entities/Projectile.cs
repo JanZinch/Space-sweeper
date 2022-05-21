@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
 
     private Navigation _navigation = null;
     
-    public class Navigation
+    private class Navigation
     {
         private Transform _target = null;
         private readonly float _lerpDuration; 
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
 
     public Projectile Setup(Vector3 direction)
     {
-        Setup(new Vector3(direction.x * _speed, direction.y * _speed, direction.z * _speed), _damage);
+        Setup(direction * _speed, _damage);
         return this;
     }
 

@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 368604924}
   - component: {fileID: 368604925}
   m_Layer: 0
-  m_Name: PlayerPivot
+  m_Name: player_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

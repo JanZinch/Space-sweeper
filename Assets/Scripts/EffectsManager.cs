@@ -15,7 +15,6 @@ public class EffectsManager : MonoBehaviour
         PooledObject particles = PoolsManager.GetPooledObject(explosionType, position, rotation);
 
         float explosionDuration = particles.GetLinkedComponent<ParticleSystem>().main.duration;
-        //float explosionDuration = particles.GetComponent<ParticleSystem>().main.duration;
         _instance.StartCoroutine(particles.ReturnToPool(explosionDuration));
     }
 }
