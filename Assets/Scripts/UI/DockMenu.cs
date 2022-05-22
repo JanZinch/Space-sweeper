@@ -9,10 +9,15 @@ namespace UI
 {
     public class DockMenu : MonoBehaviour
     {
-        [field: SerializeField] public EquipmentColors EquipmentListColors { get; private set; } = default;
-
+        [SerializeField] private Button _mainMenuButton = null;
+        [SerializeField] private Button _startButton = null;
+        
+        [Header("Equipment")]
         [SerializeField] private EquipmentItemView _equipmentViewOriginal = null;
         [SerializeField] private RectTransform _equipmentListView = null;
+        [field: SerializeField] public EquipmentColors EquipmentListColors { get; private set; } = default;
+        
+        
         private List<EquipmentItemView> _equipmentList = null;
         
         public static DockMenu Instance { get; private set; } = null;
@@ -26,12 +31,32 @@ namespace UI
         }
 
         
-        
         private void Awake()
         {
             Instance = this;
-            
             _equipmentList = EquipmentUtils.InitializeItemViewList(_equipmentViewOriginal, in _equipmentListView);
+        }
+
+        private void OnEnable()
+        {
+            _mainMenuButton.onClick.AddListener(ToMainMenu);
+            _startButton.onClick.AddListener(StartGameSession);
+        }
+
+        private void OnDisable()
+        {
+            _mainMenuButton.onClick.RemoveListener(ToMainMenu);
+            _startButton.onClick.RemoveListener(StartGameSession);
+        }
+
+        private void ToMainMenu()
+        {
+            SceneManager.Load(Scene.LOADER);
+        }
+
+        private void StartGameSession()
+        {
+            SceneManager.Load(Scene.CHANNEL);
         }
 
         public void UpdateItemView(EquipmentItemType type, EquipmentItemState newState)

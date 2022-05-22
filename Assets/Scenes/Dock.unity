@@ -4055,7 +4055,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: -1865621175
-  m_SortingOrder: 1000
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &2003257593
 RectTransform:
@@ -4093,14 +4093,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4555b9afab6e494fa559240437f577f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainMenuButton: {fileID: 337218624}
+  _startButton: {fileID: 1785088275}
+  _equipmentViewOriginal: {fileID: 425650650811910117, guid: a58b317503329c44c80b64b2f9c3ee0a,
+    type: 3}
+  _equipmentListView: {fileID: 1742847007}
   <EquipmentListColors>k__BackingField:
     <LockedColor>k__BackingField: {r: 1, g: 0.40784314, b: 0.42745098, a: 1}
     <AvailableColor>k__BackingField: {r: 0.54901963, g: 0.77254903, b: 0.7411765,
       a: 1}
     <SelectedColor>k__BackingField: {r: 0, g: 1, b: 0.5372549, a: 1}
-  _equipmentViewOriginal: {fileID: 425650650811910117, guid: a58b317503329c44c80b64b2f9c3ee0a,
-    type: 3}
-  _equipmentListView: {fileID: 1742847007}
 --- !u!1 &2010801129
 GameObject:
   m_ObjectHideFlags: 0

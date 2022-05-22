@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b42dc156e66d1cd4894600f7bc4b1d3e,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -5537,125 +5538,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &954992804
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 954992806}
-  - component: {fileID: 954992811}
-  - component: {fileID: 954992805}
-  - component: {fileID: 954992810}
-  - component: {fileID: 954992809}
-  - component: {fileID: 954992808}
-  - component: {fileID: 954992807}
-  m_Layer: 0
-  m_Name: Context
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &954992805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1705125264, guid: 8382d7f8352b70544aa11f6729f875f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  databaseFile: {fileID: 4900000, guid: 5a362daeef0de9643972131b828bad7c, type: 3}
-  overrideBasePath: 
-  overridePathMode: 0
-  changeWorkingName: 0
-  workingName: 
-  overwriteIfExists: 0
-  debugTrace: 0
---- !u!4 &954992806
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &954992807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 587b39eaa97f4799ad37017f1765b278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolsExplorer: {fileID: 11400000, guid: ca936d651f9de62439312852d39e255f, type: 2}
---- !u!114 &954992808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 818d9ccf468ba474989a0eb84934ced2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &954992809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67cd73372e03f420aa69a5bb7d9088f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _savingHelper: {fileID: 954992810}
---- !u!114 &954992810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b08321bd04c45d2a7e19afcf1232f71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &954992811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954992804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0619a3a968954155a2b5541ea643b09b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dataHelper: {fileID: 954992809}
-  _delayedCallback: {fileID: 954992808}
 --- !u!23 &1043827465 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5453628087661174934, guid: 251eb40f9108a5141affc7b5b5782f9e,
