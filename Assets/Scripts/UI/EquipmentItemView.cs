@@ -23,6 +23,8 @@ namespace UI
         
         private bool _dataInstalled = false;
 
+        public EquipmentItemType Type => _type;
+        
         private void OnEnable()
         {
             _button.onClick.AddListener(OnClick);
@@ -48,8 +50,8 @@ namespace UI
                     case EquipmentItemState.AVAILABLE:
 
                         _state = EquipmentItemState.EQUIPPED;
-                        EquipmentItemSlot.UpdateView(_icon.sprite);
                         _background.color = DockMenu.Instance.EquipmentListColors.SelectedColor;
+                        EquipmentUtils.Equip(_type);
                         
                         break;
                     
@@ -62,6 +64,41 @@ namespace UI
 
         }
 
+        public void SetState(EquipmentItemState state)
+        {
+            _state = state;
+            Update();
+        }
+
+        public void Update()
+        {
+            if (_dataInstalled)
+            {
+                DockMenu.EquipmentColors _equipmentColors = DockMenu.Instance.EquipmentListColors;
+                
+                switch (_state)
+                {
+                    case EquipmentItemState.LOCKED:
+                        
+                        _background.color = _equipmentColors.LockedColor;
+                        break;
+                
+                    case EquipmentItemState.AVAILABLE:
+                        
+                        _background.color = _equipmentColors.AvailableColor;
+                    
+                        break;
+
+                    case EquipmentItemState.EQUIPPED:
+                        
+                        _background.color = _equipmentColors.SelectedColor;
+               
+                        break;
+                }
+                
+            }
+            
+        }
 
         public EquipmentItemView SetData(EquipmentItemType type, EquipmentItemState state, EquipmentItemInfo info)
         {

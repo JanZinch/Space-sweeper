@@ -32,7 +32,20 @@ namespace UI
             Instance = this;
             
             _equipmentList = EquipmentUtils.InitializeItemViewList(_equipmentViewOriginal, in _equipmentListView);
-            
         }
+
+        public void UpdateItemView(EquipmentItemType type, EquipmentItemState newState)
+        {
+            _equipmentList.Find((itemView)=>itemView.Type == type).SetState(newState);
+        }
+        
+        public void UpdateListView()
+        {
+            foreach (EquipmentItemView view in _equipmentList)
+            {
+                view.Update();
+            }
+        }
+
     }
 }

@@ -118,13 +118,23 @@ namespace Utils
             _equipment[equipmentItemType].State = EquipmentItemState.AVAILABLE;
         }
         
-        public static void Select(EquipmentItemType equipmentItemType)
+        public static void Equip(EquipmentItemType equipmentItemType)
         {
             CheckInitialization();
-            _equipment[equipmentItemType].State = EquipmentItemState.EQUIPPED;
+            EquipmentItem item = _equipment[equipmentItemType];
+            item.State = EquipmentItemState.EQUIPPED;
+            
+            EquipmentItemSlot.SetItemInCurrentSlot(equipmentItemType, item.Icon);
         }
 
-        
+        public static void Unequip(EquipmentItemType equipmentItemType)
+        {
+            CheckInitialization();
+            EquipmentItem item = _equipment[equipmentItemType];
+            item.State = EquipmentItemState.AVAILABLE;
+            
+            DockMenu.Instance.UpdateItemView(equipmentItemType, EquipmentItemState.AVAILABLE);
+        }
         
         
     }
