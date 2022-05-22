@@ -17,6 +17,15 @@ namespace Utils
         
         public static bool IsInitialized { get; private set; } = false;
 
+        public static EquipmentSlotType CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
+        
+        public struct SelectedEquipment
+        {
+            public EquipmentItem FirstWeapon;
+            public EquipmentItem SecondWeapon;
+            public EquipmentItem Protection;
+        }
+        
 
         public static void Initialize(EquipmentSetup setup)
         {
@@ -50,6 +59,12 @@ namespace Utils
             {
                 baseItem.State = EquipmentItemState.EQUIPPED;
             }
+            
+            if (_equipment[EquipmentItemType.PROTECTOR_PROBES].State == EquipmentItemState.AVAILABLE)
+            {
+                _equipment[EquipmentItemType.PROTECTOR_PROBES].State = EquipmentItemState.LOCKED;
+            }
+            
         }
 
         private static void CheckInitialization()
@@ -62,8 +77,11 @@ namespace Utils
 
         private static EquipmentItem CreateEquipmentItem(EquipmentItemType type, DataHelper dataHelper, EquipmentSetup setup)
         {
+            /*return new EquipmentItem(type, 
+                (EquipmentItemState) dataHelper.GetLong(EquipmentItem.GetDatabaseKey(type)), setup.GetInfo(type));*/
+            
             return new EquipmentItem(type, 
-                (EquipmentItemState) dataHelper.GetLong(EquipmentItem.GetDatabaseKey(type)), setup.GetInfo(type));
+                EquipmentItemState.AVAILABLE, setup.GetInfo(type));
         }
 
         /*public static EquipmentItemState GetState(EquipmentItemType equipmentItemType)
@@ -106,5 +124,15 @@ namespace Utils
             _equipment[equipmentItemType].State = EquipmentItemState.EQUIPPED;
         }
 
+        
+        
+        
+    }
+    
+    public enum EquipmentSlotType
+    {
+        FIRST_WEAPON = 0,
+        SECOND_WEAPON = 1,
+        PROTECTION =2,
     }
 }

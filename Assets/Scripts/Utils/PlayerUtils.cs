@@ -7,5 +7,8 @@ namespace Utils
     {
         public static bool SecondWeaponIsAvailable = true;
         
+        
+        
+        
     }
 }

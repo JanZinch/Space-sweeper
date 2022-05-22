@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using System;
+using Entities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,18 +13,65 @@ namespace UI
         [SerializeField] private Image _icon = null;
         [SerializeField] private TextMeshProUGUI _header = null;
         [SerializeField] private TextMeshProUGUI _decription = null;
-
+        [SerializeField] private Button _button = null;
+        
         private const string LockedHeader = "Locked";
         private const string LockedDescription = "It will open later.";
 
         private EquipmentItemType _type = EquipmentItemType.NONE;
+        private EquipmentItemState _state = EquipmentItemState.LOCKED;
         
+        private bool _dataInstalled = false;
+
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnClick);
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnClick);
+        }
+
+        private void OnClick()
+        {
+            if (_dataInstalled)
+            {
+                switch (_state)
+                {
+                    case EquipmentItemState.LOCKED:
+                        
+                        
+                        
+                        break;
+
+                    case EquipmentItemState.AVAILABLE:
+
+                        _state = EquipmentItemState.EQUIPPED;
+                        EquipmentItemSlot.UpdateView(_icon.sprite);
+                        _background.color = DockMenu.Instance.EquipmentListColors.SelectedColor;
+                        
+                        break;
+                    
+                    case EquipmentItemState.EQUIPPED: break;
+                    
+                }
+                
+                
+            }
+
+        }
+
+
         public EquipmentItemView SetData(EquipmentItemType type, EquipmentItemState state, EquipmentItemInfo info)
         {
             _type = type;
+            _state = state;
             DockMenu.EquipmentColors _equipmentColors = DockMenu.Instance.EquipmentListColors;
+
+            _icon.sprite = info.Icon;
             
-            switch (state)
+            switch (_state)
             {
                 case EquipmentItemState.LOCKED:
 
@@ -50,6 +98,8 @@ namespace UI
                 
             }
 
+            _dataInstalled = true;
+            
             return this;
         }
     }
