@@ -18,7 +18,7 @@ MonoBehaviour:
     Name: Machine gun
     Description: Machine gun description
   - Type: 2
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: d0c06f69a20844546a888369b964b408, type: 3}
     Name: Fireball generator
     Description: Decsription
   - Type: 3

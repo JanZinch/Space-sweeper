@@ -43,8 +43,6 @@ namespace UI
                 {
                     case EquipmentItemState.LOCKED:
                         
-                        
-                        
                         break;
 
                     case EquipmentItemState.AVAILABLE:
