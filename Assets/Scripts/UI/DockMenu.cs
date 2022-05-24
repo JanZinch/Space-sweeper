@@ -65,6 +65,8 @@ namespace UI
 
         private void StartGameSession()
         {
+            EquipmentItemSlot.UpdatePlayerUtils();
+            EquipmentUtils.Refresh();
             SceneManager.Load(Scene.CHANNEL);
         }
 

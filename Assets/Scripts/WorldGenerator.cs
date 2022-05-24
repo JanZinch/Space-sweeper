@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using Entities;
@@ -19,6 +20,8 @@ public class WorldGenerator : MonoBehaviour
     
     private Func<Vector3, Quaternion, PooledObject> SpawnTubePart = null;
     private Queue<TubeData> _currentLevelMap = null;
+
+    private Coroutine _exutRoutine = null;
     
     public class Spawn {
         
@@ -49,10 +52,24 @@ public class WorldGenerator : MonoBehaviour
         tube.GetLinkedComponent<ChannelTube>().Initialize();
         return tube;
     }
-    
+
+    private IEnumerator EndOfLevel()
+    {
+        yield return new WaitForSeconds(10.0f);
+        SceneManager.Load(Scene.DOCK);
+    }
+
     private PooledObject SpawnNextTubePart(Vector3 position, Quaternion rotation) {
 
-        if (_currentLevelMap.Count == 0) return null;  // end of level
+        if (_currentLevelMap.Count == 0)
+        {
+            if (_exutRoutine == null)
+            {
+                _exutRoutine = StartCoroutine(EndOfLevel());
+            }
+            
+            return null;  // end of level
+        }
         
         TubeData tubeData = _currentLevelMap.Dequeue();
         

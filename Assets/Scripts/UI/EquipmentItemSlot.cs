@@ -37,7 +37,13 @@ namespace UI
 
             _slots.Add(this);
         }
-        
+
+        public static void UpdatePlayerUtils()
+        {
+            PlayerUtils.FirstWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.FIRST_WEAPON)._equippedItem;
+            PlayerUtils.SecondWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.SECOND_WEAPON)._equippedItem;
+        }
+
         public static void SetItemInCurrentSlot(EquipmentItemType item, Sprite icon)
         {
             EquipmentItemSlot slot = _slots.Find((slot) => slot._type == EquipmentUtils.CurrentSlot);

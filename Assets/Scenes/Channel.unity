@@ -367,8 +367,8 @@ MonoBehaviour:
   _isForPlayer: 1
   _navigationScreen: {fileID: 1479954545}
   _attachedWeapons:
+  - {fileID: 368604923}
   - {fileID: 368604925}
-  - {fileID: 368604924}
 --- !u!114 &368604923
 MonoBehaviour:
   m_ObjectHideFlags: 0

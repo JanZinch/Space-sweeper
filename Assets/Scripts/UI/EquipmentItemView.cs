@@ -56,10 +56,7 @@ namespace UI
                     case EquipmentItemState.EQUIPPED: break;
                     
                 }
-                
-                
             }
-
         }
 
         public void SetState(EquipmentItemState state)

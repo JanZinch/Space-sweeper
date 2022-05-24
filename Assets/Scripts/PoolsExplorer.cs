@@ -36,11 +36,11 @@ public class PoolsExplorer : ScriptableObject
 
 	public void Initialize()
 	{
-		if (_instance != null)
+		/*if (_instance != null)
 		{
 			throw new Exception("Pool Explorer already exists! Only one Pool Explorer may be created.");
 		}
-		else {
+		else {*/
 
 			_instance = this;
 
@@ -53,7 +53,7 @@ public class PoolsExplorer : ScriptableObject
 			allPools.AddRange(_enemyPools);
 			
 			PoolsManager.Initialize(allPools);
-		}		
+		//}		
 	}
 	
 }
@@ -66,7 +66,7 @@ public enum PooledObjectType
 		
 	TUNNEL_CYBER_BRIDGE = 9,
 	TUNNEL_CYBER_REPAIRS = 10,
-	TUNNEL_PART_2 = 11,
+	TUNNEL_HEX_ENEMIES_1 = 11,
 	TUNNEL_CYBER_HATCHES = 12,
 	TUNNEL_CYBER_GATEWAY = 130,
 	TUNNEL_CYBER_PINS_1 = 14,

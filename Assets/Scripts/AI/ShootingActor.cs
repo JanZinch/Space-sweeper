@@ -49,9 +49,12 @@ namespace AI
             {
                 yield return (cooldownIsCached) ? _cachedCooldown 
                     : new WaitForSeconds(Random.Range(_minCooldown, _maxCooldown));
-                
-                _weaponController.FireToPositionIfPossible(0, target.position);
 
+                if (target != null)
+                {
+                    _weaponController.FireToPositionIfPossible(0, target.position);
+                }
+                
                 yield return null;
             }
             

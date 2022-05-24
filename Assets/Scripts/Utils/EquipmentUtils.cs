@@ -67,6 +67,11 @@ namespace Utils
             
         }
 
+        public static void Refresh()
+        {
+            CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
+        }
+
         private static void CheckInitialization()
         {
             if (!IsInitialized)

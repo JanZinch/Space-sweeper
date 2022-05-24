@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using AI;
+﻿using System.Collections;
 using CodeBase.ApplicationLibrary.Common;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,8 +24,6 @@ public class PlayerController : MonoBehaviour
     {
         _playerBody.OnObstacleHit += OnObstacleHit;
         _playerBody.OnChannelHit += OnChannelHit;
-        
-        
     }
 
     private void Start()
@@ -55,6 +51,7 @@ public class PlayerController : MonoBehaviour
         
         Messenger.Broadcast(MessengerKeys.ON_PLAYER_STARSHIP_FALL);
         _playerBody.Fall();
+        StartCoroutine(DelayedRestart(5.0f));
     }
 
     private void OnChannelHit()
@@ -62,8 +59,29 @@ public class PlayerController : MonoBehaviour
         EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, _playerBody.transform.position, Quaternion.identity);
         Destroy(_playerBody.gameObject);
         _isDestroyed = true;
+        StartCoroutine(DelayedRestart(2.0f));
     }
 
+    private IEnumerator DelayedRestart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        
+        SceneManager.Load(Scene.DOCK);
+    }
+    
+    private Tween OnDeath()
+    {
+        _isFalls = true;
+        EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, _playerBody.transform.position, Quaternion.identity);
+        
+        Messenger.Broadcast(MessengerKeys.ON_PLAYER_STARSHIP_FALL);
+        _playerBody.Fall();
+
+        StartCoroutine(DelayedRestart(5.0f));
+        
+        return DOTween.Sequence();
+    }
+    
     private void Accelerate()
     {
         if (_isDestroyed && _forwardSpeed > 0.0f)
@@ -95,29 +113,15 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0f, 0f, _currentRotationSpeed * Time.deltaTime);
             _playerBody.transform.localEulerAngles = new Vector3(currentAngle.x, currentAngle.y,
                 -_maxRotationAngle * Input.GetAxis("Horizontal"));
-            //_playerBody.transform.localEulerAngles = Vector3.right * currentAngle.x + Vector3.up * currentAngle.y + 
-               //                                           -Vector3.forward * _maxRotationAngle * _currentRotationSpeed / _maxRotationSpeed;
         }
         else
         {
             transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
         }
-
-
     }
 
     private void SetMinSpeed()
     {
         _forwardSpeed = _minSpeed;
     }
-
-    
-    
-
-    /*public void Overtake(LinearActor actor)
-    {
-        Vector3 cachedVelocity = actor.velocity;
-        actor.velocity = new Vector3(cachedVelocity.x, cachedVelocity.y, _forwardSpeed);
-        
-    }*/
 }

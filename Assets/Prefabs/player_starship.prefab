@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4150942794848119489}
   - component: {fileID: 5825880105614585092}
   - component: {fileID: 5825880105614585095}
+  - component: {fileID: 2094694672640087120}
   m_Layer: 0
   m_Name: player_starship
   m_TagString: Untagged
@@ -72,6 +73,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5825880105614585092}
+  _destructible: {fileID: 2094694672640087120}
+--- !u!114 &2094694672640087120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150942794848119486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28cb4db755f74f3c8b09a6dbbb878472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _pooledObject: {fileID: 0}
 --- !u!1001 &461881213625239159
 PrefabInstance:
   m_ObjectHideFlags: 0

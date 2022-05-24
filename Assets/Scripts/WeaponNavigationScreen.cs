@@ -28,8 +28,6 @@ public class WeaponNavigationScreen : MonoBehaviour
             {
                 _currentTarget = caughtObject;
                 OnNewTarget?.Invoke(_currentTarget);
-            
-                //Debug.Log("New target: " + _currentTarget);
             }
             else
             {
@@ -37,8 +35,6 @@ public class WeaponNavigationScreen : MonoBehaviour
                 {
                     _potentialTargets.Enqueue(caughtObject);
                 }
-
-                
             }
 
         }
@@ -48,9 +44,7 @@ public class WeaponNavigationScreen : MonoBehaviour
             OnNewTarget?.Invoke(_currentTarget);
             
             Debug.Log("New target: " + _currentTarget);
-            
         }
-        
     }
 
     public void Free()
@@ -62,12 +56,8 @@ public class WeaponNavigationScreen : MonoBehaviour
     {
         if (_currentTarget == target)
         {
-            Debug.Log("FREE");
-
             if (_potentialTargets.Count > 0)
             {
-                Debug.Log("DEQ");
-                
                 _currentTarget = _potentialTargets.Dequeue();
             }
             else _currentTarget = null;

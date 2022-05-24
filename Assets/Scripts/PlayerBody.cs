@@ -1,14 +1,25 @@
 ﻿using UnityEngine;
 using System;
+using DG.Tweening;
+using Entities;
 
 public class PlayerBody : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rigidbody = null;
+    [SerializeField] private DestructibleObject _destructible = null;
+    
     public event Action OnObstacleHit = null;
     public event Action OnChannelHit = null;
 
-    private Vector3 _fallForce = new Vector3(0.0f, -0.5f, 0.0f);
+    public event Func<Tween> OnDeath = null;
     
+    private Vector3 _fallForce = new Vector3(0.0f, -0.5f, 0.0f);
+
+    private void OnEnable()
+    {
+        _destructible.OnDeath += OnDeath;
+    }
+
     public void Fall()
     {
         _rigidbody.constraints = RigidbodyConstraints.None;
@@ -34,5 +45,10 @@ public class PlayerBody : MonoBehaviour
             weaponNavigationScreen.OnTrigger(transform, true);
         }
         
+    }
+    
+    private void OnDisable()
+    {
+        _destructible.OnDeath += OnDeath;
     }
 }

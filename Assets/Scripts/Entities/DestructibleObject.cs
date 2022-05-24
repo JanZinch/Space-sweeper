@@ -25,13 +25,19 @@ namespace Entities
         {
             _health = _maxHealth;
             OnRefresh?.Invoke();
-            _pooledObject.ReturnToPool();
+
+            if (_pooledObject != null)
+            {
+                _pooledObject.ReturnToPool();
+            }
         }
 
         public void MakeDamage(int damage)
         {
             _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
+            Debug.Log(gameObject.name + " health: " + _health);
+            
             if (_health <= 0)
             {
                 WeaponNavigationScreen.PlayerNavigationScreen.FreeIfNeed(transform);

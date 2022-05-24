@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Entities;
 using UnityEngine;
 using Utils;
 
@@ -37,6 +38,7 @@ public class WeaponController : MonoBehaviour
     {
         if (_isForPlayer)
         {
+            EquipWeapons();
             _navigationScreen.SetForPlayer();
         }
     }
@@ -45,6 +47,27 @@ public class WeaponController : MonoBehaviour
     {
         _navigationScreen.OnNewTarget += OnNewTarget;
     }
+
+    private void EquipWeapons()
+    {
+        _attachedWeapons[0] = FindWeapon(PlayerUtils.FirstWeapon);
+        _attachedWeapons[1] = FindWeapon(PlayerUtils.SecondWeapon);
+    }
+
+    private Weapon FindWeapon(EquipmentItemType weaponType)
+    {
+        switch (weaponType)
+        {
+            case EquipmentItemType.MACHINE_GUN: return GetComponent<MachineGun>();
+            case EquipmentItemType.FIREBALL_GENERATOR: return GetComponent<FireballGenerator>();
+            case EquipmentItemType.ROCKET_LAUNCHER: return GetComponent<RocketLauncher>();
+            case EquipmentItemType.LASER_EMITTER: return GetComponent<LaserEmitter>();
+            
+        }
+        
+        return GetComponent<MachineGun>();
+    }
+
 
     private void Update()
     {
