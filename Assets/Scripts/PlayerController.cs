@@ -7,7 +7,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerBody _playerBody;
-
+    [SerializeField] private Transform _playerScreen = null;
+    
     [Header("Navigation_XZ")] 
     [SerializeField] private float _minSpeed = 5.0f;
     [SerializeField] private float _maxSpeed = 35.0f;
@@ -28,21 +29,17 @@ public class PlayerController : MonoBehaviour
 
     private bool _isFalls = false;
     private bool _isDestroyed = false;
-
-    private Transform _playerScreen = null;
+    
     private Transform _lowerPoint = default;
     
     public float ForwardSpeed =>_forwardSpeed;
     
     private void Awake()
     {
-        _playerScreen = _playerBody.transform.parent;
-    
         _lowerPoint = new GameObject("player_lower_point").transform;
         _lowerPoint.parent= transform;
 
-        _lowerPoint.position = _playerBody.transform.position;
-
+        _lowerPoint.position = _playerScreen.transform.position;
     }
 
     private void OnEnable()
