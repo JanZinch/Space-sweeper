@@ -338,6 +338,8 @@ MonoBehaviour:
   _destroyedAcceleration: 5
   _maxRotationSpeed: 70
   _maxRotationAngle: 10
+  _maxYSpeed: 100
+  _minYSpeed: 0
 --- !u!114 &368604921
 MonoBehaviour:
   m_ObjectHideFlags: 0

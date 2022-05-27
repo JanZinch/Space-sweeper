@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using CodeBase.ApplicationLibrary.Common;
 using DG.Tweening;
 using UnityEngine;
@@ -7,19 +8,34 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerBody _playerBody;
 
-    [Header("Navigation")] 
+    [Header("Navigation_XZ")] 
     [SerializeField] private float _minSpeed = 5.0f;
     [SerializeField] private float _maxSpeed = 35.0f;
     [SerializeField] private float _startAcceleration = 10.0f, _fallAcceleration = 10.0f, _destroyedAcceleration = 5.0f;
     [SerializeField] private float _maxRotationSpeed = 70.0f, _maxRotationAngle = 10.0f;
 
+    [Header("Navigation_Y")]
+    [SerializeField] private float _maxYSpeed = 20.0f;
+    [SerializeField] private float _minYSpeed = 5.0f;
+
+    private float _verticalSpeed = 0.0f;
+    
     private float _forwardSpeed = 0.0f, _currentRotationSpeed = 0.0f;
 
     private bool _isFalls = false;
     private bool _isDestroyed = false;
+
+    private Transform _playerScreen = null;
+    private Vector3 _startPosition = default;
     
     public float ForwardSpeed =>_forwardSpeed;
     
+    private void Awake()
+    {
+        _playerScreen = _playerBody.transform.parent;
+        _startPosition = _playerBody.transform.position;
+    }
+
     private void OnEnable()
     {
         _playerBody.OnObstacleHit += OnObstacleHit;
@@ -101,6 +117,10 @@ public class PlayerController : MonoBehaviour
     private void GetInput()
     {
         _currentRotationSpeed = (_isFalls) ? 0.0f : Input.GetAxis("Horizontal") * _maxRotationSpeed * _forwardSpeed / _maxSpeed;
+
+        _verticalSpeed = Input.GetAxis("Vertical");
+        Debug.Log("VertSpeed: " + _verticalSpeed);
+        
     }
 
     private void MovePlayer()
@@ -111,14 +131,38 @@ public class PlayerController : MonoBehaviour
             transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
 
             transform.Rotate(0f, 0f, _currentRotationSpeed * Time.deltaTime);
-            _playerBody.transform.localEulerAngles = new Vector3(currentAngle.x, currentAngle.y,
-                -_maxRotationAngle * Input.GetAxis("Horizontal"));
+            _playerBody.transform.localEulerAngles = new Vector3(currentAngle.x, currentAngle.y, -_maxRotationAngle * Input.GetAxis("Horizontal"));
+            
+            MoveY();
+
         }
         else
         {
             transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
         }
     }
+
+    private void MoveY()
+    {
+        Vector3 target;
+        
+        if (_verticalSpeed > 0.0f)
+        {
+            target = transform.position;
+        }
+        else
+        {
+            _verticalSpeed *= -1;
+            target = _startPosition;        // lower position 
+        }
+
+        //if(_verticalSpeed == 0.0f) return;
+        
+        _playerScreen.transform.position = Vector3.MoveTowards(_playerScreen.transform.position, target, _verticalSpeed * _maxSpeed * Time.deltaTime);
+        
+    }
+
+
 
     private void SetMinSpeed()
     {
