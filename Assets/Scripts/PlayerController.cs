@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerScreen = _playerBody.transform.parent;
     
-        _lowerPoint = new GameObject().transform;
+        _lowerPoint = new GameObject("player_lower_point").transform;
         _lowerPoint.parent= transform;
 
         _lowerPoint.position = _playerBody.transform.position;
