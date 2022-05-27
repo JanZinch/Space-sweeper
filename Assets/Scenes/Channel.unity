@@ -246,8 +246,9 @@ GameObject:
   m_Component:
   - component: {fileID: 162614970}
   - component: {fileID: 162614969}
+  - component: {fileID: 162614971}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player_screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,6 +285,19 @@ Transform:
   m_Father: {fileID: 368604919}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162614971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162614968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a449a1df4b42b49300310a44c303ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sight: {fileID: 1239417662}
 --- !u!1 &212760205
 GameObject:
   m_ObjectHideFlags: 0
