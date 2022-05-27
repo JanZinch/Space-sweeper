@@ -26,14 +26,19 @@ public class PlayerController : MonoBehaviour
     private bool _isDestroyed = false;
 
     private Transform _playerScreen = null;
-    private Vector3 _startPosition = default;
+    private Transform _lowerPoint = default;
     
     public float ForwardSpeed =>_forwardSpeed;
     
     private void Awake()
     {
         _playerScreen = _playerBody.transform.parent;
-        _startPosition = _playerBody.transform.position;
+    
+        _lowerPoint = new GameObject().transform;
+        _lowerPoint.parent= transform;
+
+        _lowerPoint.position = _playerBody.transform.position;
+
     }
 
     private void OnEnable()
@@ -150,13 +155,12 @@ public class PlayerController : MonoBehaviour
         {
             target = transform.position;
         }
-        else
+        else if (_verticalSpeed < 0.0f)
         {
             _verticalSpeed *= -1;
-            target = _startPosition;        // lower position 
+            target = _lowerPoint.position;
         }
-
-        //if(_verticalSpeed == 0.0f) return;
+        else return;
         
         _playerScreen.transform.position = Vector3.MoveTowards(_playerScreen.transform.position, target, _verticalSpeed * _maxSpeed * Time.deltaTime);
         
