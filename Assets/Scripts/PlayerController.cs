@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxYSpeed = 20.0f;
     [SerializeField] private float _minYSpeed = 5.0f;
 
+    [Header("Boost")] 
+    [SerializeField] private float _maxSpeedMultiplier = 2.0f;
+    private float _currentSpeedMultiplier = 1.0f;
+    
     private float _verticalSpeed = 0.0f;
     
     private float _forwardSpeed = 0.0f, _currentRotationSpeed = 0.0f;
@@ -124,8 +128,9 @@ public class PlayerController : MonoBehaviour
         _currentRotationSpeed = (_isFalls) ? 0.0f : Input.GetAxis("Horizontal") * _maxRotationSpeed * _forwardSpeed / _maxSpeed;
 
         _verticalSpeed = Input.GetAxis("Vertical");
-        Debug.Log("VertSpeed: " + _verticalSpeed);
-        
+
+        _currentSpeedMultiplier = (Input.GetButton("Jump"))? _maxSpeedMultiplier : 1.0f;
+
     }
 
     private void MovePlayer()
@@ -133,7 +138,7 @@ public class PlayerController : MonoBehaviour
         if (!_isDestroyed)
         {
             Vector3 currentAngle = _playerBody.transform.localEulerAngles;
-            transform.Translate(0f, 0f, _forwardSpeed * Time.deltaTime);
+            transform.Translate(0f, 0f, _forwardSpeed * _currentSpeedMultiplier * Time.deltaTime);
 
             transform.Rotate(0f, 0f, _currentRotationSpeed * Time.deltaTime);
             _playerBody.transform.localEulerAngles = new Vector3(currentAngle.x, currentAngle.y, -_maxRotationAngle * Input.GetAxis("Horizontal"));
