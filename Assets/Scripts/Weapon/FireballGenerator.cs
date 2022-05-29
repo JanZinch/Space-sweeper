@@ -30,6 +30,10 @@ public class FireballGenerator : Weapon
     {
         if (_deltaTime >= _cooldown)
         {
+            _direction = AimingController.GetDirection();
+
+            Debug.Log("Direction: " + _direction);
+            
             PoolsManager.GetPooledObject(PooledObjectType.FIREBALL, _sourcePoint.position, Quaternion.identity)
                 .GetLinkedComponent<Projectile>().Setup(_direction);
             

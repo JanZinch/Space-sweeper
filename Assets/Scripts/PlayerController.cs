@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     {
         Accelerate();
         GetInput();
-        MovePlayer();
+        //MovePlayer();
     }
 
     private void OnDisable()
