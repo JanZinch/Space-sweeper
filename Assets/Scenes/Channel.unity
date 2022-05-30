@@ -298,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sight: {fileID: 1239417662}
+  _camera: {fileID: 1971460959}
 --- !u!1 &212760205
 GameObject:
   m_ObjectHideFlags: 0
