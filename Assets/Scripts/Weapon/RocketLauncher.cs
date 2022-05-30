@@ -45,6 +45,11 @@ public class RocketLauncher : Weapon, INavigational
         throw new NotImplementedException();
     }
 
+    public override void SetCustomTargetDirection(Vector3 direction)
+    {
+        throw new NotImplementedException();
+    }
+
     public void SetTarget(Transform target)
     {
         _target = target;

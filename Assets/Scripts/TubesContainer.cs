@@ -110,6 +110,13 @@ public static class TubesContainer
              {
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_1, Quaternion.identity),
+                 //new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_1, Quaternion.Euler(0.0f, 0.0f, 22.5f)),
+                 //new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_1, Quaternion.Euler(0.0f, 0.0f, -22.5f)),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),

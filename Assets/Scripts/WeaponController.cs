@@ -75,11 +75,15 @@ public class WeaponController : MonoBehaviour
         {
             if (_attachedWeapons[FirstWeapon].GetPlayerInput(Fire1))
             {
+                
+                _attachedWeapons[FirstWeapon].SetCustomTargetDirection(AimingController.GetDirection());
                 _attachedWeapons[FirstWeapon].FireIfPossible();
             }
         
             if (PlayerUtils.SecondWeaponIsAvailable && _attachedWeapons[SecondWeapon].GetPlayerInput(Fire2))
             {
+                
+                _attachedWeapons[SecondWeapon].SetCustomTargetDirection(AimingController.GetDirection());
                 _attachedWeapons[SecondWeapon].FireIfPossible();
             }
         }

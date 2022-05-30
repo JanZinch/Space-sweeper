@@ -10,9 +10,8 @@ public class AimingController : MonoBehaviour
     /*private const string MouseXAxis = "Mouse X";
     private const string MouseYAxis = "Mouse Y";*/
 
-    private const float DistanceToTarget = 100.0f;
+    private const float DistanceToTarget = 50.0f;
     
-    private Vector2 _cachedMousePosition = default;
     private Vector2 _sourceSightPosition = default;
 
     private static AimingController _instance = null;
@@ -32,16 +31,22 @@ public class AimingController : MonoBehaviour
 
     private void Update()
     {
-        _cachedMousePosition = Input.mousePosition;
-        _sight.position = _cachedMousePosition;
-        
-        Debug.Log("MP: " + _cachedMousePosition);
+        _sight.position = Input.mousePosition;
     }
 
     private static Vector3 ToVector3(Vector2 source)
     {
         var world = _instance._camera.ScreenToWorldPoint(new Vector3(source.x, source.y, DistanceToTarget));
 
+        return world;
+    }
+    
+    private static Vector3 Center(Vector2 source)
+    {
+        var world = _instance._camera.ScreenToWorldPoint(source);
+
+        //world.y -= 2.0f;
+        
         return world;
     }
 
@@ -63,15 +68,19 @@ public class AimingController : MonoBehaviour
 
         Vector3 direction = Mathf.Pow(DistanceToTarget, 2) + Mathf.Pow(delta, 2)*/
 
-        var v1 = ToVector3(_instance._cachedMousePosition);
-        var v2 = ToVector3(_instance._sourceSightPosition);
+        var v1 = ToVector3(Input.mousePosition);
+        var v2 = Center(_instance._sourceSightPosition);
         Vector3 delta = v1 - v2;
-
-        //GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v1;
+        
+        GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v2;
+        
         //GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v2;
         
         Vector3 direction = ((new Vector3(0.0f, 0.0f, DistanceToTarget) + delta)).normalized;
 
+        Debug.Log("Dir:" + direction);
+        
+        
         return direction;
     }
 

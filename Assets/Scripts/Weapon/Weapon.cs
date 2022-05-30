@@ -9,4 +9,5 @@ public abstract class Weapon : MonoBehaviour
 
     public abstract void SetCustomTargetPosition(Vector3 targetPosition);
 
+    public abstract void SetCustomTargetDirection(Vector3 direction);
 }

@@ -44,4 +44,9 @@ public class LaserEmitter : Weapon
     {
         throw new NotImplementedException();
     }
+
+    public override void SetCustomTargetDirection(Vector3 direction)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -56,4 +56,9 @@ public class MachineGun : Weapon
     {
         throw new System.NotImplementedException();
     }
+
+    public override void SetCustomTargetDirection(Vector3 direction)
+    {
+        throw new System.NotImplementedException();
+    }
 }
