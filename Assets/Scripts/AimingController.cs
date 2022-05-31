@@ -52,27 +52,11 @@ public class AimingController : MonoBehaviour
 
     public static Vector3 GetDirection()
     {
-        /*Vector3 delta = _instance._cachedMousePosition - _instance._sourceSightPosition;
-
-        delta.Normalize();
-        
-        delta.y *= 0.5f;
-        delta.z = 1.0f;*/
-        
-        //Vector3 sum = _instance._sourceSightPosition + _instance._cachedMousePosition;
-        //sum.z = 0.0f;
-        
-        //_instance.transform.LookAt(_cachedMousePosition);
-
-        /*float delta = Vector3.Distance(_instance._cachedMousePosition, _instance._sourceSightPosition);
-
-        Vector3 direction = Mathf.Pow(DistanceToTarget, 2) + Mathf.Pow(delta, 2)*/
-
         var v1 = ToVector3(Input.mousePosition);
         var v2 = Center(_instance._sourceSightPosition);
         Vector3 delta = v1 - v2;
         
-        GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v2;
+        //GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v2;
         
         //GameObject.CreatePrimitive(PrimitiveType.Cube).transform.position = v2;
         

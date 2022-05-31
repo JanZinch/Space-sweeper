@@ -14,6 +14,8 @@ public class MachineGun : Weapon
     private float _deltaX = 10.1f, _deltaY = 10.1f;
     private float _deltaTime = default;
     
+    private Vector3 _customDirection = Vector3.forward;
+    
     private void Start()
     {
         _deltaTime = _cooldown;
@@ -36,13 +38,13 @@ public class MachineGun : Weapon
             foreach (Transform point in _leftSourcePoints)
             {
                 PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
-                    .GetLinkedComponent<Projectile>().Setup(_leftGunDirection);
+                    .GetLinkedComponent<Projectile>().Setup((_leftGunDirection + _customDirection).normalized);
             }
             
             foreach (Transform point in _rightSourcePoints)
             {
                 PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
-                    .GetLinkedComponent<Projectile>().Setup(_rightGunDirection);
+                    .GetLinkedComponent<Projectile>().Setup((_rightGunDirection + _customDirection).normalized);
             }
             
             _deltaTime = 0.0f;
@@ -59,6 +61,6 @@ public class MachineGun : Weapon
 
     public override void SetCustomTargetDirection(Vector3 direction)
     {
-        throw new System.NotImplementedException();
+        _customDirection = direction;
     }
 }
