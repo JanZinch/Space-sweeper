@@ -54,6 +54,15 @@ MonoBehaviour:
   - _type: 18
     Prefab: {fileID: 803747037796568064, guid: b313bcfe556690240bb944134abb79e0, type: 3}
     Count: 4
+  - _type: 18
+    Prefab: {fileID: 803747037796568064, guid: b313bcfe556690240bb944134abb79e0, type: 3}
+    Count: 4
+  - _type: 19
+    Prefab: {fileID: 803747037796568064, guid: e44425878c26a3444954af848100e493, type: 3}
+    Count: 4
+  - _type: 20
+    Prefab: {fileID: 803747037796568064, guid: a83fc671e71a0a741b4904399cf26498, type: 3}
+    Count: 4
   _projectilePools:
   - _type: 100
     Prefab: {fileID: -1163910212922852232, guid: 0d0477b64bf6161458ca59fa4777d6e8,

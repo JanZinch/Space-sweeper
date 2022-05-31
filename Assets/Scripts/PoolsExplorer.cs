@@ -75,7 +75,8 @@ public enum PooledObjectType
 	TUNNEL_CYBER_EMPTY = 16,
 	TUNNEL_CYBER_BLOWER = 17,
 	TUNNEL_HEX_BEAMS_1 = 18,
-	
+	TUNNEL_HEX_TRAP = 19,
+	TUNNEL_HEX_ENEMIES_2 = 20,
 	
 	// projectiles
 		
