@@ -2,7 +2,9 @@
 using System.Collections;
 using CodeBase.ApplicationLibrary.Common;
 using DG.Tweening;
+using UI;
 using UnityEngine;
+using Utils;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerBody.OnObstacleHit += OnObstacleHit;
         _playerBody.OnChannelHit += OnChannelHit;
+        _playerBody.OnHealthUpdate += OnUpdateHealth;
     }
 
     private void Start()
@@ -64,6 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerBody.OnObstacleHit -= OnObstacleHit;
         _playerBody.OnChannelHit -= OnChannelHit;
+        _playerBody.OnHealthUpdate -= OnUpdateHealth;
     }
 
     private void OnObstacleHit()
@@ -167,11 +171,14 @@ public class PlayerController : MonoBehaviour
         _playerScreen.transform.position = Vector3.MoveTowards(_playerScreen.transform.position, target, _verticalSpeed * _maxSpeed * Time.deltaTime);
         
     }
-
-
-
+    
     private void SetMinSpeed()
     {
         _forwardSpeed = _minSpeed;
+    }
+
+    private void OnUpdateHealth(int health)
+    {
+        ChannelSceneUI.Instance.UpdatePlayerHealth(health);
     }
 }

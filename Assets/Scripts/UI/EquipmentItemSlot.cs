@@ -16,7 +16,6 @@ namespace UI
         [SerializeField] private Button _button = null;
         
         private Color32 _defaultColor = new Color32(255, 255, 255, 255);
-
         private Color32 _selectedColor = new Color32(255, 255, 100, 255);
         
         private bool _isSelected = false;
@@ -25,7 +24,9 @@ namespace UI
         private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
 
         private EquipmentItemType _equippedItem = EquipmentItemType.NONE;
-        
+
+        public static EquipmentSlotType CurrentSlot { get; private set; } = EquipmentSlotType.FIRST_WEAPON;
+
         private static event Action<EquipmentSlotType> OnSlotSelected = null;
         
         private void Awake()
@@ -46,7 +47,15 @@ namespace UI
 
         public static void SetItemInCurrentSlot(EquipmentItemType item, Sprite icon)
         {
-            EquipmentItemSlot slot = _slots.Find((slot) => slot._type == EquipmentUtils.CurrentSlot);
+            EquipmentItemSlot slot = _slots.Find((slot) => slot._type == CurrentSlot);
+
+            /*switch (slot._type)
+            {
+                case EquipmentSlotType.FIRST_WEAPON:
+                    case EquipmentSlotType.SECOND_WEAPON:
+                    
+                    if(EquipmentUtils)
+            }*/
             
 
             if (slot._equippedItem != EquipmentItemType.NONE)
@@ -94,7 +103,7 @@ namespace UI
         {
             if (!_isSelected)
             {
-                EquipmentUtils.CurrentSlot = _type;
+                CurrentSlot = _type;
                 _background.color = _selectedColor;
                 transform.localScale *= SelectedScaling;
                 _isSelected = true;
@@ -111,5 +120,10 @@ namespace UI
             }
         }
 
+        public static void Refresh()
+        {
+            CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
+        }
+        
     }
 }

@@ -10,7 +10,7 @@ public class PlayerBody : MonoBehaviour
     
     public event Action OnObstacleHit = null;
     public event Action OnChannelHit = null;
-
+    public event Action<int> OnHealthUpdate = null;
     public event Func<Tween> OnDeath = null;
     
     private Vector3 _fallForce = new Vector3(0.0f, -0.5f, 0.0f);
@@ -18,6 +18,7 @@ public class PlayerBody : MonoBehaviour
     private void OnEnable()
     {
         _destructible.OnDeath += OnDeath;
+        _destructible.OnHealthUpdate += OnHealthUpdate;
     }
 
     public void Fall()
@@ -50,5 +51,6 @@ public class PlayerBody : MonoBehaviour
     private void OnDisable()
     {
         _destructible.OnDeath += OnDeath;
+        _destructible.OnHealthUpdate -= OnHealthUpdate;
     }
 }

@@ -12,8 +12,10 @@ namespace Entities
         
         public double Health => _health;
         public event Func<Tween> OnDeath = null;
+        public event Action<int> OnTakeDamage = null;
+        public event Action<int> OnHealthUpdate = null;
         public event Action OnRefresh = null;
-
+        
         public bool IsAlive => _health > 0;
 
         private void Awake()
@@ -36,6 +38,9 @@ namespace Entities
         {
             _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
+            OnTakeDamage?.Invoke(damage);
+            OnHealthUpdate?.Invoke(_health);
+            
             Debug.Log(gameObject.name + " health: " + _health);
             
             if (_health <= 0)

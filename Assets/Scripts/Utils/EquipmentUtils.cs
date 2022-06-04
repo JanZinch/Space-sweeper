@@ -11,13 +11,15 @@ namespace Utils
 {
     public static class EquipmentUtils
     {
-        private static ReadOnlyDictionary<EquipmentItemType, EquipmentItem> _equipment = null;
-
+        private static ReadOnlyDictionary<EquipmentItemType, EquipmentItem> _allEquipment = null;
+        private static ReadOnlyDictionary<EquipmentItemType, EquipmentItem> _weapon = null;
+        private static ReadOnlyDictionary<EquipmentItemType, EquipmentItem> _protection = null;
+        
         private static Exception _notInitializedException = null;
         
         public static bool IsInitialized { get; private set; } = false;
 
-        public static EquipmentSlotType CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
+        
         
         public struct SelectedEquipment
         {
@@ -33,18 +35,28 @@ namespace Utils
             
             DataHelper _cachedDataHelper = Context.DataHelper; 
             
-            _equipment = new ReadOnlyDictionary<EquipmentItemType, EquipmentItem>(
+            _weapon = new ReadOnlyDictionary<EquipmentItemType, EquipmentItem>(
                 new Dictionary<EquipmentItemType, EquipmentItem>()
                 {
                     {EquipmentItemType.MACHINE_GUN, CreateEquipmentItem(EquipmentItemType.MACHINE_GUN, _cachedDataHelper, setup)},
                     {EquipmentItemType.FIREBALL_GENERATOR, CreateEquipmentItem(EquipmentItemType.FIREBALL_GENERATOR, _cachedDataHelper, setup)},
                     {EquipmentItemType.ROCKET_LAUNCHER, CreateEquipmentItem(EquipmentItemType.ROCKET_LAUNCHER, _cachedDataHelper, setup)},
                     {EquipmentItemType.LASER_EMITTER, CreateEquipmentItem(EquipmentItemType.LASER_EMITTER, _cachedDataHelper, setup)},
-                
+                });
+            
+            _protection = new ReadOnlyDictionary<EquipmentItemType, EquipmentItem>(
+                new Dictionary<EquipmentItemType, EquipmentItem>()
+                {
                     {EquipmentItemType.THICKENED_SHEATHING, CreateEquipmentItem(EquipmentItemType.THICKENED_SHEATHING, _cachedDataHelper, setup)},
                     {EquipmentItemType.ABLATIVE_COVERAGE, CreateEquipmentItem(EquipmentItemType.ABLATIVE_COVERAGE, _cachedDataHelper, setup)},
                     {EquipmentItemType.PROTECTOR_PROBES, CreateEquipmentItem(EquipmentItemType.PROTECTOR_PROBES, _cachedDataHelper, setup)},
                 });
+
+            Dictionary<EquipmentItemType, EquipmentItem> tempCollection = new Dictionary<EquipmentItemType, EquipmentItem>(_weapon.Count + _protection.Count);
+            tempCollection.AddRange(_weapon);
+            tempCollection.AddRange(_protection);
+
+            _allEquipment = new ReadOnlyDictionary<EquipmentItemType, EquipmentItem>(tempCollection);
 
             OpenBaseItemsIfNeed();
 
@@ -53,25 +65,20 @@ namespace Utils
 
         private static void OpenBaseItemsIfNeed()
         {
-            EquipmentItem baseItem = _equipment[EquipmentItemType.MACHINE_GUN];
+            EquipmentItem baseItem = _allEquipment[EquipmentItemType.MACHINE_GUN];
             
             if (baseItem.State == EquipmentItemState.LOCKED)
             {
                 baseItem.State = EquipmentItemState.EQUIPPED;
             }
             
-            if (_equipment[EquipmentItemType.PROTECTOR_PROBES].State == EquipmentItemState.AVAILABLE)
+            if (_allEquipment[EquipmentItemType.PROTECTOR_PROBES].State == EquipmentItemState.AVAILABLE)
             {
-                _equipment[EquipmentItemType.PROTECTOR_PROBES].State = EquipmentItemState.LOCKED;
+                _allEquipment[EquipmentItemType.PROTECTOR_PROBES].State = EquipmentItemState.LOCKED;
             }
             
         }
-
-        public static void Refresh()
-        {
-            CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
-        }
-
+        
         private static void CheckInitialization()
         {
             if (!IsInitialized)
@@ -89,27 +96,15 @@ namespace Utils
                 EquipmentItemState.AVAILABLE, setup.GetInfo(type));
         }
 
-        /*public static EquipmentItemState GetState(EquipmentItemType equipmentItemType)
-        {
-            CheckInitialization();
-            return _equipment[equipmentItemType].State;
-        }*/
         
-        /*public static EquipmentItemInfo GetInfo(EquipmentItemType equipmentItemType)
-        {
-            CheckInitialization();
-
-            EquipmentItem item = _equipment[equipmentItemType];
-            return new EquipmentItemInfo(item.Type, item.Icon, item.Name, item.Description);
-        }*/
 
         public static List<EquipmentItemView> InitializeItemViewList(EquipmentItemView original, in RectTransform listView)
         {
             CheckInitialization();
             
-            List<EquipmentItemView> _itemViews = new List<EquipmentItemView>(_equipment.Count);
+            List<EquipmentItemView> _itemViews = new List<EquipmentItemView>(_allEquipment.Count);
 
-            foreach (var item in _equipment)
+            foreach (var item in _allEquipment)
             {
                 _itemViews.Add(GameObject.Instantiate(original, listView).SetData(item.Value.Type, item.Value.State, item.Value.Info));
             }
@@ -120,13 +115,13 @@ namespace Utils
         public static void Open(EquipmentItemType equipmentItemType)
         {
             CheckInitialization();
-            _equipment[equipmentItemType].State = EquipmentItemState.AVAILABLE;
+            _allEquipment[equipmentItemType].State = EquipmentItemState.AVAILABLE;
         }
         
         public static void Equip(EquipmentItemType equipmentItemType)
         {
             CheckInitialization();
-            EquipmentItem item = _equipment[equipmentItemType];
+            EquipmentItem item = _allEquipment[equipmentItemType];
             item.State = EquipmentItemState.EQUIPPED;
             
             EquipmentItemSlot.SetItemInCurrentSlot(equipmentItemType, item.Icon);
@@ -135,13 +130,32 @@ namespace Utils
         public static void Unequip(EquipmentItemType equipmentItemType)
         {
             CheckInitialization();
-            EquipmentItem item = _equipment[equipmentItemType];
+            EquipmentItem item = _allEquipment[equipmentItemType];
             item.State = EquipmentItemState.AVAILABLE;
             
             DockMenu.Instance.UpdateItemView(equipmentItemType, EquipmentItemState.AVAILABLE);
         }
+
+        public static bool IsWeapon(EquipmentItemType equipmentItemType)
+        {
+            return _weapon.ContainsKey(equipmentItemType);
+        }
         
-        
+        public static bool IsProtection(EquipmentItemType equipmentItemType)
+        {
+            return _protection.ContainsKey(equipmentItemType);
+        }
+
+        public static void AddRange<T>(this ICollection<T> target, IEnumerable<T> source)
+        {
+            if(target==null)
+                throw new ArgumentNullException(nameof(target));
+            if(source==null)
+                throw new ArgumentNullException(nameof(source));
+            foreach(var element in source)
+                target.Add(element);
+        }
+
     }
     
     public enum EquipmentSlotType
