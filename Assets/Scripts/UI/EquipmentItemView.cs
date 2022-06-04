@@ -46,10 +46,11 @@ namespace UI
                         break;
 
                     case EquipmentItemState.AVAILABLE:
-
-                        _state = EquipmentItemState.EQUIPPED;
-                        _background.color = DockMenu.Instance.EquipmentListColors.SelectedColor;
-                        EquipmentUtils.Equip(_type);
+            
+                        if (EquipmentUtils.TryEquip(_type))
+                        {
+                            _background.color = DockMenu.Instance.EquipmentListColors.SelectedColor;
+                        }
                         
                         break;
                     
@@ -62,13 +63,15 @@ namespace UI
         public void SetState(EquipmentItemState state)
         {
             _state = state;
-            Update();
+            UpdateState();
         }
 
-        public void Update()
+        public void UpdateState()
         {
             if (_dataInstalled)
             {
+                Debug.Log("UPdate!");
+                
                 DockMenu.EquipmentColors _equipmentColors = DockMenu.Instance.EquipmentListColors;
                 
                 switch (_state)
@@ -85,6 +88,7 @@ namespace UI
                         break;
 
                     case EquipmentItemState.EQUIPPED:
+                        
                         
                         _background.color = _equipmentColors.SelectedColor;
                
@@ -124,6 +128,7 @@ namespace UI
                     
                     _header.text = info.Name;
                     _decription.text = info.Description;
+                    Debug.Log("UPdate!");
                     _background.color = _equipmentColors.SelectedColor;
                
                     break;

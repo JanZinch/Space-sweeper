@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts.Setups;
+using System.ComponentModel;
 using Entities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,12 +18,13 @@ namespace UI
         private Color32 _defaultColor = new Color32(255, 255, 255, 255);
         private Color32 _selectedColor = new Color32(255, 255, 100, 255);
         
+        private EquipmentItemType _equippedItem = EquipmentItemType.NONE;
         private bool _isSelected = false;
         private const float SelectedScaling = 1.2f;
 
         private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
 
-        private EquipmentItemType _equippedItem = EquipmentItemType.NONE;
+        
 
         public static EquipmentSlotType CurrentSlot { get; private set; } = EquipmentSlotType.FIRST_WEAPON;
 
@@ -43,29 +44,47 @@ namespace UI
         {
             PlayerUtils.FirstWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.FIRST_WEAPON)._equippedItem;
             PlayerUtils.SecondWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.SECOND_WEAPON)._equippedItem;
+            PlayerUtils.Protection = _slots.Find((slot) => slot._type == EquipmentSlotType.PROTECTION)._equippedItem;
         }
 
-        public static void SetItemInCurrentSlot(EquipmentItemType item, Sprite icon)
+        private static bool IsCompatible(EquipmentItemSlot slot, EquipmentItemType item)
+        {
+            if (_slots.Find((slot) => slot._equippedItem == item) == null)
+            {
+                switch (slot._type)
+                {
+                    case EquipmentSlotType.FIRST_WEAPON:
+                    case EquipmentSlotType.SECOND_WEAPON:
+                        return (EquipmentUtils.IsWeapon(item));
+                    
+                    case EquipmentSlotType.PROTECTION:
+                        return EquipmentUtils.IsProtection(item);
+                    
+                    default:
+                        throw new InvalidEnumArgumentException("slotType",
+                            (int) slot._type, typeof(EquipmentItemType));
+                }
+            }
+            else return false;
+        }
+
+        public static bool SetItemInCurrentSlot(EquipmentItemType item, Sprite icon)
         {
             EquipmentItemSlot slot = _slots.Find((slot) => slot._type == CurrentSlot);
 
-            /*switch (slot._type)
+            if (IsCompatible(slot, item))
             {
-                case EquipmentSlotType.FIRST_WEAPON:
-                    case EquipmentSlotType.SECOND_WEAPON:
-                    
-                    if(EquipmentUtils)
-            }*/
-            
+                if (slot._equippedItem != EquipmentItemType.NONE)
+                {
+                    EquipmentUtils.Unequip(slot._equippedItem);
+                }
 
-            if (slot._equippedItem != EquipmentItemType.NONE)
-            {
-                EquipmentUtils.Unequip(slot._equippedItem);
+                slot._equippedItem = item;
+                slot._icon.sprite = icon;
+
+                return true;
             }
-
-            slot._equippedItem = item;
-            slot._icon.sprite = icon;
-
+            else return false;
         }
 
         private void OnEnable()

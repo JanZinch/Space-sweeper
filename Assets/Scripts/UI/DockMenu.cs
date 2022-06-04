@@ -89,7 +89,7 @@ namespace UI
         {
             foreach (EquipmentItemView view in _equipmentList)
             {
-                view.Update();
+                view.UpdateState();
             }
         }
 

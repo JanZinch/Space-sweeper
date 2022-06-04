@@ -118,13 +118,18 @@ namespace Utils
             _allEquipment[equipmentItemType].State = EquipmentItemState.AVAILABLE;
         }
         
-        public static void Equip(EquipmentItemType equipmentItemType)
+        public static bool TryEquip(EquipmentItemType equipmentItemType)
         {
             CheckInitialization();
-            EquipmentItem item = _allEquipment[equipmentItemType];
-            item.State = EquipmentItemState.EQUIPPED;
             
-            EquipmentItemSlot.SetItemInCurrentSlot(equipmentItemType, item.Icon);
+            EquipmentItem item = _allEquipment[equipmentItemType];
+
+            if (EquipmentItemSlot.SetItemInCurrentSlot(equipmentItemType, item.Icon))
+            {
+                item.State = EquipmentItemState.EQUIPPED;
+                return true;
+            }
+            else return false;
         }
 
         public static void Unequip(EquipmentItemType equipmentItemType)
@@ -162,6 +167,6 @@ namespace Utils
     {
         FIRST_WEAPON = 0,
         SECOND_WEAPON = 1,
-        PROTECTION =2,
+        PROTECTION = 2,
     }
 }
