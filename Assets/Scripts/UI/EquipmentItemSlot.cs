@@ -21,13 +21,10 @@ namespace UI
         private EquipmentItemType _equippedItem = EquipmentItemType.NONE;
         private bool _isSelected = false;
         private const float SelectedScaling = 1.2f;
-
-        private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
-
+        private bool _isLocked = false;
         
-
+        private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
         public static EquipmentSlotType CurrentSlot { get; private set; } = EquipmentSlotType.FIRST_WEAPON;
-
         private static event Action<EquipmentSlotType> OnSlotSelected = null;
         
         private void Awake()
@@ -42,9 +39,31 @@ namespace UI
 
         public static void UpdatePlayerUtils()
         {
-            PlayerUtils.FirstWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.FIRST_WEAPON)._equippedItem;
-            PlayerUtils.SecondWeapon = _slots.Find((slot) => slot._type == EquipmentSlotType.SECOND_WEAPON)._equippedItem;
-            PlayerUtils.Protection = _slots.Find((slot) => slot._type == EquipmentSlotType.PROTECTION)._equippedItem;
+            EquipmentItemType[] selectedEquipment = new EquipmentItemType[3];
+            
+            if (CheckSlotContent(EquipmentSlotType.FIRST_WEAPON, out selectedEquipment[0]) && 
+                CheckSlotContent(EquipmentSlotType.SECOND_WEAPON, out selectedEquipment[1]) &&
+                CheckSlotContent(EquipmentSlotType.PROTECTION, out selectedEquipment[2]))
+            {
+                PlayerUtils.SetEquipment(selectedEquipment[0], selectedEquipment[1], selectedEquipment[2]);
+            }
+            else
+            {
+                throw new Exception("Invalid equipment for player.");
+            }
+        }
+
+        private static bool CheckSlotContent(EquipmentSlotType slotType, out EquipmentItemType itemType)
+        {
+            EquipmentItemSlot slot = _slots.Find((slot) => slot._type == slotType);
+            itemType = slot._equippedItem;
+            
+            if (itemType == EquipmentItemType.NONE)
+            {
+                return slot._isLocked;
+            }
+            else 
+                return IsCompatible(slot, itemType);
         }
 
         private static bool IsCompatible(EquipmentItemSlot slot, EquipmentItemType item)
@@ -55,14 +74,14 @@ namespace UI
                 {
                     case EquipmentSlotType.FIRST_WEAPON:
                     case EquipmentSlotType.SECOND_WEAPON:
-                        return (EquipmentUtils.IsWeapon(item));
+                        return EquipmentUtils.IsWeapon(item);
                     
                     case EquipmentSlotType.PROTECTION:
                         return EquipmentUtils.IsProtection(item);
                     
                     default:
-                        throw new InvalidEnumArgumentException("slotType",
-                            (int) slot._type, typeof(EquipmentItemType));
+                        throw new InvalidEnumArgumentException("slotType", (int) slot._type,
+                            typeof(EquipmentItemType));
                 }
             }
             else return false;
