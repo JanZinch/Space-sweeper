@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodeBase.ApplicationLibrary.Common;
 using Entities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,6 @@ namespace UI
         [SerializeField] private Button _debugButton = null;
         [SerializeField] private Button _closeDebugButton = null;
         [SerializeField] private GameObject _debugDialog = null;
-        
         
         private List<EquipmentItemView> _equipmentList = null;
         
@@ -49,6 +49,7 @@ namespace UI
             _startButton.onClick.AddListener(StartGameSession);
             _debugButton.onClick.AddListener(ShowDebugDialog);
             _closeDebugButton.onClick.AddListener(HideDebugDialog);
+            Messenger.AddListener(MessengerKeys.ON_ITEM_UNEQUIPPED, OnUnequipItem);
         }
 
         private void OnDisable()
@@ -57,6 +58,7 @@ namespace UI
             _startButton.onClick.RemoveListener(StartGameSession);
             _debugButton.onClick.RemoveListener(ShowDebugDialog);
             _closeDebugButton.onClick.RemoveListener(HideDebugDialog);
+            Messenger.RemoveListener(MessengerKeys.ON_ITEM_UNEQUIPPED, OnUnequipItem);
         }
 
         private void ToMainMenu()
@@ -78,6 +80,11 @@ namespace UI
         private void HideDebugDialog()
         {
             _debugDialog.SetActive(false);
+        }
+        
+        public void OnUnequipItem(Bundle bundle)
+        {
+            UpdateItemView(bundle.Get<EquipmentItemType>(BundleKeys.EQUIPMENT_ITEM_TYPE), EquipmentItemState.AVAILABLE);
         }
         
         public void UpdateItemView(EquipmentItemType type, EquipmentItemState newState)

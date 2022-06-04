@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Assets.Scripts.Setups;
+using CodeBase.ApplicationLibrary.Common;
 using CodeBase.ApplicationLibrary.Data;
 using Entities;
 using UI;
@@ -138,7 +139,8 @@ namespace Utils
             EquipmentItem item = _allEquipment[equipmentItemType];
             item.State = EquipmentItemState.AVAILABLE;
             
-            DockMenu.Instance.UpdateItemView(equipmentItemType, EquipmentItemState.AVAILABLE);
+            Messenger.Broadcast(MessengerKeys.ON_ITEM_UNEQUIPPED, 
+                new Bundle().Set(BundleKeys.EQUIPMENT_ITEM_TYPE, equipmentItemType));
         }
 
         public static bool IsWeapon(EquipmentItemType equipmentItemType)
