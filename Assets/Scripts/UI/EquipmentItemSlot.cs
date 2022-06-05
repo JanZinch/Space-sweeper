@@ -36,8 +36,8 @@ namespace UI
 
             _slots.Add(this);
         }
-
-        public static void UpdatePlayerUtils()
+        
+        public static bool TryUpdatePlayerUtils()
         {
             EquipmentItemType[] selectedEquipment = new EquipmentItemType[3];
             
@@ -46,10 +46,12 @@ namespace UI
                 CheckSlotContent(EquipmentSlotType.PROTECTION, out selectedEquipment[2]))
             {
                 PlayerUtils.SetEquipment(selectedEquipment[0], selectedEquipment[1], selectedEquipment[2]);
+                return true;
             }
             else
             {
-                throw new Exception("Invalid equipment for player.");
+                //throw new Exception("Invalid equipment for player.");
+                return false;
             }
         }
 

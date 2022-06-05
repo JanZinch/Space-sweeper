@@ -68,8 +68,10 @@ namespace UI
 
         private void StartGameSession()
         {
-            EquipmentItemSlot.UpdatePlayerUtils();
-            SceneManager.Load(Scene.CHANNEL);
+            if (EquipmentItemSlot.TryUpdatePlayerUtils())
+            {
+                SceneManager.Load(Scene.CHANNEL);
+            }
         }
 
         private void ShowDebugDialog()

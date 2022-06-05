@@ -7,6 +7,7 @@ using CodeBase.ApplicationLibrary.Data;
 using Entities;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Utils
 {
@@ -19,15 +20,6 @@ namespace Utils
         private static Exception _notInitializedException = null;
         
         public static bool IsInitialized { get; private set; } = false;
-
-        
-        
-        public struct SelectedEquipment
-        {
-            public EquipmentItem FirstWeapon;
-            public EquipmentItem SecondWeapon;
-            public EquipmentItem Protection;
-        }
         
 
         public static void Initialize(EquipmentSetup setup)
@@ -132,6 +124,7 @@ namespace Utils
             }
             else return false;
         }
+        
 
         public static void Unequip(EquipmentItemType equipmentItemType)
         {
