@@ -22,10 +22,11 @@ namespace UI
         private bool _isSelected = false;
         private const float SelectedScaling = 1.2f;
         private bool _isLocked = false;
-        
+
         private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
         public static EquipmentSlotType CurrentSlot { get; private set; } = EquipmentSlotType.FIRST_WEAPON;
         private static event Action<EquipmentSlotType> OnSlotSelected = null;
+
         
         private void Awake()
         {
@@ -36,8 +37,29 @@ namespace UI
 
             _slots.Add(this);
         }
-        
-        public static bool TryUpdatePlayerUtils()
+
+
+        public static bool SetItemInSlot(EquipmentItemType itemType, Sprite itemIcon, EquipmentSlotType slotType)
+        {
+            EquipmentItemSlot slot = _slots.Find((slot) => slot._type == slotType);
+            
+            if (IsCompatible(slot, itemType))
+            {
+                if (slot._equippedItem != EquipmentItemType.NONE)
+                {
+                    EquipmentUtils.Unequip(slot._equippedItem);
+                }
+
+                slot._equippedItem = itemType;
+                slot._icon.sprite = itemIcon;
+
+                return true;
+            }
+            else return false;
+        }
+
+
+        public static bool TryUpdatePlayerUtils(bool refresh = false)
         {
             EquipmentItemType[] selectedEquipment = new EquipmentItemType[3];
             
@@ -46,6 +68,9 @@ namespace UI
                 CheckSlotContent(EquipmentSlotType.PROTECTION, out selectedEquipment[2]))
             {
                 PlayerUtils.SetEquipment(selectedEquipment[0], selectedEquipment[1], selectedEquipment[2]);
+                
+                if(refresh) Refresh();
+                
                 return true;
             }
             else
@@ -159,11 +184,11 @@ namespace UI
                 _isSelected = false;
             }
         }
-
-        public static void Refresh()
+        
+        private static void Refresh()
         {
             CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
+            _slots = new List<EquipmentItemSlot>(4);
         }
-        
     }
 }

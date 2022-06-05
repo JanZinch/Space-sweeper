@@ -61,6 +61,11 @@ namespace UI
             Messenger.RemoveListener(MessengerKeys.ON_ITEM_UNEQUIPPED, OnUnequipItem);
         }
 
+        private void Start()
+        {
+            EquipmentUtils.UpdateSlotsIfNeed();
+        }
+
         private void ToMainMenu()
         {
             SceneManager.Load(Scene.LOADER);
@@ -68,7 +73,7 @@ namespace UI
 
         private void StartGameSession()
         {
-            if (EquipmentItemSlot.TryUpdatePlayerUtils())
+            if (EquipmentItemSlot.TryUpdatePlayerUtils(true))
             {
                 SceneManager.Load(Scene.CHANNEL);
             }

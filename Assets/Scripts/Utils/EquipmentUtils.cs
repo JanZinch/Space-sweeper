@@ -124,7 +124,21 @@ namespace Utils
             }
             else return false;
         }
-        
+
+        public static void UpdateSlotsIfNeed()
+        {
+            if (PlayerUtils.EquipmentInitialized)
+            {
+                EquipmentItem buffer = _weapon[PlayerUtils.FirstWeapon];
+                EquipmentItemSlot.SetItemInSlot(buffer.Type, buffer.Icon, EquipmentSlotType.FIRST_WEAPON);
+                
+                buffer = _weapon[PlayerUtils.SecondWeapon];
+                EquipmentItemSlot.SetItemInSlot(buffer.Type, buffer.Icon, EquipmentSlotType.SECOND_WEAPON);
+                
+                buffer = _protection[PlayerUtils.Protection];
+                EquipmentItemSlot.SetItemInSlot(buffer.Type, buffer.Icon, EquipmentSlotType.PROTECTION);
+            }
+        }
 
         public static void Unequip(EquipmentItemType equipmentItemType)
         {

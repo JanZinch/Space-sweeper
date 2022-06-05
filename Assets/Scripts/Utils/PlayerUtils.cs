@@ -15,7 +15,8 @@ namespace Utils
         public static int MaxHealth { get; set; } = 0;
 
         private const int _defaultHealth = 1000;
-        
+        public static bool EquipmentInitialized { get; private set; } = false;
+
         public static void SetEquipment(EquipmentItemType firstWeapon, EquipmentItemType secondWeapon, EquipmentItemType protection)
         {
             FirstWeapon = firstWeapon;
@@ -25,6 +26,8 @@ namespace Utils
             MaxHealth = (protection == EquipmentItemType.THICKENED_SHEATHING) ? 
                 (int) (_defaultHealth * GameBalance.ThickenedSheathingMultiplier)
                 : _defaultHealth;
+
+            EquipmentInitialized = true;
         }
         
         
