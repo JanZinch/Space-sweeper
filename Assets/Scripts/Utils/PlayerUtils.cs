@@ -14,11 +14,17 @@ namespace Utils
         
         public static int MaxHealth { get; set; } = 0;
 
+        private const int _defaultHealth = 1000;
+        
         public static void SetEquipment(EquipmentItemType firstWeapon, EquipmentItemType secondWeapon, EquipmentItemType protection)
         {
             FirstWeapon = firstWeapon;
             SecondWeapon = secondWeapon;
             Protection = protection;
+
+            MaxHealth = (protection == EquipmentItemType.THICKENED_SHEATHING) ? 
+                (int) (_defaultHealth * GameBalance.ThickenedSheathingMultiplier)
+                : _defaultHealth;
         }
         
         

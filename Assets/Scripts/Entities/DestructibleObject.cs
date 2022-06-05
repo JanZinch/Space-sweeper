@@ -22,7 +22,12 @@ namespace Entities
         {
             _health = _maxHealth;
         }
-        
+
+        public void SetMaxHealth(int health)
+        {
+            _health = _maxHealth = health;
+        }
+
         private void Refresh()
         {
             _health = _maxHealth;

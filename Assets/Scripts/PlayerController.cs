@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
         _playerBody.OnObstacleHit += OnObstacleHit;
         _playerBody.OnChannelHit += OnChannelHit;
         _playerBody.OnHealthUpdate += OnUpdateHealth;
+        _playerBody.OnDeath += OnObstacleHit;
     }
 
     private void Start()
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
         _playerBody.OnObstacleHit -= OnObstacleHit;
         _playerBody.OnChannelHit -= OnChannelHit;
         _playerBody.OnHealthUpdate -= OnUpdateHealth;
+        _playerBody.OnDeath -= OnObstacleHit;
     }
 
     private void OnObstacleHit()
@@ -179,6 +181,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnUpdateHealth(int health)
     {
+        Debug.Log("Health: " + health);
+        
         ChannelSceneUI.Instance.UpdatePlayerHealth(health);
     }
 }

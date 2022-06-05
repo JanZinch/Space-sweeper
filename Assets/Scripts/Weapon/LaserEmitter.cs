@@ -9,6 +9,8 @@ public class LaserEmitter : Weapon
     private Laser _activeLaser = null;
     private bool _isActive = false;
 
+    private Vector3 _currentDirection = Vector3.forward;
+    
     public override bool GetPlayerInput(string buttonName)
     {
         bool input = Input.GetButton(buttonName);
@@ -40,13 +42,11 @@ public class LaserEmitter : Weapon
         return true;
     }
 
-    public override void SetCustomTargetPosition(Vector3 targetPosition)
-    {
-        throw new NotImplementedException();
-    }
+    public override void SetCustomTargetPosition(Vector3 targetPosition) { }
 
     public override void SetCustomTargetDirection(Vector3 direction)
     {
-        throw new NotImplementedException();
+        _currentDirection = direction;
+
     }
 }

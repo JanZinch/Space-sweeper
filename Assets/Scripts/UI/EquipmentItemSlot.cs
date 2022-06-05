@@ -63,12 +63,12 @@ namespace UI
                 return slot._isLocked;
             }
             else 
-                return IsCompatible(slot, itemType);
+                return IsCompatible(slot, itemType, true);
         }
 
-        private static bool IsCompatible(EquipmentItemSlot slot, EquipmentItemType item)
+        private static bool IsCompatible(EquipmentItemSlot slot, EquipmentItemType item, bool onStartGameSession = false)
         {
-            if (_slots.Find((slot) => slot._equippedItem == item) == null)
+            if (onStartGameSession || _slots.Find((slot) => slot._equippedItem == item) == null)
             {
                 switch (slot._type)
                 {

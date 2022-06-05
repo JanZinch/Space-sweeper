@@ -40,15 +40,9 @@ public class RocketLauncher : Weapon, INavigational
         else return false;
     }
 
-    public override void SetCustomTargetPosition(Vector3 targetPosition)
-    {
-        throw new NotImplementedException();
-    }
+    public override void SetCustomTargetPosition(Vector3 targetPosition) { }
 
-    public override void SetCustomTargetDirection(Vector3 direction)
-    {
-        throw new NotImplementedException();
-    }
+    public override void SetCustomTargetDirection(Vector3 direction) { }
 
     public void SetTarget(Transform target)
     {
