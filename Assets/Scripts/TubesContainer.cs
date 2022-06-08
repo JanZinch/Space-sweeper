@@ -144,7 +144,27 @@ public static class TubesContainer
              }},
              
              
-             
+             {4, new List<TubeData>()
+             {
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_ARMADA, Quaternion.identity),
+                 
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 
+                 
+             }},
             
         });
 

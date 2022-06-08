@@ -11,8 +11,12 @@ public class ActorsSpawn : MonoBehaviour
     {
         foreach (var spawnPoint in _spawnPoints)
         {
-            PooledObject spawnedObject = PoolsManager.GetPooledObject(spawnPoint.Key, spawnPoint.Value.position, spawnPoint.Value.rotation);
-            spawnedObject.GetLinkedComponent<AIController>().Initialize();
+            AIController spawnedObject = PoolsManager.GetPooledObject(spawnPoint.Key, spawnPoint.Value.position, Quaternion.Euler(Vector3.zero))
+                .GetLinkedComponent<AIController>();
+            
+            spawnedObject.SetStartEulerAngle(spawnPoint.Value.eulerAngles.z);
+            spawnedObject.Initialize();
+            
         }
     }
 }

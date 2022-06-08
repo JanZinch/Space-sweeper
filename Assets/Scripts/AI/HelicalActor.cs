@@ -10,7 +10,8 @@ namespace AI
         [Space]
         [SerializeField] protected float _angularSpeed = default;
         [SerializeField] protected Transform _rotationPivot = null;
-
+        [SerializeField] [Range(0.0f, 360.0f)] protected float _startEulerAngle = default;
+        
         private Vector3 _cachedSelfPosition = default;
         
         public override void Initialize()
@@ -20,8 +21,23 @@ namespace AI
             if (_cachedSelfPosition != transform.position && transform.position != default)
             {
                 _cachedSelfPosition = transform.position;
-                transform.DOMoveY(_cachedSelfPosition.y - Mathf.Abs(_rotationPivot.position.y - _cachedSelfPosition.y), 0.0f);
+                
+                transform.Translate(0.0f, _cachedSelfPosition.y - Mathf.Abs(_rotationPivot.position.y - _cachedSelfPosition.y), 0.0f);
+                transform.RotateAround(_rotationPivot.transform.position, Vector3.forward, _startEulerAngle);
             }
+            
+        }
+
+        public void SetStartEulerAngle(float eulerAngle)
+        {
+            _startEulerAngle = eulerAngle;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            
+            //transform.RotateAround(_rotationPivot.transform.position, Vector3.forward, _startEulerAngle);
         }
 
         protected override void Update()

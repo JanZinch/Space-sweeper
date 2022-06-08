@@ -75,6 +75,7 @@ MonoBehaviour:
   _setSpeedOnStart: 0
   _angularSpeed: 30
   _rotationPivot: {fileID: 4903328179213774570}
+  _startEulerAngle: 0
 --- !u!114 &-5740057065559618626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,6 +77,7 @@ public enum PooledObjectType
 	TUNNEL_HEX_BEAMS_1 = 18,
 	TUNNEL_HEX_TRAP = 19,
 	TUNNEL_HEX_ENEMIES_2 = 20,
+	TUNNEL_CYBER_ARMADA = 21,
 	
 	// projectiles
 		
@@ -93,5 +94,6 @@ public enum PooledObjectType
 	// enemies
 	
 	GAMMAZOID = 300,
+	ARMADA = 301,
 	
 }
