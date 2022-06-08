@@ -94,6 +94,6 @@ public enum PooledObjectType
 	// enemies
 	
 	GAMMAZOID = 300,
-	ARMADA = 301,
+	CENTRAL_GAMMAZOID = 301,
 	
 }
