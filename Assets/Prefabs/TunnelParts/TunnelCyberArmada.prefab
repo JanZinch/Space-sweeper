@@ -133,11 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPoints:
-  - Key: 300
+  - Key: 302
     Value: {fileID: 1356559002651399123}
-  - Key: 300
+  - Key: 302
     Value: {fileID: 7768436412761923632}
-  - Key: 300
+  - Key: 302
     Value: {fileID: 9222510025927588251}
   - Key: 301
     Value: {fileID: 1989600645145222240}

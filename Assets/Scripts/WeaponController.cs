@@ -107,6 +107,37 @@ public class WeaponController : MonoBehaviour
         return false;
     }
 
+    public bool FireByDirectionIfPossible(int weaponIndex, Vector3 direction)
+    {
+        Weapon weapon = _attachedWeapons[weaponIndex];
+
+        if (weapon != null)
+        {
+            weapon.SetCustomTargetDirection(direction);
+            return weapon.FireIfPossible();
+        }
+
+        return false;
+    }
+
+    public bool IsLaserEmitter(int weaponIndex)
+    {
+        return _attachedWeapons[weaponIndex] is LaserEmitter;
+    }
+
+    public void SetShootingDurationIfNeed(float duration)
+    {
+        foreach (Weapon weapon in _attachedWeapons)
+        {
+            LaserEmitter laserEmitter = weapon as LaserEmitter;
+            
+            if (laserEmitter != null)
+            {
+                laserEmitter.SetShootingDuration(duration);
+            }
+        }
+        
+    }
 
     private void OnDisable()
     {

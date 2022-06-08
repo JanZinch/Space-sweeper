@@ -95,5 +95,6 @@ public enum PooledObjectType
 	
 	GAMMAZOID = 300,
 	CENTRAL_GAMMAZOID = 301,
+	LASER_GAMMAZOID = 302,
 	
 }

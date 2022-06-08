@@ -40,7 +40,14 @@ namespace AI
                 StopCoroutine(_shootingRoutine);
             }
 
-            _shootingRoutine = StartCoroutine(FireOnTarget(target,_cachedCooldown != null));
+            if (_weaponController.IsLaserEmitter(0))
+            {
+                _shootingRoutine = StartCoroutine(UseLaser(_cachedCooldown != null));
+            }
+            else
+            {
+                _shootingRoutine = StartCoroutine(FireOnTarget(target,_cachedCooldown != null));
+            }
         }
 
         private IEnumerator FireOnTarget(Transform target, bool cooldownIsCached)
@@ -54,6 +61,21 @@ namespace AI
                 {
                     _weaponController.FireToPositionIfPossible(0, target.position);
                 }
+                
+                yield return null;
+            }
+        }
+
+        private IEnumerator UseLaser(bool cooldownIsCached)
+        {
+            _weaponController.SetShootingDurationIfNeed(_shootingDuration);
+            
+            while (true)
+            {
+                yield return (cooldownIsCached) ? _cachedCooldown 
+                    : new WaitForSeconds(Random.Range(_minCooldown, _maxCooldown));
+                
+                _weaponController.FireByDirectionIfPossible(0, Vector3.back);
                 
                 yield return null;
             }

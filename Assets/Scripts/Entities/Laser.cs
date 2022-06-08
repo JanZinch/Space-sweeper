@@ -17,10 +17,17 @@ namespace Entities
         private Transform _sourcePoint = null;
         private Vector3 _direction = Vector3.forward;
 
+        private float _shootingDuration = -1.0f;
+        
         public void TurnOn()
         {
             _lineRenderer.startWidth = _maxWidth;
             _lineRenderer.endWidth = 0.5f * _maxWidth;
+
+            if (_shootingDuration >= 0.0f)
+            {
+                Invoke(nameof(TurnOn), _shootingDuration);
+            }
         }
 
         public Laser SetSourcePoint(Transform sourcePoint)
@@ -99,6 +106,10 @@ namespace Entities
             
         }*/
 
+        public void SetShootingDuration(float shootingDuration)
+        {
+            _shootingDuration = shootingDuration;
+        }
 
         public void TurnOff()
         {

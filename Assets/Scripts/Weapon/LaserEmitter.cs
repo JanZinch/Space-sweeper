@@ -10,6 +10,8 @@ public class LaserEmitter : Weapon
     private bool _isActive = false;
 
     private Vector3 _currentDirection = Vector3.forward;
+
+    
     
     public override bool GetPlayerInput(string buttonName)
     {
@@ -24,6 +26,11 @@ public class LaserEmitter : Weapon
         _isActive = input;
 
         return input;
+    }
+
+    public void SetShootingDuration(float shootingDuration)
+    {
+        _activeLaser.SetShootingDuration(shootingDuration);
     }
 
     public override bool FireIfPossible()
