@@ -188,7 +188,7 @@ namespace UI
         private static void Refresh()
         {
             CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
-            _slots = new List<EquipmentItemSlot>(4);
+            _slots.Clear();
         }
     }
 }
