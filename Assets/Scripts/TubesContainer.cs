@@ -148,7 +148,8 @@ public static class TubesContainer
              {
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
-                 
+                 new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_ARMADA, Quaternion.identity),
                  
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),

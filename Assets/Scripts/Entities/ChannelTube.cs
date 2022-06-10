@@ -4,13 +4,13 @@ namespace Entities
 {
     public class ChannelTube : MonoBehaviour
     {
-        [SerializeField] private ActorsSpawn _actorsSpawn = null;
+        [SerializeField] private Spawner[] _spawners = null;
         
         public void Initialize()
         {
-            if (_actorsSpawn != null)
+            foreach (Spawner spawner in _spawners)
             {
-                _actorsSpawn.Spawn();
+                spawner.Spawn();
             }
         }
     }

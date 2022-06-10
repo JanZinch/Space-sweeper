@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using AI;
 
-public class ActorsSpawn : MonoBehaviour
+public class ActorSpawner : Spawner
 {
-    [SerializeField] private List<Pair<PooledObjectType, Transform>> _spawnPoints = null;
-
-    public void Spawn()
+    public override void Spawn()
     {
         foreach (var spawnPoint in _spawnPoints)
         {

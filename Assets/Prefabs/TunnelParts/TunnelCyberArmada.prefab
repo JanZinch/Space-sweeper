@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0b2db413344b3eacfa335637463845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorsSpawn: {fileID: 5711521254975484317}
+  _spawners:
+  - {fileID: 5711521254975484317}
 --- !u!114 &5711521254975484317
 MonoBehaviour:
   m_ObjectHideFlags: 0

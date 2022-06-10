@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 0}
+  _destructible: {fileID: 0}
 --- !u!54 &5433987500959212171
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -741,6 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 0}
+  _destructible: {fileID: 0}
 --- !u!1001 &6413432199279839558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -937,7 +939,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8fa673119ba3ff14295ed705f91b8dfb, type: 2}
+      objectReference: {fileID: 2100000, guid: 89d0f25cc29e0fc48bd0265159ec869b, type: 2}
     - target: {fileID: -5754084199372789682, guid: a85fa1608421c9a4ba559a974c0c12de,
         type: 3}
       propertyPath: m_Mesh

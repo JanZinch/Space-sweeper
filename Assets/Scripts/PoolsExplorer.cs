@@ -90,11 +90,13 @@ public enum PooledObjectType
 	
 	FIREBALL_EXPLOSION = 200,
 	BULLET_EXPLOSION = 201,
+	MINE_EXPLOSION = 202,
 	
 	// enemies
 	
 	GAMMAZOID = 300,
 	CENTRAL_GAMMAZOID = 301,
 	LASER_GAMMAZOID = 302,
+	MINE = 303,
 	
 }
