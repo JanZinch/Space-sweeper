@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Entities
 {
@@ -17,17 +20,10 @@ namespace Entities
         private Transform _sourcePoint = null;
         private Vector3 _direction = Vector3.forward;
 
-        private float _shootingDuration = -1.0f;
-        
         public void TurnOn()
         {
             _lineRenderer.startWidth = _maxWidth;
             _lineRenderer.endWidth = 0.5f * _maxWidth;
-
-            if (_shootingDuration >= 0.0f)
-            {
-                Invoke(nameof(TurnOn), _shootingDuration);
-            }
         }
 
         public Laser SetSourcePoint(Transform sourcePoint)
@@ -39,6 +35,8 @@ namespace Entities
         public Laser SetDirection(Vector3 direction)
         {
             _direction = direction;
+            Vector3 cachedPosition = _lineRenderer.GetPosition(1);
+            _lineRenderer.SetPosition(1, new Vector3(cachedPosition.x, cachedPosition.y, direction.z * Mathf.Abs(cachedPosition.z)));
             return this;
         }
 
@@ -105,11 +103,7 @@ namespace Entities
 
             
         }*/
-
-        public void SetShootingDuration(float shootingDuration)
-        {
-            _shootingDuration = shootingDuration;
-        }
+        
 
         public void TurnOff()
         {

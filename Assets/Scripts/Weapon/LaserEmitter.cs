@@ -11,7 +11,7 @@ public class LaserEmitter : Weapon
 
     private Vector3 _currentDirection = Vector3.forward;
 
-    
+    private float _shootingDuration = -1.0f;
     
     public override bool GetPlayerInput(string buttonName)
     {
@@ -30,7 +30,13 @@ public class LaserEmitter : Weapon
 
     public void SetShootingDuration(float shootingDuration)
     {
-        _activeLaser.SetShootingDuration(shootingDuration);
+        _shootingDuration = shootingDuration;
+    }
+
+    private void TurnOff()
+    {
+        _activeLaser.TurnOff();
+        _activeLaser = null;
     }
 
     public override bool FireIfPossible()
@@ -38,11 +44,16 @@ public class LaserEmitter : Weapon
         if (_activeLaser == null)
         {
             _activeLaser = PoolsManager.GetPooledObject(PooledObjectType.LASER, _sourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Laser>().SetSourcePoint(_sourcePoint);
+                .GetLinkedComponent<Laser>().SetSourcePoint(_sourcePoint).SetDirection(_currentDirection);
             
             _activeLaser.transform.parent = transform;
             _activeLaser.TurnOn();
 
+            if (_shootingDuration > 0.0f)
+            {
+                Invoke(nameof(TurnOff), _shootingDuration);
+            }
+            
             _isActive = true;
         }
 

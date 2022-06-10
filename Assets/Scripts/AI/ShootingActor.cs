@@ -12,14 +12,22 @@ namespace AI
         [SerializeField] private float _minCooldown = 0.5f, _maxCooldown = 1.0f;
 
         private WaitForSeconds _cachedCooldown = null;
+        private WaitForSeconds _cachedShootingWait = null;
         private Coroutine _shootingRoutine = null;
         
         private void Awake()
         {
-            if (Mathf.Approximately(_maxCooldown, _maxCooldown))
+            if (ApproximatelyEquals(_minCooldown, _maxCooldown))
             {
                 _cachedCooldown = new WaitForSeconds(_maxCooldown);
             }
+
+            _cachedShootingWait = new WaitForSeconds(_shootingDuration);
+        }
+
+        private bool ApproximatelyEquals(float a, float b, float eps = 0.0001f)
+        {
+            return Mathf.Abs(a - b) < eps;
         }
 
         private void OnEnable()
@@ -40,6 +48,8 @@ namespace AI
                 StopCoroutine(_shootingRoutine);
             }
 
+            Debug.Log("Cooldown is cached: " + (_cachedCooldown != null));
+            
             if (_weaponController.IsLaserEmitter(0))
             {
                 _shootingRoutine = StartCoroutine(UseLaser(_cachedCooldown != null));
@@ -77,7 +87,8 @@ namespace AI
                 
                 _weaponController.FireByDirectionIfPossible(0, Vector3.back);
                 
-                yield return null;
+                yield return _cachedShootingWait;
+
             }
             
         }

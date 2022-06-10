@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponController: {fileID: 4385962593029518715}
-  _shootingDuration: 8
-  _minCooldown: 0.5
-  _maxCooldown: 1
+  _shootingDuration: 4
+  _minCooldown: 2
+  _maxCooldown: 0.5
 --- !u!114 &-379279679918237507
 MonoBehaviour:
   m_ObjectHideFlags: 0

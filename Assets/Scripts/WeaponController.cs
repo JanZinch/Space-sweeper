@@ -109,6 +109,8 @@ public class WeaponController : MonoBehaviour
 
     public bool FireByDirectionIfPossible(int weaponIndex, Vector3 direction)
     {
+        Debug.Log("Fire by direction");
+        
         Weapon weapon = _attachedWeapons[weaponIndex];
 
         if (weapon != null)
@@ -117,6 +119,8 @@ public class WeaponController : MonoBehaviour
             return weapon.FireIfPossible();
         }
 
+        
+        
         return false;
     }
 
