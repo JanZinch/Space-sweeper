@@ -17,4 +17,10 @@ public class EffectsManager : MonoBehaviour
         float explosionDuration = particles.GetLinkedComponent<ParticleSystem>().main.duration;
         _instance.StartCoroutine(particles.ReturnToPool(explosionDuration));
     }
+
+    public static PooledObject SetupParticles(PooledObjectType explosionType, Vector3 position, Quaternion rotation)
+    {
+        return PoolsManager.GetPooledObject(explosionType, position, rotation);
+    }
+
 }

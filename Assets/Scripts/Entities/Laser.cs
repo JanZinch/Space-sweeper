@@ -19,7 +19,11 @@ namespace Entities
         
         private Transform _sourcePoint = null;
         private Vector3 _direction = Vector3.forward;
-
+        private Vector3 _defaultMaxDistance = default;
+        private PooledObject _microexplosions = null;
+        private float _distanceToTarget = default;
+        private float _maxDistance = default;
+        
         public void TurnOn()
         {
             _lineRenderer.startWidth = _maxWidth;
@@ -36,7 +40,8 @@ namespace Entities
         {
             _direction = direction;
             Vector3 cachedPosition = _lineRenderer.GetPosition(1);
-            _lineRenderer.SetPosition(1, new Vector3(cachedPosition.x, cachedPosition.y, direction.z * Mathf.Abs(cachedPosition.z)));
+            _defaultMaxDistance = new Vector3(cachedPosition.x, cachedPosition.y, _direction.z * Mathf.Abs(cachedPosition.z));
+            _lineRenderer.SetPosition(1, _defaultMaxDistance);
             return this;
         }
 
@@ -52,13 +57,18 @@ namespace Entities
             }
         }
 
+        private void Awake()
+        {
+            _maxDistance = _sphereCastPercents * Vector3.Distance(_lineRenderer.GetPosition(0), _lineRenderer.GetPosition(1));
+            _defaultMaxDistance = _lineRenderer.GetPosition(1);
+        }
 
         private void Update()
         {
             RaycastHit raycastHit;
-            float maxDistance = _sphereCastPercents * Vector3.Distance(_lineRenderer.GetPosition(0), _lineRenderer.GetPosition(1));
+            float distance = (_distanceToTarget != default)? _distanceToTarget : _maxDistance;
             
-            if (Physics.SphereCast(_sourcePoint.position, _sphereCastRadius, _direction, out raycastHit, maxDistance))
+            if (Physics.SphereCast(_sourcePoint.position, _sphereCastRadius, _direction, out raycastHit, distance))
             {
                 Debug.Log("Catched: " + raycastHit.transform.gameObject.name);
 
@@ -69,8 +79,34 @@ namespace Entities
                     Debug.Log("Damage");
                     cachedObject.MakeDamage(_damage);
                 }
+
+                if (_distanceToTarget == default)
+                {
+                    _microexplosions = EffectsManager.SetupParticles(_explosionType, raycastHit.point, Quaternion.identity); 
+                    
+                    Vector3 cachedPosition = _lineRenderer.GetPosition(1);
+                    _distanceToTarget = Mathf.Abs(_sourcePoint.position.z - raycastHit.point.z + 5.0f);
+                    _lineRenderer.SetPosition(1, new Vector3(cachedPosition.x, cachedPosition.y, _direction.z * _distanceToTarget));
+                    
+                }
+                else 
+                {
+                    _microexplosions.transform.position = raycastHit.point;
+                }
                 
-                EffectsManager.SetupExplosion(_explosionType, raycastHit.point, Quaternion.identity);
+                
+                
+            }
+            else
+            {
+                if (_distanceToTarget != default)
+                {
+                    _microexplosions.ReturnToPool();
+                    _microexplosions = null;
+
+                    _lineRenderer.SetPosition(1, _defaultMaxDistance);
+                    _distanceToTarget = default;
+                }
             }
         }
         
