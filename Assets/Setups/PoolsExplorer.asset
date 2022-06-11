@@ -91,6 +91,10 @@ MonoBehaviour:
     Prefab: {fileID: 8066594785223089417, guid: 4f27009001933fc47959fbaac8492c6e,
       type: 3}
     Count: 50
+  - _type: 203
+    Prefab: {fileID: 4045772260141635748, guid: 3fb09a27171497b439955746fcc0efb0,
+      type: 3}
+    Count: 50
   _enemyPools:
   - _type: 300
     Prefab: {fileID: 6104449256814285246, guid: a99805ad1b284af46b2353d2fe4d6b93,

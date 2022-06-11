@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class RocketLauncher : Weapon, INavigational
 {
-    [SerializeField] private Transform _sourcePoint = default;
+    [SerializeField] private Transform _leftSourcePoint = null;
+    [SerializeField] private Transform _rightSourcePoint = null;
     [SerializeField] private float _cooldown = 0.25f;
     [SerializeField] private float _navigationLerpDuration = 1.0f;
     
@@ -30,9 +31,12 @@ public class RocketLauncher : Weapon, INavigational
     {
         if (_deltaTime >= _cooldown)
         {
-            PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _sourcePoint.position, Quaternion.identity)
+            PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _leftSourcePoint.position, Quaternion.identity)
                 .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
 
+            PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _rightSourcePoint.position, Quaternion.identity)
+                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
+            
             _deltaTime = 0.0f;
             
             return true;

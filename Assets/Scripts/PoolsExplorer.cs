@@ -91,6 +91,7 @@ public enum PooledObjectType
 	FIREBALL_EXPLOSION = 200,
 	BULLET_EXPLOSION = 201,
 	MINE_EXPLOSION = 202,
+	ROCKET_EXPLOSION = 203,
 	
 	// enemies
 	
