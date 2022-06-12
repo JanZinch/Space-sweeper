@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Entities;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -16,7 +15,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private PooledObject _pooledObject = null;
 
     private Navigation _navigation = null;
-    
+    private Collider _collider = null;
+        
     private class Navigation
     {
         private Transform _target = null;
@@ -49,6 +49,10 @@ public class Projectile : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        _collider = GetComponent<Collider>();
+    }
 
     public Projectile Setup(Vector3 direction)
     {
@@ -81,8 +85,11 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Collision with: " + other.gameObject.name);
-        
+        if (_navigation != null)
+        {
+            Debug.Log("Rocket collision with: " + other.gameObject.name);
+        }
+
         if (other.gameObject.TryGetComponent<DestructibleObject>(out DestructibleObject destructibleObject))
         {
             destructibleObject.MakeDamage(_damage);
@@ -96,5 +103,10 @@ public class Projectile : MonoBehaviour
         }
 
         if (_pooledObject != null) _pooledObject.ReturnToPool();
+    }
+
+    public static void IgnoreCollision(Projectile first, Projectile second)
+    {
+        Physics.IgnoreCollision(first._collider, second._collider);
     }
 }

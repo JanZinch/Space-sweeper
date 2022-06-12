@@ -31,14 +31,17 @@ public class RocketLauncher : Weapon, INavigational
     {
         if (_deltaTime >= _cooldown)
         {
-            PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _leftSourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
+            Projectile leftRocket = PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _leftSourcePoint.position, Quaternion.identity)
+                .GetLinkedComponent<Projectile>();
+            leftRocket.Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
 
-            PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _rightSourcePoint.position, Quaternion.identity)
-                .GetLinkedComponent<Projectile>().Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
+            Projectile rightRocket = PoolsManager.GetPooledObject(PooledObjectType.ROCKET, _rightSourcePoint.position, Quaternion.identity)
+                .GetLinkedComponent<Projectile>();
+            rightRocket.Setup(Vector3.forward).SetNavigation(_target, _navigationLerpDuration);
+            
+            Projectile.IgnoreCollision(leftRocket, rightRocket);
             
             _deltaTime = 0.0f;
-            
             return true;
         }
         else return false;
