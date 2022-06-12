@@ -68,8 +68,6 @@ public class Projectile : MonoBehaviour
         _damage = damage;
         
         if(_trailParticles) _trailParticles.Play();
-
-        //if (_trailRenderer) _trailRenderer.enabled = true;
     }
 
     private void Update()
@@ -94,7 +92,6 @@ public class Projectile : MonoBehaviour
 
         if (_trailRenderer)
         {
-            //_trailRenderer.enabled = false;
             _trailRenderer.Clear();
         }
 
