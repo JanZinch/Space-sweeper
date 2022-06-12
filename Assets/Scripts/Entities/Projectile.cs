@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed = 100.0f;
     [SerializeField] private int _damage = 10;
     [SerializeField] private ParticleSystem _trailParticles = null;
+    [SerializeField] private TrailRenderer _trailRenderer = null;
     [SerializeField] private PooledObject _pooledObject = null;
 
     private Navigation _navigation = null;
@@ -67,6 +68,8 @@ public class Projectile : MonoBehaviour
         _damage = damage;
         
         if(_trailParticles) _trailParticles.Play();
+
+        //if (_trailRenderer) _trailRenderer.enabled = true;
     }
 
     private void Update()
@@ -88,7 +91,13 @@ public class Projectile : MonoBehaviour
         }
         
         EffectsManager.SetupExplosion(_explosionType, transform.position, Quaternion.identity);
-        
+
+        if (_trailRenderer)
+        {
+            //_trailRenderer.enabled = false;
+            _trailRenderer.Clear();
+        }
+
         if (_pooledObject != null) _pooledObject.ReturnToPool();
     }
 }

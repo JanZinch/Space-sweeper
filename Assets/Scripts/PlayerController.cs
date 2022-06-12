@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Boost")] 
     [SerializeField] private float _maxSpeedMultiplier = 2.0f;
+
+    [SerializeField] private bool stop = false;
+    
+    
     private float _currentSpeedMultiplier = 1.0f;
     
     private float _verticalSpeed = 0.0f;
@@ -138,6 +142,8 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (stop) return;
+        
         if (!_isDestroyed)
         {
             Vector3 currentAngle = _playerBody.transform.localEulerAngles;
