@@ -92,7 +92,7 @@ MonoBehaviour:
       type: 3}
     Count: 50
   - _type: 203
-    Prefab: {fileID: 4045772260141635748, guid: 3fb09a27171497b439955746fcc0efb0,
+    Prefab: {fileID: 4045772260141635748, guid: 47d7d65ffd656014ca795e25de66c39a,
       type: 3}
     Count: 50
   - _type: 204

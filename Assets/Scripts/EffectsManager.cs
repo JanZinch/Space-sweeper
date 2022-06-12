@@ -12,10 +12,12 @@ public class EffectsManager : MonoBehaviour
 
     public static void SetupExplosion(PooledObjectType explosionType, Vector3 position, Quaternion rotation)
     { 
-        PooledObject particles = PoolsManager.GetPooledObject(explosionType, position, rotation);
-
-        float explosionDuration = particles.GetLinkedComponent<ParticleSystem>().main.duration;
-        _instance.StartCoroutine(particles.ReturnToPool(explosionDuration));
+        PooledObject particlesPooled = PoolsManager.GetPooledObject(explosionType, position, rotation);
+        ParticleSystem particleSystem = particlesPooled.GetLinkedComponent<ParticleSystem>();
+        
+        float explosionDuration = particleSystem.main.duration;
+        particleSystem.Play(true);
+        _instance.StartCoroutine(particlesPooled.ReturnToPool(explosionDuration));
     }
 
     public static PooledObject SetupParticles(PooledObjectType explosionType, Vector3 position, Quaternion rotation)
