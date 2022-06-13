@@ -14,7 +14,7 @@ namespace Utils
         
         public static int MaxHealth { get; set; } = 0;
 
-        private const int _defaultHealth = 1000;
+        private const int _defaultHealth = 100000;
         public static bool EquipmentInitialized { get; private set; } = false;
 
         public static void SetEquipment(EquipmentItemType firstWeapon, EquipmentItemType secondWeapon, EquipmentItemType protection)
