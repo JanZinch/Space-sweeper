@@ -48,7 +48,7 @@ namespace Entities
 
         private void Explode()
         {
-            EffectsManager.SetupExplosion(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
+            EffectsManager.SetupExplosion(PooledObjectType.GAMMAZOID_EXPLOSION, transform.position, Quaternion.identity);
             
             foreach (DestructibleObject destructibleObject in _affectedObjects)
             {

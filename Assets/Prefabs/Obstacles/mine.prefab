@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad6ab043d648fea0acf25b044d5685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 50
   _pooledObject: {fileID: 6482953150122365130}
 --- !u!114 &6482953150122365130
 MonoBehaviour:
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24424cace5668344686b58ad4d703511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkedComponent: {fileID: 0}
+  _linkedComponent: {fileID: 1178712681552286552}
 --- !u!1 &8365793296515947332
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8365793296515947332}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 5

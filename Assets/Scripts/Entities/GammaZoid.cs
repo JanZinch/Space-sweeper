@@ -1,8 +1,6 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Entities;
 using UnityEngine;
-
 
 public class GammaZoid : Enemy
 {
@@ -20,11 +18,14 @@ public class GammaZoid : Enemy
         _rigidbody.constraints = RigidbodyConstraints.None;
         _rigidbody.AddRelativeForce(_fallForce, ForceMode.Force);
         
-        PoolsManager.GetPooledObject(PooledObjectType.FIREBALL_EXPLOSION, transform.position, Quaternion.identity);
+        Explode();
+        
+        return DOTween.Sequence().SetDelay(2.0f).OnComplete(Explode);
+    }
 
-        Sequence s = DOTween.Sequence().SetDelay(2.0f);
-
-        return s;
+    private void Explode()
+    {
+        EffectsManager.SetupExplosion(PooledObjectType.GAMMAZOID_EXPLOSION, transform.position, Quaternion.identity);
     }
 
     private void OnDisable()

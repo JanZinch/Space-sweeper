@@ -82,7 +82,8 @@ namespace Entities
 
                 if (_distanceToTarget == default)
                 {
-                    _microexplosions = EffectsManager.SetupParticles(_explosionType, raycastHit.point, Quaternion.identity); 
+                    _microexplosions =  PoolsManager.GetPooledObject(_explosionType, raycastHit.point, Quaternion.identity);
+                    _microexplosions.GetLinkedComponent<ParticleSystem>().Play();
                     
                     Vector3 cachedPosition = _lineRenderer.GetPosition(1);
                     _distanceToTarget = Mathf.Abs(_sourcePoint.position.z - raycastHit.point.z + 5.0f);
