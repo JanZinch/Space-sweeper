@@ -20,11 +20,12 @@ namespace Entities
         private Transform _sourcePoint = null;
         private Vector3 _direction = Vector3.forward;
         private Vector3 _defaultEndPosition = default;
-        private PooledObject _microexplosions = null;
         private float _distanceToTarget = -1.0f;
         private float _maxDistance = default;
-        //private bool _needSetupExplosion
-        
+
+        private const float DistanceOffset = 1.5f;
+        private PooledObject _microexplosions = null;
+
         private void Awake()
         {
             _maxDistance = _sphereCastPercents * Vector3.Distance(_lineRenderer.GetPosition(0), _lineRenderer.GetPosition(1));
@@ -35,7 +36,6 @@ namespace Entities
         {
             _lineRenderer.startWidth = _maxWidth;
             _lineRenderer.endWidth = 0.5f * _maxWidth;
-            //_lineRenderer.SetPosition(1, _defaultEndPosition);
         }
 
         public Laser SetSourcePoint(Transform sourcePoint)
@@ -47,7 +47,6 @@ namespace Entities
         public Laser SetDirection(Vector3 direction)
         {
             _direction = direction;
-            //Vector3 cachedPosition = _lineRenderer.GetPosition(1);
             _defaultEndPosition = new Vector3(_defaultEndPosition.x, _defaultEndPosition.y, _direction.z * Mathf.Abs(_defaultEndPosition.z));
             _lineRenderer.SetPosition(1, _defaultEndPosition);
             return this;
@@ -88,36 +87,28 @@ namespace Entities
                 _distanceToTarget = Mathf.Abs(_sourcePoint.position.z - raycastHit.point.z);
                 
                 Vector3 cachedPosition = _lineRenderer.GetPosition(1);
-                _lineRenderer.SetPosition(1, new Vector3(cachedPosition.x, cachedPosition.y, _direction.z * _distanceToTarget));
-                
-                
-                /*if (_distanceToTarget == default)
+                _lineRenderer.SetPosition(1, new Vector3(cachedPosition.x, cachedPosition.y, _direction.z * (_distanceToTarget + DistanceOffset)));
+
+                if (_microexplosions == null)
                 {
-                    _microexplosions =  PoolsManager.GetPooledObject(_explosionType, raycastHit.point, Quaternion.identity);
+                    _microexplosions = PoolsManager.GetPooledObject(_explosionType, raycastHit.point, Quaternion.identity);
                     _microexplosions.GetLinkedComponent<ParticleSystem>().Play();
-                    
                 }
-                else 
+                else
                 {
                     _microexplosions.transform.position = raycastHit.point;
-                }*/
-                
-                
-                
+                }
             }
             else
             {
                 _distanceToTarget = -1.0f;
                 _lineRenderer.SetPosition(1, _defaultEndPosition);
 
-                /*if (_distanceToTarget != default)
+                if (_microexplosions != null)
                 {
                     _microexplosions.ReturnToPool();
                     _microexplosions = null;
-
-                    _lineRenderer.SetPosition(1, _defaultEndPosition);
-                    _distanceToTarget = default;
-                }*/
+                }
             }
         }
         
@@ -127,8 +118,6 @@ namespace Entities
 
             if (_pooledObject != null) _pooledObject.ReturnToPool();
         }
-
         
-
     }
 }
