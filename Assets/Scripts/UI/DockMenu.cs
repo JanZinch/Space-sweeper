@@ -40,7 +40,6 @@ namespace UI
         {
             Instance = this;
             _equipmentList = EquipmentUtils.InitializeItemViewList(_equipmentViewOriginal, in _equipmentListView);
-            //EquipmentItemSlot.Refresh();
         }
 
         private void OnEnable()

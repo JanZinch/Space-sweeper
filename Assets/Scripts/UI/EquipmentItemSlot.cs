@@ -26,7 +26,6 @@ namespace UI
         private static List<EquipmentItemSlot> _slots = new List<EquipmentItemSlot>(4);
         public static EquipmentSlotType CurrentSlot { get; private set; } = EquipmentSlotType.FIRST_WEAPON;
         private static event Action<EquipmentSlotType> OnSlotSelected = null;
-
         
         private void Awake()
         {
@@ -37,11 +36,12 @@ namespace UI
 
             _slots.Add(this);
         }
-
-
+        
         public static bool SetItemInSlot(EquipmentItemType itemType, Sprite itemIcon, EquipmentSlotType slotType)
         {
             EquipmentItemSlot slot = _slots.Find((slot) => slot._type == slotType);
+
+            /*foreach (var sloti in _slots){Debug.Log("[E] OBS: Slot: " + sloti._type);}*/
             
             if (IsCompatible(slot, itemType))
             {
@@ -50,9 +50,18 @@ namespace UI
                     EquipmentUtils.Unequip(slot._equippedItem);
                 }
 
-                slot._equippedItem = itemType;
-                slot._icon.sprite = itemIcon;
-
+                try
+                {
+                    slot._equippedItem = itemType;
+                    slot._icon.sprite = itemIcon;
+                    
+                    //Debug.Log("[E] OK: Slot: " + slotType + " Item: " + itemType);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError("[E] EX: Slot: " + slotType + " Item: " + itemType);
+                }
+                
                 return true;
             }
             else return false;
@@ -69,7 +78,7 @@ namespace UI
             {
                 PlayerUtils.SetEquipment(selectedEquipment[0], selectedEquipment[1], selectedEquipment[2]);
                 
-                if(refresh) Refresh();
+                if (refresh) Refresh();
                 
                 return true;
             }
@@ -188,7 +197,11 @@ namespace UI
         private static void Refresh()
         {
             CurrentSlot = EquipmentSlotType.FIRST_WEAPON;
-            _slots.Clear();
+        }
+
+        private void OnDestroy()
+        {
+            _slots.Remove(this);
         }
     }
 }
