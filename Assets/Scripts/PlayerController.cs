@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
         _playerBody.OnChannelHit += OnChannelHit;
         _playerBody.OnHealthUpdate += OnUpdateHealth;
         _playerBody.OnDeath += OnObstacleHit;
+        
+        Messenger.AddListener(MessengerKeys.ON_MINE_HIT, SetMinSpeed);
     }
 
     private void Start()
@@ -74,6 +76,8 @@ public class PlayerController : MonoBehaviour
         _playerBody.OnChannelHit -= OnChannelHit;
         _playerBody.OnHealthUpdate -= OnUpdateHealth;
         _playerBody.OnDeath -= OnObstacleHit;
+        
+        Messenger.RemoveListener(MessengerKeys.ON_MINE_HIT, SetMinSpeed);
     }
 
     private void OnObstacleHit()

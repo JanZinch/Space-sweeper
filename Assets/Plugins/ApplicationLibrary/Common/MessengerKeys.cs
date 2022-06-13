@@ -5,6 +5,7 @@ namespace CodeBase.ApplicationLibrary.Common
         NONE = 0,
         ON_PLAYER_STARSHIP_FALL = 1,
         ON_ITEM_UNEQUIPPED = 2,
+        ON_MINE_HIT = 3,
         
     }
 

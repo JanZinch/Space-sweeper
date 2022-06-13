@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodeBase.ApplicationLibrary.Common;
 using UnityEngine;
 
 namespace Entities
@@ -48,11 +49,16 @@ namespace Entities
 
         private void Explode()
         {
-            EffectsManager.SetupExplosion(PooledObjectType.GAMMAZOID_EXPLOSION, transform.position, Quaternion.identity);
+            EffectsManager.SetupExplosion(PooledObjectType.MINE_EXPLOSION, transform.position, Quaternion.identity);
             
             foreach (DestructibleObject destructibleObject in _affectedObjects)
             {
                 destructibleObject.MakeDamage(_damage);
+
+                if (destructibleObject.TryGetComponent<PlayerBody>(out PlayerBody playerBody))
+                {
+                    Messenger.Broadcast(MessengerKeys.ON_MINE_HIT);
+                }
             }
 
             if (_pooledObject != null)

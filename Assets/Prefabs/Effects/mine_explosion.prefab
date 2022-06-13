@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1288563278431964054}
   - component: {fileID: 4045772260141635748}
   m_Layer: 0
-  m_Name: gammazoid_explosion
+  m_Name: mine_explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,8 +169,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 10
-      minScalar: 6
+      scalar: 12
+      minScalar: 8
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.35330486, g: 0, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.14915776, b: 0, a: 1}
+      minColor: {r: 0, g: 0.11209059, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.91290116, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
