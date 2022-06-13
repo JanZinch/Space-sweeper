@@ -38,13 +38,17 @@ public class MachineGun : Weapon
             foreach (Transform point in _leftSourcePoints)
             {
                 PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
-                    .GetLinkedComponent<Projectile>().Setup((_leftGunDirection + _customDirection).normalized);
+                    //.GetLinkedComponent<Projectile>().Setup((_leftGunDirection + _customDirection).normalized);
+                    .GetLinkedComponent<Projectile>().Setup((_customDirection).normalized);
             }
             
             foreach (Transform point in _rightSourcePoints)
             {
                 PoolsManager.GetPooledObject(PooledObjectType.BULLET, point.position, Quaternion.identity)
-                    .GetLinkedComponent<Projectile>().Setup((_rightGunDirection + _customDirection).normalized);
+                    //.GetLinkedComponent<Projectile>().Setup((_rightGunDirection + _customDirection).normalized);
+                    .GetLinkedComponent<Projectile>().Setup((_customDirection).normalized);
+                
+                
             }
             
             _deltaTime = 0.0f;
