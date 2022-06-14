@@ -66,7 +66,7 @@ MonoBehaviour:
   _explosionType: 201
   _rigidbody: {fileID: 692772479}
   _speed: 100
-  _damage: 1
+  _damage: 2
   _trailParticles: {fileID: 0}
   _trailRenderer: {fileID: 3834347184121800669}
   _pooledObject: {fileID: 692772477}

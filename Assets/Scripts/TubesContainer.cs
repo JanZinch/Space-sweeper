@@ -63,7 +63,7 @@ public static class TubesContainer
              
              {2, new List<TubeData>()
              {
-                 /*
+                 ///*
                  
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_1, Quaternion.identity),
@@ -86,13 +86,16 @@ public static class TubesContainer
                  new TubeData(PooledObjectType.TUNNEL_CYBER_BRIDGE, Quaternion.Euler(0.0f, 0.0f, 90.0f)),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, 30.0f)),
                  new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_2, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, 0.0f)),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_1, Quaternion.identity),
                  
-                 */
+                 //*/
                  
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.Euler(0.0f, 0.0f, 135.0f)),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_ARMADA, Quaternion.identity),                                   // arm
                  
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
