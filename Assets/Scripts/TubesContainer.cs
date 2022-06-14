@@ -65,6 +65,7 @@ public static class TubesContainer
              {
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_1, Quaternion.identity),
+                 
                  new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_2, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_1, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, 22.5f)),
@@ -79,15 +80,38 @@ public static class TubesContainer
                  new TubeData(PooledObjectType.TUNNEL_CYBER_BLOWER, Quaternion.Euler(0.0f, 0.0f, 22.5f)),
                  new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_2, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_2, Quaternion.identity),
+                 
                  new TubeData(PooledObjectType.TUNNEL_CYBER_BRIDGE, Quaternion.Euler(0.0f, 0.0f, 90.0f)),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, 30.0f)),
                  new TubeData(PooledObjectType.TUNNEL_HEX_ENEMIES_2, Quaternion.identity),
-                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 //new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_1, Quaternion.identity),
-                 new TubeData(PooledObjectType.TUNNEL_CYBER_BLOWER, Quaternion.identity),
+                 
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_ARMADA, Quaternion.identity),                                   // arm
                  
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_BRIDGE, Quaternion.Euler(0.0f, 0.0f, 160.0f)),
                  
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_HATCHES, Quaternion.Euler(0.0f, 0.0f, -30.0f)),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_HATCHES, Quaternion.Euler(0.0f, 0.0f, 60.0f)),
+                 
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_REPAIRS, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, 60.0f)),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_PINS_1, Quaternion.Euler(0.0f, 0.0f, -90.0f)),
+                 
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_CYBER_GATEWAY_2, Quaternion.identity),
+                 
+                 // end
                  
                  
                  
@@ -149,6 +173,7 @@ public static class TubesContainer
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.identity),
+                 new TubeData(PooledObjectType.TUNNEL_HEX_TRAP, Quaternion.Euler(0.0f, 0.0f, 135.0f)),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_EMPTY, Quaternion.identity),
                  new TubeData(PooledObjectType.TUNNEL_CYBER_ARMADA, Quaternion.identity),
                  
