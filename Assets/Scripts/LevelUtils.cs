@@ -6,7 +6,7 @@ namespace Assets.Scripts
     {
         //2
         //4 - test
-        private static int _currentLevel = 4;
+        private static int _currentLevel = 1;
         public static int CurrentLevel => _currentLevel;
 
     }

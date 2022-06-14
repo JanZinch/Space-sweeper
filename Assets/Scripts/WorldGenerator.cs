@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
+using CodeBase.ApplicationLibrary.Common;
 using Entities;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,7 +22,8 @@ public class WorldGenerator : MonoBehaviour
     private Func<Vector3, Quaternion, PooledObject> SpawnTubePart = null;
     private Queue<TubeData> _currentLevelMap = null;
 
-    private Coroutine _exutRoutine = null;
+    private Coroutine _exitRoutine = null;
+    private WaitForSeconds _exitWaiting = null;
     
     public class Spawn {
         
@@ -55,7 +57,8 @@ public class WorldGenerator : MonoBehaviour
 
     private IEnumerator EndOfLevel()
     {
-        yield return new WaitForSeconds(10.0f);
+        Messenger.Broadcast(MessengerKeys.ON_LEVEL_PASSED);
+        yield return _exitWaiting;
         SceneManager.Load(Scene.DOCK);
     }
 
@@ -63,9 +66,9 @@ public class WorldGenerator : MonoBehaviour
 
         if (_currentLevelMap.Count == 0)
         {
-            if (_exutRoutine == null)
+            if (_exitRoutine == null)
             {
-                _exutRoutine = StartCoroutine(EndOfLevel());
+                _exitRoutine = StartCoroutine(EndOfLevel());
             }
             
             return null;  // end of level
@@ -80,6 +83,8 @@ public class WorldGenerator : MonoBehaviour
 
     private void Awake()
     {
+        _exitWaiting = new WaitForSeconds(10.0f);
+        
         if (_spawnRandom)
         {
             _tubePartsTypes = PoolsExplorer.GetTunnelPartsPoolsIds();

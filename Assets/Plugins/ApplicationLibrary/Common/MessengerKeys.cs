@@ -6,7 +6,7 @@ namespace CodeBase.ApplicationLibrary.Common
         ON_PLAYER_STARSHIP_FALL = 1,
         ON_ITEM_UNEQUIPPED = 2,
         ON_MINE_HIT = 3,
-        
+        ON_LEVEL_PASSED = 3,
     }
 
     public enum BundleKeys
